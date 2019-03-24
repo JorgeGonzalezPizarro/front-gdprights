@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-class App extends Component {
+import { Main } from './Components/Main'
+import Provider from 'react-redux/es/components/Provider'
+import  {ConfigureStore}  from './redux/ConfigureStore'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+export class App extends Component {
   render() {
     return (
+      <Provider store={ ConfigureStore()}>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Main />
       </div>
+        </MuiThemeProvider>
+
+      </Provider>
     );
   }
 }
 
-export default App;
