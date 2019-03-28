@@ -1,6 +1,4 @@
-export const secondForm = () => {
-  return (
-    {
+export const secondForm =  {
       firstForm: [
         {
           type: 'Nombre',
@@ -12,6 +10,4 @@ export const secondForm = () => {
 
       ]
 
-    }
-  )
 }

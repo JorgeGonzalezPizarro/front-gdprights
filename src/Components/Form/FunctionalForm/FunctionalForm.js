@@ -5,26 +5,19 @@ import {firstForm} from '../../../shared/firstForm'
 import {secondForm} from '../../../shared/secondForm'
 import  {Component} from 'react'
 export class FunctionalForm extends Component {
-  constructor (props){
+  constructor (props) {
     super(props)
-    const forms = {
-      FirstFormData : {
-        ...firstForm(props.entities)
-
-      },
-      SecondFormData : {
-        ...secondForm()
-
-      },
-      currentStep : 1
+    const {currentStep , firstForm , secondForm } = this.props
+    this.state = {
+    currentStep,
+      firstForm,
+      secondForm
     }
-    this.state= {
-      ...forms
-    }
+
   }
-
   render()
 {
+  console.log(this.state)
   const visibleSecondForm = () => {
     const nextStep = this.state.currentStep > 1 ? this.state.currentStep : 2;
     this.setState({
@@ -39,11 +32,10 @@ export class FunctionalForm extends Component {
       currentStep : previousStep
     })
   }
-  console.log(this.state)
   return (
     <div>
-      <FirstForm firstFormData={this.state.FirstFormData} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
-      <SecondForm secondFormData={this.state.SecondFormData} currentStep={this.state.currentStep}  onClick={visibleFirstForm}/>
+      <FirstForm firstFormData={this.state.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
+      {/*<SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep}  onClick={visibleFirstForm}/>*/}
     </div>
   )
 }

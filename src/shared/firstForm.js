@@ -1,6 +1,4 @@
-export const firstForm = (entities) => {
-  return (
-    {
+export const firstForm =  {
       firstForm: [
         {
           type: 'Nombre',
@@ -32,9 +30,17 @@ export const firstForm = (entities) => {
             label: 'Listado',
             required: false,
             onchange: 'callToApi',
-            data: entities
+            entities: []
+          },
+          {
+            type: 'select',
+            name: 'countriesList',
+            label: 'Countries',
+            required: false,
+            onchange: 'callToApi',
+            countries: []
           }
         ]
-    }
-  )
+
+
 }

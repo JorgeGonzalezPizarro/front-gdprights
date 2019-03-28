@@ -7,14 +7,13 @@ export default class FirstForm extends Component {
   constructor (props) {
     super(props)
     const {firstFormData : {firstForm , secondForm}  }  = this.props;
-
+    console.log(this.props)
     this.state = {
       firstForm : firstForm,
       secondForm : secondForm,
       visibleSecondForm : false,
       requiredFields : null
     }
-
   }
   componentDidMount() {
     const requiredFields = this.state.firstForm.filter((input,key) => input.required===true ? input.name : null).map((input) => input.name);

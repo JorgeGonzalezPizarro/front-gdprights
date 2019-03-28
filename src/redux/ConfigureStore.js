@@ -1,29 +1,14 @@
-
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk'
 import { logger } from 'redux-logger'
+import { FormReducer } from './reducers/FormReducer'
 
-// const rootReducer = combineReducers({
-//   // ...your other reducers here
-//   // you have to pass formReducer under 'form' key,
-//   // for custom keys look up the docs for 'getFormState'
-//   form: formReducer
-// })
-//
-// export const ConfigureStore = () => {
-//
-//  createStore(rootReducer,   applyMiddleware(logger, thunk))
-// }
-
-export const ConfigureStore = () =>{
+export const ConfigureStore = () => {
   return createStore(
-    combineReducers({
-      form: formReducer
-
+    combineReducers( {
+      form: FormReducer,
     }),
     applyMiddleware(logger, thunk)
-  );
-};
-
+  )
+}
 
