@@ -4,22 +4,22 @@ import { FormControl } from '@material-ui/core'
 export class RenderInputTextField extends Component{
   constructor (props){
     super(props);
-    console.log(this.props)
   }
   render () {
-    return <InputTextField props ={this.props}/>
+    return <InputTextField {...this.props}/>
   }
 }
-const InputTextField = ({ label, value,  custom, touched, error , onChange }) => {
+const InputTextField = ({ name ,label, value,  custom, touched, error , onChange , disabled }) => {
   return (
-    <div>
-      <FormControl>
+    <div className="container">
+      <FormControl >
       <TextField   hintText={label}
-
+                   name={name}
                    floatingLabelText={label}
-                   errorText={touched && error}
                    value={value}
-                 {...custom}
+                   disabled={disabled}
+                   errorText={touched !== undefined &&  error !== undefined ? 'Required' : null}
+                   onChange={onChange}
       />
       </FormControl>
     </div>

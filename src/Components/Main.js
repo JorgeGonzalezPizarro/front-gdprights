@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FirstForm from './Form/PresentationalForm/FirstForm'
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm'
 import MaterialUiForm from './Form/MaterialUi'
-import { fetchForm } from '../redux/ActionCreators/Form/ActionCreatorsForm'
+import { fetchForm ,fetchEntities_ } from '../redux/ActionCreators/Form/ActionCreatorsForm'
 import { connect } from 'react-redux'
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { Loading } from './Util/LoadingComponent'
@@ -14,8 +14,11 @@ import { Loading } from './Util/LoadingComponent'
  const mapDispatchToProps = (dispatch) => ({
     fetchForm: () => {
       dispatch(fetchForm())
+    },
+     fetchEntities: () => {
+       dispatch(fetchEntities_())
 
-    }
+     }
   }
 )
 
@@ -26,39 +29,33 @@ export  class Main extends Component {
       ...props
     }
   }
+
   componentDidMount () {
     this.props.fetchForm();
   }
-  componentDidUpdate (prevProps, prevState, snapshot) {
-    console.log("state on update" ,  this.state)
-    console.log("props on update" ,  this.props)
 
-  }
+
 
 
   render () {
-    console.log("state on render" ,  this.state)
-    if(this.props.form.isLoading===true){
-
-      return <Loading/>
+  const  getEntities = () => {
+      this.props.fetchEntities()
     }
+    if (this.props.form.isLoading === true) {
 
-    return (
+      return (<div><Loading/></div>);
+    } else {
 
-      <div>
-        {/*<Switch>*/}
-          {/*<Route  exact path={["/politicians", "/home" , '/']}/>*/}
-          {/*<Route exact path={"/politician/:id"}/>}/>*/}
-          {/*<Route exact path={'/create'}  component={() => {*/}
+      return (
 
-          {/*}*/}
-          {/*} />*/}
-          {/*<Redirect to={"/home"}/>*/}
-        {/*</Switch>*/}
-        <FunctionalForm firstForm = {this.props.form.firstForm} secondForm={this.props.form.secondForm} currentStep = {this.props.form.currentStep}/>
+        <div>
 
-      </div>
-       )
-        }
-        }
+          <FunctionalForm getEntities ={getEntities} firstForm={this.props.form.firstForm} secondForm={this.props.form.secondForm}
+                          currentStep={this.props.form.currentStep}/>
+
+        </div>
+      )
+    }
+  }
+}
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

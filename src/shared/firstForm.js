@@ -2,24 +2,29 @@ export const firstForm =  {
       firstForm: [
         {
           type: 'Nombre',
-          value: 'c',
+          value: 'aa',
           name: 'customEntityName',
           required: true,
-          label: 'Nombre'
+          label: 'Nombre',
+          disabled : false
         },
         {
           type: 'text',
           label: 'Email ',
-          value: 'a',
+          value: '',
           name: 'customEntityEmail',
-          required: true
+          required: true,
+          disabled : false
+
         },
         {
           type: 'text',
           value: '',
           name: 'customEntityCommercialName',
           required: true,
-          label: 'Commercial Name '
+          label: 'Commercial Name ',
+          disabled : false
+
         }
       ],
       secondForm:
@@ -30,7 +35,9 @@ export const firstForm =  {
             label: 'Listado',
             required: false,
             onchange: 'callToApi',
-            entities: []
+            entities: [],
+            disabled : true
+
           },
           {
             type: 'select',
@@ -38,7 +45,9 @@ export const firstForm =  {
             label: 'Countries',
             required: false,
             onchange: 'callToApi',
-            countries: []
+            countries: [],
+            disabled : true
+
           }
         ]
 

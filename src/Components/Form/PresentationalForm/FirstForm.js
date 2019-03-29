@@ -6,51 +6,66 @@ import Button from '@material-ui/core/es/Button/Button'
 export default class FirstForm extends Component {
   constructor (props) {
     super(props)
-    const {firstFormData : {firstForm , secondForm}  }  = this.props;
+    const { firstFormData: { firstForm, secondForm } } = this.props
     console.log(this.props)
     this.state = {
-      firstForm : firstForm,
-      secondForm : secondForm,
-      visibleSecondForm : false,
-      requiredFields : null
+      firstForm: firstForm,
+      secondForm: secondForm,
+      visibleSecondForm: false,
+      requiredFields: firstForm.filter((input, key) => input.required === true ? input.name : null).map((input) => input.name)
     }
   }
-  componentDidMount() {
-    const requiredFields = this.state.firstForm.filter((input,key) => input.required===true ? input.name : null).map((input) => input.name);
-    this.setState({
-      ...this.state,
-      requiredFields
-    })
+
+  componentDidMount () {
+    //const requiredFields = this.state.firstForm.filter((input,key) => input.required===true ? input.name : null).map((input) => input.name);
+    // console.log(requiredFields)
+    // this.setState({
+    //   ...this.state,
+    //   requiredFields
+    // })
   }
+
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    console.log(this.state)
+  }
+
   render () {
-    const handleSubmit = () => {
 
-    }
-
-
-    const handleSecondForm = (data) => {
-      const requiredFields = this.state.secondForm.filter((input,key) => input.required!==true ? input.name : null).map((input) => input.name);
-      const firstForm = this.state.firstForm;
-      const firstFormValues = data.map((input) => firstForm[input].value = input.value);
+    const submitFirstForm = (data) => {
       this.setState({
         ...this.state,
-        firstForm : firstFormValues,
-        visibleSecondForm : !this.state.visibleSecondForm
+        firstForm: data
       })
     }
-    if(this.props.currentStep !== 1)
-    {
-      return null;
+
+    const handleSecondForm = (data) => {
+      submitFirstForm(data)
+      const requiredFields = this.state.secondForm.filter((input, key) => input.required !== true ? input.name : null).map((input) => input.name)
+
+      const firstFormDisabled = this.state.firstForm.map((input) =>input );
+      firstFormDisabled.map((i) =>  i.disabled = !i.disabled);
+      this.setState({
+        ...this.state,
+        visibleSecondForm: !this.state.visibleSecondForm,
+        firstForm : firstFormDisabled
+      });
+
     }
-    console.log("state" , this.state)
+
+    if (this.props.currentStep !== 1) {
+      return null
+    }
     return (
       <div>
         <form>
           <div>
-          <LeftForm data={this.state.firstForm} onClickVisibleRightForm={handleSecondForm}/>
-          <RightForm data={this.state.secondForm} visible={this.state.visibleSecondForm}/>
+            <LeftForm data={this.state.firstForm} requiredFields={this.state.requiredFields}
+                      onClickVisibleRightForm={handleSecondForm}/>
+            {
+              this.state.visibleSecondForm === true ?  <RightForm data={this.state.secondForm} visible={this.state.visibleSecondForm} getEntities={this.props.getEntities}/> : null
+            }
           </div>
-          <Button onClick={this.props.onClick} >Enviar
+          <Button onClick={this.props.onClick}>Enviar
           </Button>
         </form>
       </div>

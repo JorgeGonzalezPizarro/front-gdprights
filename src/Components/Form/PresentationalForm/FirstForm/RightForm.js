@@ -1,34 +1,41 @@
 import React, { Component } from 'react'
-import { Field } from 'react-redux-form'
-import { RenderInputTextField } from '../inputs/RenderInputTextField'
+import {RenderSelectField} from '../inputs/RenderSelectField'
 
 export default class RightForm extends Component {
   constructor (props) {
     super(props)
     const {data, visible }  = this.props;
     console.log(visible);
+
     this.state = {
       visible : visible,
       data : data
     }
-
   }
+
+  componentDidMount () {
+    this.props.getEntities();
+  }
+
+
+
   render () {
-    console.log(this.props)
     if(this.props.visible!==true)
     {
       return null;
     }
+
+
   return   (
       <div>
-        <form>
-          <div>
-            <Field
-              component={RenderInputTextField}
-              label={this.state.data.filter((input)=> input.name === 'customEntityName')[0]} model={"aa"}/>
-          </div>
+        <div>
+          <form >
+            <div>
+              <RenderSelectField {...this.props.data}/>
+            </div>
 
-        </form>
+          </form>
+      </div>
       </div>
     )
   }

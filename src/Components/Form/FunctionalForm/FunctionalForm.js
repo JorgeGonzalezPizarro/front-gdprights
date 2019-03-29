@@ -13,11 +13,9 @@ export class FunctionalForm extends Component {
       firstForm,
       secondForm
     }
-
   }
   render()
 {
-  console.log(this.state)
   const visibleSecondForm = () => {
     const nextStep = this.state.currentStep > 1 ? this.state.currentStep : 2;
     this.setState({
@@ -34,7 +32,7 @@ export class FunctionalForm extends Component {
   }
   return (
     <div>
-      <FirstForm firstFormData={this.state.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
+      <FirstForm getEntities = {this.props.getEntities} firstFormData={this.state.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
       {/*<SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep}  onClick={visibleFirstForm}/>*/}
     </div>
   )
