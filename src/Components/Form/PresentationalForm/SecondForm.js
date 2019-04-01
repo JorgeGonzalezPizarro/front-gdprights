@@ -8,7 +8,6 @@ export default class SecondFormData extends Component {
     super(props)
     const {secondFormData : {firstForm , secondForm}  }  = this.props;
 
-
     const handleSubmit = () => {
 
     }
@@ -28,7 +27,6 @@ export default class SecondFormData extends Component {
               label={this.props.secondFormData.firstForm.filter((input)=> input.name === 'customEntityName')[0].label} model={"aa"}/>
           </div>
           <Button onClick={this.props.onClick} value="a">aa</Button>
-
         </form>
       </div>
     )

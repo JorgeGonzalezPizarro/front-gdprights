@@ -7,7 +7,6 @@ import { array } from 'prop-types'
 export default class LeftForm extends Component {
   constructor (props) {
     super(props)
-    console.log(this.props)
     const { data, requiredFields } = this.props
     this.state = {
       data: data,

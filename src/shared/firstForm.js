@@ -35,21 +35,24 @@ export const firstForm =  {
             label: 'Listado',
             required: false,
             onchange: 'callToApi',
-            entities: [],
-            disabled : true
-
+            options: [],
+            disabled : true,
+            defaultValue : '',
+            isLoading : true
           },
           {
             type: 'select',
-            name: 'countriesList',
-            label: 'Countries',
+            name: 'countries',
+            label: 'Listado',
             required: false,
             onchange: 'callToApi',
-            countries: [],
-            disabled : true
-
+            options: [],
+            disabled : true,
+            defaultValue : '',
+            isLoading : false
           }
-        ]
+        ],
+
 
 
 }

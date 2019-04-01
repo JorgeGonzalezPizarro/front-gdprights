@@ -9,41 +9,39 @@ export const initial_state = {
   secondForm: secondForm
 }
 
-export const FormReducer = (state = initial_state, action) => {
+export const FormReducer = (state = initial_state , action) => {
 
   switch (action.type) {
 
     case Action.FETCH :
-      return Object.assign({}, state, action.payload)
-      break
+      return  Object.assign({},state, action.payload)
+
+
     case Action.LOADING :
-      return Object.assign({}, state, action.payload)
-      break;
+      return Object.assign(state, action.payload)
     case Action.FETCH_ENTITIES :
       const stateCopy = state
       const secondForm = stateCopy.firstForm.secondForm.map((form) => {
-        if (form.hasOwnProperty('entities')) {
-          Object.assign(form, action.payload)
+        if (form.hasOwnProperty('options') &&  form.name==='entitiesList') {
+          Object.assign(form, action.payload )
         }
       })
-      Object.assign(stateCopy.secondForm, { ...secondForm })
-      return Object.assign({}, state, stateCopy)
-      break;
+      return  Object.assign({},state,stateCopy)
+
     case Action.LOADING_ENTITIES :
-      const stateCopy_ = state
-      const secondForm_ = stateCopy_.firstForm.secondForm.map((_form) => { if (_form.hasOwnProperty('entities')) {
-
-        Object.defineProperty(_form, 'isLoading', {
-          ...true
-        })
+      const newState = {
+        ...state,
+        firstForm: {
+          ...state.firstForm ,
+          secondForm :   state.firstForm.secondForm.map((input) => {
+               return input.name ==='entitiesList' ?  Object.assign({},input,action.payload) : input
+          }),
+          }
       }
-      })
+      return Object.assign({} ,state,newState)
 
-      Object.assign(stateCopy_.secondForm, { ...secondForm_ })
-      return Object.assign({}, state, stateCopy_)
-      break;
     default  :
-      return { ...state }
+      return state
 
   }
 

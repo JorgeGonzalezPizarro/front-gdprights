@@ -5,9 +5,17 @@ export const secondForm =  {
           value: '',
           name: 'entityName',
           required: true,
-          label: 'Nombre'
+          label: 'Nombre',
+          isLoading : false
         },
-
+        {
+          type: 'Nombre',
+          value: '',
+          name: 'countries',
+          required: true,
+          label: 'Nombre',
+          isLoading : false
+        },
       ]
 
 }

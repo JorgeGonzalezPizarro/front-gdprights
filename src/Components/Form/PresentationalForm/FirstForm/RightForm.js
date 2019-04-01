@@ -1,42 +1,32 @@
 import React, { Component } from 'react'
 import {RenderSelectField} from '../inputs/RenderSelectField'
+import { alertUtil } from '../../../Util/alertUtil'
 
-export default class RightForm extends Component {
-  constructor (props) {
-    super(props)
-    const {data, visible }  = this.props;
-    console.log(visible);
+export const RightForm = ({visible,data}) => {
 
-    this.state = {
-      visible : visible,
-      data : data
-    }
-  }
-
-  componentDidMount () {
-    this.props.getEntities();
-  }
-
-
-
-  render () {
-    if(this.props.visible!==true)
-    {
+    const countriesArray = [];
+    if (true !== visible) {
       return null;
     }
-
-
-  return   (
+    const onChangeEntities= (countries) => {
+      alertUtil(countries)
+      data.filter((input) =>{
+        alertUtil(input)
+        input.options =  input.name === 'countries' ? countries  : ["a"]
+      });
+    }
+    return (
       <div>
         <div>
-          <form >
+          <form>
             <div>
-              <RenderSelectField {...this.props.data}/>
+              { data.map((input, key) => {
+                  return <RenderSelectField onChange={onChangeEntities} key={key} options={input.options} isLoading={input.isLoading} name={input.name} defaultValue={input.defaultValue} label={input.label} selected={input.defaultValue}/>
+                })
+              }
             </div>
-
           </form>
-      </div>
+        </div>
       </div>
     )
-  }
 }

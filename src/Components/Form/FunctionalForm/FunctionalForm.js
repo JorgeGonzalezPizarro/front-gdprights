@@ -1,19 +1,21 @@
 import FirstForm from '../PresentationalForm/FirstForm'
 import React from 'react'
-import SecondForm from '../PresentationalForm/SecondForm'
-import {firstForm} from '../../../shared/firstForm'
-import {secondForm} from '../../../shared/secondForm'
 import  {Component} from 'react'
+
+
 export class FunctionalForm extends Component {
   constructor (props) {
     super(props)
-    const {currentStep , firstForm , secondForm } = this.props
     this.state = {
-    currentStep,
-      firstForm,
-      secondForm
+      currentStep : props.currentStep,
+      firstForm : props.firstForm,
+      secondForm : props.secondForm
     }
+
   }
+
+
+
   render()
 {
   const visibleSecondForm = () => {
@@ -32,7 +34,7 @@ export class FunctionalForm extends Component {
   }
   return (
     <div>
-      <FirstForm getEntities = {this.props.getEntities} firstFormData={this.state.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
+      <FirstForm getEntities = {this.props.getEntities} firstFormData={this.props.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
       {/*<SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep}  onClick={visibleFirstForm}/>*/}
     </div>
   )
