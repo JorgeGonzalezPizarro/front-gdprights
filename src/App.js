@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import './App.css'
-import Main from './Components/Main'
-import Provider from 'react-redux/es/components/Provider'
-import { ConfigureStore } from './redux/ConfigureStore'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { BrowserRouter } from 'react-router-dom'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import React, { Component } from 'react';
+import './App.css';
+import Main from './Components/Main';
+import Provider from 'react-redux/es/components/Provider';
+import { ConfigureStore } from './redux/ConfigureStore';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { BrowserRouter } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
   }
 
@@ -25,10 +25,10 @@ class App extends Component {
           </BrowserRouter>
         </MuiThemeProvider>
       </Provider>
-    )
+    );
   }
 
 }
 
-export default App
+export default App;
 

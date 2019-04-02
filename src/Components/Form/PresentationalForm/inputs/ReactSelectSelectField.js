@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
 import Select from 'react-select';
-import { colourOptions } from './Data'
-import { Note } from './Note'
+import { colourOptions } from './Data';
+import { Note } from './Note';
 
 const Checkbox = props => <input type="checkbox" {...props} />;
 

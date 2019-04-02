@@ -1,33 +1,33 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import TextField from 'material-ui/TextField'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-import Checkbox from 'material-ui/Checkbox'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import TextField from 'material-ui/TextField';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import Checkbox from 'material-ui/Checkbox';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
   const requiredFields = [
     'firstName',
     'lastName',
     'email',
     'favoriteColor',
     'notes'
-  ]
+  ];
   requiredFields.forEach(field => {
     if (!values[field]) {
-      errors[field] = 'Required'
+      errors[field] = 'Required';
     }
-  })
+  });
   if (
     values.email &&
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
   ) {
-    errors.email = 'Invalid email address'
+    errors.email = 'Invalid email address';
   }
-  return errors
-}
+  return errors;
+};
 
 const renderTextField = ({
   input,
@@ -42,7 +42,7 @@ const renderTextField = ({
     {...input}
     {...custom}
   />
-)
+);
 
 const renderCheckbox = ({ input, label }) => (
   <Checkbox
@@ -50,7 +50,7 @@ const renderCheckbox = ({ input, label }) => (
     checked={!!input.value}
     onCheck={input.onChange}
   />
-)
+);
 
 const renderRadioGroup = ({ input, ...rest }) => (
   <RadioButtonGroup
@@ -59,7 +59,7 @@ const renderRadioGroup = ({ input, ...rest }) => (
     valueSelected={input.value}
     onChange={(event, value) => input.onChange(value)}
   />
-)
+);
 
 const renderSelectField = ({
   input,
@@ -76,10 +76,10 @@ const renderSelectField = ({
     children={children}
     {...custom}
   />
-)
+);
 
 const MaterialUiForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -133,10 +133,10 @@ const MaterialUiForm = props => {
         </button>
       </div>
     </form>
-  )
-}
+  );
+};
 
 export default reduxForm({
   form: 'MaterialUiForm', // a unique identifier for this form
   validate
-})(MaterialUiForm)
+})(MaterialUiForm);
