@@ -1,10 +1,12 @@
 import TextField from 'material-ui/TextField';
 import React, {Component} from 'react';
 import { FormControl } from '@material-ui/core';
+
 export class RenderInputTextField extends Component{
   constructor (props){
     super(props);
   }
+
   render () {
     return <InputTextField {...this.props}/>;
   }

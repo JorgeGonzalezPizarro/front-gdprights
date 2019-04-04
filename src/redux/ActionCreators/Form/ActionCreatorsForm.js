@@ -3,7 +3,6 @@ import * as ActionTypes from '../../ActionTypes/Form/FormActionTypes';
 import axios from 'axios';
 import { firstForm } from '../../../shared/firstForm';
 import { secondForm } from '../../../shared/secondForm';
-import { alertUtil } from '../../../Components/Util/alertUtil';
 
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());

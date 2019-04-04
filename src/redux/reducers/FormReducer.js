@@ -1,7 +1,6 @@
 import { firstForm } from '../../shared/firstForm';
 import { secondForm } from '../../shared/secondForm';
 import * as Action from '../ActionTypes/Form/FormActionTypes';
-import { alertUtil } from '../../Components/Util/alertUtil';
 
 export const initial_state = {
   isLoading: true,

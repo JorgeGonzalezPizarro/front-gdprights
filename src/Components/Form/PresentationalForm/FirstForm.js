@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LeftForm from './FirstForm/LeftForm';
-import { RightForm } from './FirstForm/RightForm';
 import Button from '@material-ui/core/es/Button/Button';
+import {LeftForm} from './FirstForm/LeftForm';
+import { RightForm } from './FirstForm/RightForm';
 import { deepEqual } from '../../Util/deepEqual';
 import { alertUtil } from '../../Util/alertUtil';
 
@@ -10,20 +10,23 @@ export default class FirstForm extends Component {
     super(props);
     const { firstFormData: { firstForm, secondForm }, currentStep, getEntities } = props;
     this.state = {
+      currentForm : 1,
       ...{ firstForm, secondForm, currentStep, getEntities },
       requiredFields: props.firstFormData.firstForm.filter((input, key) => input.required === true ? input.name : null).map((input) => input.name)
       , errors : [],
-      touched : [] };
+      touched : [],
+      visibleSecondForm : false,
+      isValid : false};
   }
 
   componentDidMount () {
     const errors = this.state.requiredFields.filter(field => {
       return this.state.firstForm.filter((input) => {
-        return input.name === field && (input.value ===  '');
-      });
+        return input.name === field && input.value.length === 0;
+      })[0];
     });
     this.setState({
-      errors:errors
+      errors
     });
   }
 
@@ -34,93 +37,213 @@ export default class FirstForm extends Component {
       this.setState(
         {
           ...this.state,
-          secondForm : secondForm
+          secondForm
         }
       );
     }
   }
 
   render () {
-    const submitFirstForm = (data) => {
+    const changeErrorsWhenRenderSecondForm = (isVisibleSecondForm) => {
+
+
+      if(!isVisibleSecondForm)
+      {
+        const errors = this.state.requiredFields.filter(field => {
+          return this.state.firstForm.filter((input) => {
+            return input.name === field && input.value ===  '';
+          })[0];
+        });
+        this.setState({
+          errors
+        });
+        return;
+      }
+
+      const errors = this.state.requiredFields.filter(field => {
+        return this.state.secondForm.filter((input) => {
+          return input.name === field && input.value ===  '';
+        })[0];
+      });
+
       this.setState({
-        ...this.state,
-        firstForm: data
+        errors
       });
     };
-    const handleError = (firstForm, secondForm, name, value) => {
-
-      if(firstForm !== null)
-      {
-        const errorCopy = this.state.errors.map((e) => e );
-        const requiredFields = this.state.requiredFields.map((e) => e);
-        const touchedCopy = this.state.touched.map(e => e);
-        const isRequired = (input) => requiredFields.filter(req => req===input);
-        const isTouched = (input) => touchedCopy.filter(req => req===input);
-        if(errorCopy.length === 0 || errorCopy.indexOf(name) === -1)
-        {
-          errorCopy.push(name);
-        }
-
-        const error =   errorCopy.filter((e) => {
-          return e === name;
-        })[0];
-        if(error && isTouched(error) && isRequired(error) && value.length !== 0)
-        {
-          const newError =errorCopy.filter(e => e !== error);
-          this.setState({
-            errors: newError
-          });
-        }
-        else {
-          this.setState({
-            errors: errorCopy
-          });
-        }
-
-      }
-
-    };
-    const handleChange = (firstForm, secondForm, name, value) => {
-
-      if(firstForm !== null)
-      {
-        const stateCopy = this.state.firstForm.map((data) => data);
-        const touched = this.state.touched;
-        const add = () => touched.indexOf(name) === -1 ? touched.push(name) : null ;
-        add();
-        stateCopy.filter((input) => input.name === name ? input.value = value : null );
-        this.setState({
-          ...this.state,
-          firstForm : firstForm
-        });
-        handleError(firstForm, null, name, value);
-      }
-
-    };
-
-
-    const callToEntities = () => {
-      return this.state.secondForm[0].options.length === 0 ? this.props.getEntities() : null;
-
-    };
-
-
-    const handleSecondForm = (data) => {
-      submitFirstForm(data);
-      const requiredFields = this.state.secondForm.filter((input, key) => input.required !== true ? input : null).map((input) => input.name);
+    const submitFirstForm = () => {
+      const requiredFields = this.state.secondForm.filter((input) => input.required = true).map((input) => input.name);
 
       const firstFormDisabled = this.state.firstForm.map((input) => input);
-      firstFormDisabled.map((i) => i.disabled = !i.disabled);
-
+      firstFormDisabled.map((i) => {
+        i.disabled = !i.disabled ;
+        i.required = !i.required;
+      });
       callToEntities();
-      this.setState({
+      const setState = async () => await this.setState({
         ...this.state,
+        currentForm : !this.state.visibleSecondForm === true ? 2 : 1,
         visibleSecondForm: !this.state.visibleSecondForm,
         firstForm: firstFormDisabled,
-        requiredFields : requiredFields,
+        requiredFields,
+      });
+      setState().then(() =>      changeErrorsWhenRenderSecondForm(this.state.visibleSecondForm === true)).then(()=>{
+        this.setState({
+          isValid : enableSend()
+        });
+      });
+
+    };
+
+    const submitSecondForm = () => {
+      const requiredFields = this.state.firstForm.filter((input) => input.required = true ).map((input) => input.name);
+      const secondFormDisabled = this.state.secondForm.map((input) => input);
+      const firstFormEnabled = this.state.firstForm.map((input) => input);
+      secondFormDisabled.map((i) =>{
+        i.disabled = !i.disabled ;
+        i.required = !i.required;
+      }  );
+      firstFormEnabled.map((i) =>{ i.disabled = !i.disabled ;        i.required = !i.required;
+      });
+
+      const setState = async () => {
+        return await this.setState({
+          ...this.state,
+          visibleSecondForm: !this.state.visibleSecondForm,
+          currentForm: !this.state.visibleSecondForm === false ? 1 : 2,
+          firstForm: firstFormEnabled,
+          secondForm: secondFormDisabled,
+          requiredFields,
+        });
+      };
+
+      setState().then(() => changeErrorsWhenRenderSecondForm(this.state.visibleSecondForm === true)).then(() => {
+
+        this.setState({
+          isValid: enableSend()
+        });
+
       });
     };
 
+    const isRequired = (input) => this.state.requiredFields.filter(req => req===input);
+    const isTouched = (input) => this.state.touched.filter(req => req===input);
+
+    const handleError = (firstForm, secondForm, name, value) => {
+      const errorCopy = this.state.errors.map((e) => e );
+      if(errorCopy.length === 0 || errorCopy.indexOf(name) === -1)
+      {
+        errorCopy.push(name);
+      }
+      const error =   errorCopy.filter((e) => {
+        return e === name;
+      })[0];
+
+      if(error && isTouched(error) && isRequired(error) && value.length !== 0)
+      {
+        const newError =errorCopy.filter(e => e !== error);
+        this.setState({
+          errors: newError
+        });
+      }
+      else {
+        this.setState({
+          errors: errorCopy
+        });
+      }
+    };
+
+
+    const handleChange = ( name, value, firstForm = false) => {
+
+      if (firstForm === true) {
+        const stateCopy = this.state.firstForm.map((data) => data);
+        const touched = this.state.touched;
+        const add = () => touched.indexOf(name) === -1 ? touched.push(name) : null;
+        add();
+        const changeState = async () => await   stateCopy.filter((input) => input.name === name ? input.value = value : null);
+        this.setState({
+          ...this.state,
+          firstForm: stateCopy
+        });
+        changeState().then(() => handleError(true, false, name, value)).then(()=>
+
+          this.setState({
+            ...this.state,
+            isValid : enableSend()
+          }));
+      }
+      else {
+        const stateCopy = this.state.secondForm.map((data) => data);
+        const touched = this.state.touched;
+        const add = () => touched.indexOf(name) === -1 ? touched.push(name) : null;
+        add();
+        stateCopy.filter((input) => input.name === name ? input.value = value : null);
+        const changeState = async () => await this.setState({
+          ...this.state,
+          secondForm: stateCopy
+        });
+        console.log(this.state);
+        changeState().then(() => handleError(false, true, name, value)).then(()=>
+
+          this.setState({
+            ...this.state,
+            isValid : enableSend()
+          }));
+      }
+    };
+
+
+    const callToEntities =async () => {
+      return await this.state.secondForm[0].options.length === 0 ? this.props.getEntities() : null;
+
+    };
+
+
+    const handleData = (data) => {
+      if (!this.state.visibleSecondForm) {
+        submitFirstForm(data);
+      } else {
+        submitSecondForm(data);
+      }
+    };
+
+
+
+
+    const enableSend = () => {
+      let enableAll = [];
+      switch (this.state.currentForm) {
+      case 1:
+        enableAll = this.state.firstForm.map((input) => {
+          if (this.state.requiredFields.includes(input.name)) {
+            if (!this.state.errors.includes(input.name)) {
+              return input.value.length > 0;
+            }
+            return false;
+          }
+          return false;
+
+        });
+
+        return !enableAll.includes(false);
+
+      case 2:
+
+        enableAll = this.state.secondForm.map((input) => {
+          if (this.state.requiredFields.includes(input.name)) {
+
+            if (!this.state.errors.includes(input.name)) {
+              return input.value.toString().length > 0;
+            }
+            return false;
+          }
+          return false;
+
+        });
+        return !enableAll.includes(false);
+      }
+      
+    };
 
 
     if (this.props.currentStep !== 1) {
@@ -131,16 +254,22 @@ export default class FirstForm extends Component {
         <form>
           <div>
             <LeftForm onChange= {handleChange} data={this.state.firstForm} requiredFields={this.state.requiredFields}
-              onClickVisibleRightForm={handleSecondForm}/>
+              errors={this.state.errors}
+              touched={this.state.touched}
+              onClickVisibleRightForm={handleData}/>
             {
               this.state.visibleSecondForm === true ? <RightForm getEntities={this.props.getEntities}
                 data={this.state.secondForm}
                 visible={this.state.visibleSecondForm}
                 requiredFields={this.state.requiredFields}
+                errors={this.state.errors}
+                touched={this.state.touched}
+                onChange= {handleChange}
                 fetchCountrieForEntitie={this.props.fetchCountrieForEntitie}/> : null
             }
           </div>
-          <Button onClick={this.props.onClick}>Enviar
+          <Button onClick={handleData} >{this.state.visibleSecondForm !== true ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'} </Button>
+          <Button disabled={!this.state.isValid} onClick={this.props.onClick}>Enviar
           </Button>
         </form>
       </div>

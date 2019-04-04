@@ -12,9 +12,14 @@
       "jsx": true
     }
   },
+  "plugins": ["prettier"],
+
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "prettier/react"
   ],
   "rules": {
     "react/prop-types": 0,

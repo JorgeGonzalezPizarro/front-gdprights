@@ -18,8 +18,10 @@ export default class SingleSelect extends Component {
 
   toggleLoading = () =>
     this.setState(state => ({ isLoading: !state.isLoading }));
+
   toggleSearchable = () =>
     this.setState(state => ({ isSearchable: !state.isSearchable }));
+
   render() {
     const {
       isClearable,

@@ -38,7 +38,8 @@ export const firstForm =  {
             options: [],
             disabled : true,
             defaultValue : '',
-            isLoading : true
+            isLoading : true,
+            value : ''
           },
           {
             type: 'select',
@@ -49,7 +50,8 @@ export const firstForm =  {
             options: [],
             disabled : true,
             defaultValue : '',
-            isLoading : false
+            isLoading : false,
+            value : ''
           }
         ],
 
