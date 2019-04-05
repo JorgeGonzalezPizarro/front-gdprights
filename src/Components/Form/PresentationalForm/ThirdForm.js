@@ -7,15 +7,14 @@ import { LeftForm } from './FirstForm/LeftForm';
 import { RightForm } from './FirstForm/RightForm';
 import { TutorForm } from './FirstForm/TutorForm';
 
-export default class SecondForm extends Component {
+export default class ThirdForm extends Component {
   constructor (props) {
     super(props);
-    const { secondFormData: { firstForm, secondForm }, currentStep } = props;
-    console.log(this.props);
+    const { thirdFormData: { firstForm} , currentStep } = props;
     this.state = {
       currentForm : 1,
-      ...{ firstForm, secondForm, currentStep },
-      requiredFields: props.secondFormData.firstForm.filter((input, key) => input.required === true ? input.name : null).map((input) => input.name)
+      ...{ firstForm, currentStep },
+      requiredFields: props.thirdFormData.firstForm.filter((input, key) => input.required === true ? input.name : null).map((input) => input.name)
       , errors : [],
       touched : [],
 
@@ -24,7 +23,7 @@ export default class SecondForm extends Component {
   }
 
   render () {
-
+    console.log(this.state)
     const isRequired = (input) => this.state.requiredFields.filter(req => req===input);
     const isTouched = (input) => this.state.touched.filter(req => req===input);
 
@@ -55,6 +54,7 @@ export default class SecondForm extends Component {
 
     const handleChange = ( name, value, firstForm = false) => {
       console.log(name,value)
+
       if (firstForm === true) {
         const stateCopy = this.state.firstForm.map((data) => data);
         const {touched} = this.state;
@@ -167,9 +167,9 @@ export default class SecondForm extends Component {
 
 
     };
-    const nextStep = () => {
+    const submit = () => {
       if(this.state.isValid){
-        this.props.nextStep(this.state.firstForm, this.state.secondForm, this.state.currentForm);
+        this.props.submit(this.state.firstForm, this.state.secondForm, this.state.currentForm);
       }
     };
     return (
@@ -184,23 +184,9 @@ export default class SecondForm extends Component {
                   onClickVisibleRightForm={handleData}/>
                 );})
             }
-
-
-            {
-              this.state.secondForm.map((input, key) => {
-                return ( this.state.visibleSecondForm === true ? <TutorForm
-                  input={input} key={key}
-                  visible={this.state.visibleSecondForm}
-                  requiredFields={this.state.requiredFields}
-                  error={this.state.errors.filter((error) => error === input.name)[0]}
-                  touched={this.state.touched.filter((touched) => touched===input.name)[0]}
-                  onChange= {handleChange}
-                /> : null
-                ); })
-            }
           </div>
           <Button color='secondary' onClick={this.props.previous}>Volver</Button>
-          <Button disabled={!this.state.isValid} onClick={nextStep}>Siguiente
+          <Button disabled={!this.state.isValid} onClick={submit}>Enviar
           </Button>
         </form>
       </div>

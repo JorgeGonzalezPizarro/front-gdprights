@@ -1,12 +1,13 @@
 export const firstForm =  {
   firstForm: [
     {
-      type: 'Nombre',
+      type: 'text',
       value: 'aa',
       name: 'customEntityName',
       required: true,
       label: 'Nombre',
-      disabled : false
+      disabled : false,
+      backName : 'customEntityName'
     },
     {
       type: 'text',
@@ -14,7 +15,8 @@ export const firstForm =  {
       value: '',
       name: 'customEntityEmail',
       required: true,
-      disabled : false
+      disabled : false,
+      backName : 'customEntityEmail'
 
     },
     {
@@ -23,7 +25,8 @@ export const firstForm =  {
       name: 'customEntityCommercialName',
       required: true,
       label: 'Commercial Name ',
-      disabled : false
+      disabled : false,
+      backName : 'customEntityCommercialName'
 
     }
   ],
@@ -40,6 +43,7 @@ export const firstForm =  {
             defaultValue : '',
             isLoading : true,
             value : '',
+            backName : 'entity'
           },
           // {
           //   type: 'select',

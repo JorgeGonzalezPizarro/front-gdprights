@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
-import { fetchEntities_, fetchForm, fetchCountries_ } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { connect } from 'react-redux';
+import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
+import {
+  fetchEntities_,
+  fetchForm,
+  fetchCountries_,
+  sendRequest_
+} from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { Loading } from './Util/LoadingComponent';
 
 const mapStateToProps = (state) => {
@@ -11,6 +16,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchForm: () => {
     dispatch(fetchForm());
+  },
+  sendRequest : (data) => {
+    dispatch(sendRequest_(data));
   },
   fetchEntities: () => {
     dispatch(fetchEntities_());
@@ -48,16 +56,17 @@ export class Main extends Component {
     if (this.props.form.isLoading === true) {
 
       return (<div><Loading/></div>);
-    } else {
+    } 
 
-      return (
-        <div>
-          <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie} firstForm={this.props.form.firstForm}
-            secondForm={this.props.form.secondForm}
-            currentStep={this.props.form.currentStep}/>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie} firstForm={this.props.form.firstForm}
+          secondForm={this.props.form.secondForm}
+          thirdForm ={this.props.form.thirdForm}
+          currentStep={this.props.form.currentStep} onClick={this.props.sendRequest}/>
+      </div>
+    );
+    
   }
 }
 

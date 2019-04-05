@@ -1,6 +1,9 @@
-import FirstForm from '../PresentationalForm/FirstForm';
 import React from 'react';
 import  {Component} from 'react';
+import FirstForm from '../PresentationalForm/FirstForm';
+import SecondForm from '../PresentationalForm/SecondForm';
+import ThirdForm from '../PresentationalForm/ThirdForm';
+import { alertUtil } from '../../Util/alertUtil';
 
 
 export class FunctionalForm extends Component {
@@ -9,7 +12,8 @@ export class FunctionalForm extends Component {
     this.state = {
       currentStep : props.currentStep,
       firstForm : props.firstForm,
-      secondForm : props.secondForm
+      secondForm : props.secondForm,
+      thirdForm : props.thirdForm
     };
 
   }
@@ -18,24 +22,167 @@ export class FunctionalForm extends Component {
 
   render()
   {
-    const visibleSecondForm = () => {
+    console.log(this.state)
+    const visibleSecondForm = (firstForm, secondForm, selected) => {
+      console.log(firstForm, secondForm, selected);
+      let responseCopy = null;
+      switch (selected) {
+      case 1 :
+        responseCopy =  firstForm.map((responseInput) => {
+          const newObject = Object.assign({}, {});
+          newObject[responseInput.backName] = responseInput.value;
+          return newObject;
+        } );
+        break;
+
+      case 2 :
+        responseCopy =  secondForm.map((responseInput) => {
+          const newObject = Object.assign({}, {});
+          newObject[responseInput.backName] = responseInput.value;
+          return newObject;
+        } );
+        break;
+      default :
+        break;
+      }
+
+
+
       const nextStep = this.state.currentStep > 1 ? this.state.currentStep : 2;
       this.setState({
-        ...this.state,
-        currentStep : nextStep
+        currentStep: nextStep,
+        firstForm : {
+          firstForm,
+          secondForm
+        },
+        response : responseCopy,
+
       });
     };
-    const visibleFirstForm = () => {
+
+
+    const visibleFirstForm = (data) => {
       const previousStep = this.state.currentStep === 1 ? this.state.currentStep : 1;
+
+
       this.setState({
         ...this.state,
-        currentStep : previousStep
+        currentStep : previousStep,
+        response : null
+      });
+    };
+
+
+
+
+
+
+    const visibleThirdForm = (firstForm, secondForm) => {
+      const nextStep = this.state.currentStep + 1;
+
+      const previousResponse = this.state.response.map((response) => response);
+      const responseCopy =  previousResponse.concat(firstForm.map((responseInput) => {
+        const newObject = Object.assign({}, {});
+        newObject[responseInput.backName] = responseInput.value;
+        return newObject;
+      } ));
+
+      const inputCheck = firstForm.filter((input) =>  input.valueChecked!== undefined )[0];
+      if(inputCheck)
+      {
+        const totalForm =  inputCheck.value !== this.state.secondForm.firstForm.filter((input)=> input.backName === inputCheck.backName)[0].value;
+
+        if(totalForm)
+        {
+          const fullResponseCopy = responseCopy.concat(secondForm.map((responseInput) => {
+            const newObject = Object.assign({}, {});
+            newObject[responseInput.backName] = responseInput.value;
+            return newObject;
+          } ));
+          this.setState({
+            firstForm : {
+              firstForm,
+              secondForm
+            },
+            currentStep : nextStep,
+            response : fullResponseCopy,
+          });
+
+        };
+      }
+
+     const setState = async () => this.setState({
+        firstForm : {
+          firstForm,
+          secondForm
+        },
+       currentStep : nextStep,
+
+       response : responseCopy,
+      });
+
+      setState().then(()=>{
+        const obj = this.state.response.reduce(function(obj1,item){
+          obj1[Object.keys(item)[0]] = Object.values(item)[0]; return obj1;
+        },{});
+
+      });
+    };
+    const submit = (firstForm, secondForm) => {
+      const previousResponse = this.state.response.map((response) => response);
+      const responseCopy =  previousResponse.concat(firstForm.map((responseInput) => {
+        const newObject = Object.assign({}, {});
+        newObject[responseInput.backName] = responseInput.value;
+        return newObject;
+      } ));
+
+      const inputCheck = firstForm.filter((input) =>  input.valueChecked!== undefined )[0];
+      if(inputCheck)
+      {
+        const totalForm =  inputCheck.value !== this.state.secondForm.firstForm.filter((input)=> input.backName === inputCheck.backName)[0].value;
+
+        if(totalForm)
+        {
+          const fullResponseCopy = responseCopy.concat(secondForm.map((responseInput) => {
+            const newObject = Object.assign({}, {});
+            newObject[responseInput.backName] = responseInput.value;
+            return newObject;
+          } ));
+          this.setState({
+            firstForm : {
+              firstForm,
+              secondForm
+            },
+            response : fullResponseCopy,
+          });
+          console.log(this.props);
+
+          this.props.onClick(this.state.response);
+        };
+      }
+
+      const setState = async () => this.setState({
+        firstForm : {
+          firstForm,
+          secondForm
+        },
+        response : responseCopy,
+      });
+
+      setState().then(()=>{
+        var obj = this.state.response.reduce(function(obj1,item){
+          obj1[Object.keys(item)[0]] = Object.values(item)[0]; return obj1;
+        },{});
+
+
+        this.props.onClick(obj)
       });
     };
     return (
       <div>
-        <FirstForm fetchCountrieForEntitie={this.props.fetchCountrieForEntitie} getEntities = {this.props.getEntities} firstFormData={this.props.firstForm} currentStep={this.state.currentStep} onClick={visibleSecondForm}/>
-        {/*<SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep}  onClick={visibleFirstForm}/>*/}
+        <FirstForm  getEntities = {this.props.getEntities} firstFormData={this.props.firstForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>
+        {this.state.currentStep ===2 ? <SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep} previous={visibleFirstForm} nextStep={visibleThirdForm}/> : null }
+        {this.state.currentStep ===3  ? <ThirdForm thirdFormData={this.state.thirdForm} currentStep={this.state.currentStep} previous={visibleFirstForm} submit={submit}/> : null }
       </div>
     );
   }

@@ -1,20 +1,20 @@
+import axios from 'axios';
 import * as ActionTypes from '../../ActionTypes/Form/FormActionTypes';
 
-import axios from 'axios';
 import { firstForm } from '../../../shared/firstForm';
 import { secondForm } from '../../../shared/secondForm';
+import { thirdForm } from '../../../shared/thirdForm';
+import { alertUtil } from '../../../Components/Util/alertUtil';
 
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());
   setTimeout(() => {
-    return  dispatch(fetch(firstForm, secondForm));
+    return  dispatch(fetch(firstForm, secondForm , thirdForm));
   }, 500);
 };
 
 export const fetchEntities_ =  () => (dispatch) => {
-
   dispatch(loadingEntities());
-
   const data = () => {
     return axios.get('http://localhost/gdprights/public/index.php/entities/').then(result => {
       return result.data;
@@ -36,10 +36,20 @@ export const fetchCountries_ = (entitieId) => (dispatch) => {
 export const fetchCountries = (entitieId) => ({
   type : ActionTypes.FETCH_COUNTRIES,
   payload : {
-    entitieId : entitieId,
+    entitieId,
     isLoading : false
   }
 });
+
+export const sendRequest_ = (data) => {
+  console.log(data);
+  alertUtil(data);
+  axios.post('http://localhost/gdprights/public/index.php/', data).then(result => {
+    return result.data;
+  }).then((response) => {
+    console.log(response);
+  });
+};
 
 export const loadingCountries = () =>({
 
@@ -47,6 +57,15 @@ export const loadingCountries = () =>({
   payload : {
     isLoading : true,
     error : null,
+  }});
+
+export const sendRequest = (data) =>({
+
+  type : ActionTypes.SEND_REQUEST,
+  payload : {
+    isLoading : true,
+    error : null,
+    pdf : data
   }});
 
 
@@ -77,14 +96,15 @@ export const fetchEntities = (entities) => ({
 });
 
 
-export const fetch = (firstForm, secondForm) => (
+export const fetch = (firstForm, secondForm , thirdForm) => (
   {
     type: ActionTypes.FETCH,
     payload: {
       isLoading: false,
       error: null,
-      firstForm : firstForm,
-      secondForm : secondForm
+      firstForm,
+      secondForm,
+      thirdForm
     }
   }
 );

@@ -45,8 +45,6 @@ export default class FirstForm extends Component {
 
   render () {
     const changeErrorsWhenRenderSecondForm = (isVisibleSecondForm) => {
-
-
       if(!isVisibleSecondForm)
       {
         const errors = this.state.requiredFields.filter(field => {
@@ -154,7 +152,6 @@ export default class FirstForm extends Component {
 
 
     const handleChange = ( name, value, firstForm = false) => {
-
       if (firstForm === true) {
         const stateCopy = this.state.firstForm.map((data) => data);
         const touched = this.state.touched;
@@ -195,7 +192,6 @@ export default class FirstForm extends Component {
 
     const callToEntities =async () => {
       return await this.state.secondForm[0].options.length === 0 ? this.props.getEntities() : null;
-
     };
 
 
@@ -228,7 +224,6 @@ export default class FirstForm extends Component {
         return !enableAll.includes(false);
 
       case 2:
-
         enableAll = this.state.secondForm.map((input) => {
           if (this.state.requiredFields.includes(input.name)) {
 
@@ -242,10 +237,14 @@ export default class FirstForm extends Component {
         });
         return !enableAll.includes(false);
       }
-      
     };
 
 
+    const submit = () => {
+      if(this.state.isValid){
+        this.props.onClick(this.state.firstForm, this.state.secondForm, this.state.currentForm);
+      }
+    };
     if (this.props.currentStep !== 1) {
       return null;
     }
@@ -253,10 +252,16 @@ export default class FirstForm extends Component {
       <div>
         <form>
           <div>
-            <LeftForm onChange= {handleChange} data={this.state.firstForm} requiredFields={this.state.requiredFields}
-              errors={this.state.errors}
-              touched={this.state.touched}
-              onClickVisibleRightForm={handleData}/>
+            {
+              this.state.firstForm.map((input, key) => {
+                return(  <LeftForm onChange= {handleChange} key = {key} input={input} requiredFields={this.state.requiredFields}
+                  error={this.state.errors.filter((error) => error === input.name)[0]}
+                  touched={this.state.touched.filter((touched) => touched===input.name)[0]}
+                  onClickVisibleRightForm={handleData}/>
+                );})
+            }
+
+
             {
               this.state.visibleSecondForm === true ? <RightForm getEntities={this.props.getEntities}
                 data={this.state.secondForm}
@@ -265,11 +270,11 @@ export default class FirstForm extends Component {
                 errors={this.state.errors}
                 touched={this.state.touched}
                 onChange= {handleChange}
-                fetchCountrieForEntitie={this.props.fetchCountrieForEntitie}/> : null
+              /> : null
             }
           </div>
           <Button onClick={handleData} >{this.state.visibleSecondForm !== true ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'} </Button>
-          <Button disabled={!this.state.isValid} onClick={this.props.onClick}>Enviar
+          <Button disabled={!this.state.isValid} onClick={submit}>Siguiente
           </Button>
         </form>
       </div>

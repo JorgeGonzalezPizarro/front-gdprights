@@ -19,6 +19,7 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
           name={name}
           floatingLabelText={label}
           value={value}
+          onBlur={onChange}
           disabled={disabled}
           errorText={touched !== undefined &&  error !== undefined ? 'Required' : null}
           onChange={onChange}
