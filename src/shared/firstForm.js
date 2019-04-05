@@ -32,27 +32,27 @@ export const firstForm =  {
           {
             type: 'select',
             name: 'entities',
-            label: 'Listado',
+            label: 'Listado de entidades',
             required: false,
             onchange: 'callToApi',
             options: [],
             disabled : true,
             defaultValue : '',
             isLoading : true,
-            value : ''
+            value : '',
           },
-          {
-            type: 'select',
-            name: 'countries',
-            label: 'Listado',
-            required: false,
-            onchange: 'callToApi',
-            options: [],
-            disabled : true,
-            defaultValue : '',
-            isLoading : false,
-            value : ''
-          }
+          // {
+          //   type: 'select',
+          //   name: 'countries',
+          //   label: 'Listado',
+          //   required: false,
+          //   onchange: 'callToApi',
+          //   options: [],
+          //   disabled : true,
+          //   defaultValue : '',
+          //   isLoading : false,
+          //   value : ''
+          // }
         ],
 
 

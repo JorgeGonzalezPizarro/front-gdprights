@@ -13,7 +13,7 @@ export const RightForm = ({ visible, data, fetchCountrieForEntitie, errors, touc
   };
   const getValue = (select) => {
     const value =  select.options.filter((option) => option.id === select.value)[0];
-    return  value !== undefined ? value.name : 'Select ';
+    return  value !== undefined ? value.name : select.label;
   };
   return (
     <div>

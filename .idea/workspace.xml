@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f819439-dc35-4bde-83f2-f5774ac8ba51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ReactSelectSelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ReactSelectSelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/firstForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/firstForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,14 +16,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5190355">
+    <splitter split-orientation="horizontal" split-proportion="0.5558376">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-943">
-                  <caret line="165" column="30" lean-forward="true" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
+                <state relative-caret-position="3680">
+                  <caret line="165" column="30" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -69,11 +58,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+                <state relative-caret-position="345">
+                  <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -85,7 +74,7 @@
             <entry file="file://$PROJECT_DIR$/package.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="736">
-                  <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+                  <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
@@ -117,11 +106,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/shared/firstForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1196">
-                  <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+                <state relative-caret-position="1199">
+                  <caret line="55" column="10" lean-forward="true" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -142,8 +131,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="207">
-                  <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+                <state relative-caret-position="192">
+                  <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
                   </folding>
@@ -163,7 +152,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
+                <state relative-caret-position="460">
                   <caret line="22" column="42" selection-start-line="22" selection-end-line="23" />
                   <folding>
                     <element signature="e#0#46#0" expanded="true" />
@@ -274,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/Components/Form/FunctionalForm/FunctionalForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Main.js" />
         <option value="$PROJECT_DIR$/src/Components/Util/deepEqual.js" />
-        <option value="$PROJECT_DIR$/src/shared/firstForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" />
         <option value="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" />
@@ -283,14 +271,15 @@
         <option value="$PROJECT_DIR$/node_modules/.bin/husky-upgrade.cmd" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" />
-        <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" />
+        <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" />
+        <option value="$PROJECT_DIR$/src/shared/firstForm.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-121" />
-    <option name="y" value="-8" />
+    <option name="x" value="53" />
+    <option name="y" value="-16" />
     <option name="width" value="1377" />
     <option name="height" value="739" />
   </component>
@@ -340,10 +329,7 @@
               <item name="front-gdprights" type="b2602c69:ProjectViewProjectNode" />
               <item name="front-gdprights" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="PresentationalForm" type="462c0819:PsiDirectoryNode" />
-              <item name="inputs" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -409,12 +395,13 @@
       <workItem from="1554271636110" duration="14205000" />
       <workItem from="1554357965780" duration="1736000" />
       <workItem from="1554363479785" duration="743000" />
-      <workItem from="1554364281841" duration="2828000" />
+      <workItem from="1554364281841" duration="3174000" />
+      <workItem from="1554444303663" duration="1206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124379000" />
+    <option name="totallyTimeSpent" value="125931000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -443,8 +430,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48208642" side_tool="true" visible="true" weight="0.31326646" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.5179136" visible="true" weight="0.31326646" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.48314014" side_tool="true" visible="true" weight="0.31326646" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.5168598" visible="true" weight="0.31326646" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -627,6 +614,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3680">
+          <caret line="165" column="30" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Util/deepEqual.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -641,10 +638,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/secondForm.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        <state relative-caret-position="736">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -669,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/firstForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1771">
@@ -692,7 +682,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="460">
           <caret line="22" column="42" selection-start-line="22" selection-end-line="23" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
@@ -710,6 +700,13 @@
     <entry file="file://$PROJECT_DIR$/node_modules/.bin/husky-upgrade">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/.bin/husky-upgrade.cmd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.prettierrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -724,47 +721,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/.bin/husky-upgrade.cmd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-943">
-          <caret line="165" column="30" lean-forward="true" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
+        <state relative-caret-position="192">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        <state relative-caret-position="345">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js">
+    <entry file="file://$PROJECT_DIR$/src/shared/secondForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="23">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/firstForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1199">
+          <caret line="55" column="10" lean-forward="true" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
         </state>
       </provider>
     </entry>
