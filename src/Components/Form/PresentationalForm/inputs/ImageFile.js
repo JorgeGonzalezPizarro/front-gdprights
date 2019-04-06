@@ -13,37 +13,40 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileEncode) ;
 
 export const ImageFile = ({name, onChange}) =>  {
-  const [files, setFiles] = useState([]);
+  //const [files, setFiles] = useState([]);
 
 
-  const handleFiles = (file) => {
-    console.log(file)
-   const data = file.getFileEncodeDataURL()
-   const ad =   file.getFileEncodeBase64String();
-
-   console.log(data)
-   console.log(ad)
-   // const files =  fileItems.map((file)=>file);
-    // const data = async (file) =>await file.getFileEncodeBase64String(file);
-    // const decode = data(files[0]);
-    // // onChange(name,files[0].getFileEncodeDataURL());
-    // // onChange(name,files[0].getFileEncodeBase64String(files[0]));
-    // console.log(decode.then(data => data));
+  const handleFiles1 = async (file) => {
+    if(file !== null) {
+      if (file[0] !== undefined) {
+        let ad = null;
+        try {
+          ad = await file[0].getFileEncodeBase64String();
+        } catch (e) {
+        }
+        return ad
+      }
+    }
   };
+  const handleFile = async (file) => {
+   const d=  await handleFiles1(file);
+   if(d !== null && d !== undefined)
+   {
+     onChange(name,d,true)
+   }
+  }
+
+  const handleRemove = () => onChange(name,'',true)
 
   return (
     <div className="App">
       <FilePond
-        // files={files}
-        allowMultiple
+         //files={files}
+        allowMultiple={false}
         id={name}
-        // onaddFile={(err, item)=> {
-        //   item.getFileEncodeDataURL()
-        //  return item.getFileEncodeBase64String();
-        //
-        // }}
         allowFileEncode
-        onupdatefiles={handleFiles}
+        onupdatefiles={handleFile}
+        beforeRemoveFile = {handleRemove}
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
       />
     </div>

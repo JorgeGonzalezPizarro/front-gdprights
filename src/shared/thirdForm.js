@@ -9,16 +9,16 @@ export const thirdForm =  {
       disabled : false,
       backName : 'dniFront'
     },
-    // {
-    //   type: 'file',
-    //   label: 'DNI back ',
-    //   value: '',
-    //   name: 'DNI back',
-    //   required: true,
-    //   disabled : false,
-    //   backName : 'dniFront'
-    //
-    // },
+    {
+      type: 'file',
+      label: 'DNI back ',
+      value: '',
+      name: 'DNI back',
+      required: true,
+      disabled : false,
+      backName : 'dniBack'
+
+    },
   ]
 
 

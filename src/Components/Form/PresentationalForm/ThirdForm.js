@@ -151,15 +151,7 @@ export default class ThirdForm extends Component {
           return false;
         }
         return true;
-      }).concat(this.state.secondForm.map((input) => {
-        if (this.state.requiredFields.includes(input.name)) {
-          if (!this.state.errors.includes(input.name) ) {
-            return  input.value.length > 0;
-          }
-          return false;
-        }
-        return true;
-      }));
+      })
 
 
 

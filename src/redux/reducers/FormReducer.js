@@ -16,7 +16,6 @@ export const FormReducer = (state = initial_state, action) => {
   case Action.FETCH :
     return  Object.assign({}, state, action.payload);
 
-
   case Action.LOADING :
     return Object.assign(state, action.payload);
   case Action.FETCH_ENTITIES :
@@ -79,7 +78,8 @@ export const FormReducer = (state = initial_state, action) => {
 
    return  Object.assign({}, state, newState);
   }
-
+    case Action.GET_PDF :
+      return  Object.assign({}, state, action.payload);
 
 
   default  :

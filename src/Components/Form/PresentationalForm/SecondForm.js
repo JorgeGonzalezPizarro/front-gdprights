@@ -18,10 +18,50 @@ export default class SecondForm extends Component {
       requiredFields: props.secondFormData.firstForm.filter((input, key) => input.required === true ? input.name : null).map((input) => input.name)
       , errors : [],
       touched : [],
-
       visibleSecondForm : false,
-      isValid : false};
+     // isValid : false
+
+    };
+    this.enableSend = this.enableSend.bind(this)
+
   }
+  componentDidMount () {
+    const errors = this.state.requiredFields.filter(field => {
+      return this.state.firstForm.filter((input) => {
+        return input.name === field && input.value.length === 0;
+      })[0];
+    });
+    this.setState({
+      errors,
+      isValid : this.enableSend()
+    });
+  }
+
+   enableSend = () => {
+    const enableAll = this.state.firstForm.map((input) => {
+      if (this.state.requiredFields.includes(input.name)) {
+        if (!this.state.errors.includes(input.name)) {
+          return input.value.length > 0;
+        }
+        return false;
+      }
+      return true;
+    }).concat(this.state.secondForm.map((input) => {
+      if (this.state.requiredFields.includes(input.name)) {
+        if (!this.state.errors.includes(input.name) ) {
+          return  input.value.length > 0;
+        }
+        return false;
+      }
+      return true;
+    }));
+
+
+
+    return !enableAll.includes(false);
+
+
+  };
 
   render () {
 
@@ -69,7 +109,7 @@ export default class SecondForm extends Component {
 
           this.setState({
             ...this.state,
-            isValid : enableSend()
+            isValid : this.enableSend()
           }));
       }
       else {
@@ -86,7 +126,7 @@ export default class SecondForm extends Component {
 
           this.setState({
             ...this.state,
-            isValid : enableSend()
+            isValid : this.enableSend()
           }));
       }
     };
@@ -104,7 +144,7 @@ export default class SecondForm extends Component {
       });
       setState().then(()=>{
         this.setState({
-          isValid : enableSend()
+          isValid : this.enableSend()
         });
       });
 
@@ -125,7 +165,7 @@ export default class SecondForm extends Component {
       setState().then(() => {
 
         this.setState({
-          isValid: enableSend()
+          isValid: this.enableSend()
         });
 
       });
@@ -142,31 +182,7 @@ export default class SecondForm extends Component {
 
 
 
-    const enableSend = () => {
-      const enableAll = this.state.firstForm.map((input) => {
-        if (this.state.requiredFields.includes(input.name)) {
-          if (!this.state.errors.includes(input.name)) {
-            return input.value.length > 0;
-          }
-          return false;
-        }
-        return true;
-      }).concat(this.state.secondForm.map((input) => {
-        if (this.state.requiredFields.includes(input.name)) {
-          if (!this.state.errors.includes(input.name) ) {
-            return  input.value.length > 0;
-          }
-          return false;
-        }
-        return true;
-      }));
 
-
-
-      return !enableAll.includes(false);
-
-
-    };
     const nextStep = () => {
       if(this.state.isValid){
         this.props.nextStep(this.state.firstForm, this.state.secondForm, this.state.currentForm);

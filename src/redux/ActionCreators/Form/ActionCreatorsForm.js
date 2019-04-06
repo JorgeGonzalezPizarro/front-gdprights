@@ -41,16 +41,25 @@ export const fetchCountries = (entitieId) => ({
   }
 });
 
-export const sendRequest_ = (data) => {
+export const sendRequest_ = (data) => (dispatch) => {
   console.log(data);
   alertUtil(data);
-  axios.post('http://localhost/gdprights/public/index.php/', data).then(result => {
+  axios.post('http://localhost/gdprights/public/index.php/',Object.assign({},data), {
+    headers: {
+      'Content-Type': 'application/json'
+    }}).then(result => {
     return result.data;
   }).then((response) => {
     console.log(response);
-  });
-};
+  }).then(dispatch(getPdf));
 
+};
+export const getPdf =  () => ({
+  type : ActionTypes.GET_PDF,
+    payload : {
+    isLoading : true,
+      error : null,
+  }});
 export const loadingCountries = () =>({
 
   type : ActionTypes.LOADING_COUNTRIES,

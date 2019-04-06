@@ -64,18 +64,12 @@ export class FunctionalForm extends Component {
     const visibleFirstForm = (data) => {
       const previousStep = this.state.currentStep === 1 ? this.state.currentStep : 1;
 
-
       this.setState({
         ...this.state,
         currentStep : previousStep,
         response : null
       });
     };
-
-
-
-
-
 
     const visibleThirdForm = (firstForm, secondForm) => {
       const nextStep = this.state.currentStep + 1;
@@ -128,44 +122,20 @@ export class FunctionalForm extends Component {
 
       });
     };
-    const submit = (firstForm, secondForm) => {
+    const submit = (thirdForm) => {
       const previousResponse = this.state.response.map((response) => response);
-      const responseCopy =  previousResponse.concat(firstForm.map((responseInput) => {
+      const responseCopy =  previousResponse.concat(thirdForm.map((responseInput) => {
         const newObject = Object.assign({}, {});
         newObject[responseInput.backName] = responseInput.value;
         return newObject;
       } ));
 
-      const inputCheck = firstForm.filter((input) =>  input.valueChecked!== undefined )[0];
-      if(inputCheck)
-      {
-        const totalForm =  inputCheck.value !== this.state.secondForm.firstForm.filter((input)=> input.backName === inputCheck.backName)[0].value;
-
-        if(totalForm)
-        {
-          const fullResponseCopy = responseCopy.concat(secondForm.map((responseInput) => {
-            const newObject = Object.assign({}, {});
-            newObject[responseInput.backName] = responseInput.value;
-            return newObject;
-          } ));
-          this.setState({
-            firstForm : {
-              firstForm,
-              secondForm
-            },
-            response : fullResponseCopy,
-          });
-          console.log(this.props);
-
-          this.props.onClick(this.state.response);
-        };
-      }
+      console.log(thirdForm);
+      console.log(this.state)
 
       const setState = async () => this.setState({
-        firstForm : {
-          firstForm,
-          secondForm
-        },
+       ...this.state,
+        thirdForm,
         response : responseCopy,
       });
 
@@ -174,10 +144,13 @@ export class FunctionalForm extends Component {
           obj1[Object.keys(item)[0]] = Object.values(item)[0]; return obj1;
         },{});
 
-
-        this.props.onClick(obj)
+        console.log(responseCopy);
+        console.log(obj)
+       this.props.onClick(obj)
       });
     };
+
+
     return (
       <div>
         <FirstForm  getEntities = {this.props.getEntities} firstFormData={this.props.firstForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>

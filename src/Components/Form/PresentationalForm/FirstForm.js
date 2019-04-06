@@ -16,7 +16,10 @@ export default class FirstForm extends Component {
       , errors : [],
       touched : [],
       visibleSecondForm : false,
-      isValid : false};
+      //isValid :this.enableSend
+    };
+
+    this.enableSend = this.enableSend.bind(this)
   }
 
   componentDidMount () {
@@ -26,7 +29,8 @@ export default class FirstForm extends Component {
       })[0];
     });
     this.setState({
-      errors
+      errors,
+      isValid : this.enableSend()
     });
   }
 
@@ -42,6 +46,39 @@ export default class FirstForm extends Component {
       );
     }
   }
+   enableSend = () => {
+    let enableAll = [];
+    switch (this.state.currentForm) {
+      case 1:
+        enableAll = this.state.firstForm.map((input) => {
+          if (this.state.requiredFields.includes(input.name)) {
+            if (!this.state.errors.includes(input.name)) {
+              return input.value.length > 0;
+            }
+            return false;
+          }
+          return false;
+
+        });
+
+        return !enableAll.includes(false);
+
+      case 2:
+        enableAll = this.state.secondForm.map((input) => {
+          if (this.state.requiredFields.includes(input.name)) {
+
+            if (!this.state.errors.includes(input.name)) {
+              return input.value.toString().length > 0;
+            }
+            return false;
+          }
+          return false;
+
+        });
+        return !enableAll.includes(false);
+    }
+  };
+
 
   render () {
     const changeErrorsWhenRenderSecondForm = (isVisibleSecondForm) => {
@@ -86,7 +123,7 @@ export default class FirstForm extends Component {
       });
       setState().then(() =>      changeErrorsWhenRenderSecondForm(this.state.visibleSecondForm === true)).then(()=>{
         this.setState({
-          isValid : enableSend()
+          isValid : this.enableSend()
         });
       });
 
@@ -117,7 +154,7 @@ export default class FirstForm extends Component {
       setState().then(() => changeErrorsWhenRenderSecondForm(this.state.visibleSecondForm === true)).then(() => {
 
         this.setState({
-          isValid: enableSend()
+          isValid: this.enableSend()
         });
 
       });
@@ -166,7 +203,7 @@ export default class FirstForm extends Component {
 
           this.setState({
             ...this.state,
-            isValid : enableSend()
+            isValid : this.enableSend()
           }));
       }
       else {
@@ -184,7 +221,7 @@ export default class FirstForm extends Component {
 
           this.setState({
             ...this.state,
-            isValid : enableSend()
+            isValid : this.enableSend()
           }));
       }
     };
@@ -205,39 +242,6 @@ export default class FirstForm extends Component {
 
 
 
-
-    const enableSend = () => {
-      let enableAll = [];
-      switch (this.state.currentForm) {
-      case 1:
-        enableAll = this.state.firstForm.map((input) => {
-          if (this.state.requiredFields.includes(input.name)) {
-            if (!this.state.errors.includes(input.name)) {
-              return input.value.length > 0;
-            }
-            return false;
-          }
-          return false;
-
-        });
-
-        return !enableAll.includes(false);
-
-      case 2:
-        enableAll = this.state.secondForm.map((input) => {
-          if (this.state.requiredFields.includes(input.name)) {
-
-            if (!this.state.errors.includes(input.name)) {
-              return input.value.toString().length > 0;
-            }
-            return false;
-          }
-          return false;
-
-        });
-        return !enableAll.includes(false);
-      }
-    };
 
 
     const submit = () => {
