@@ -1,6 +1,8 @@
 import TextField from 'material-ui/TextField';
 import React, {Component} from 'react';
 import { FormControl } from '@material-ui/core';
+import { FormGroup } from '../FormPresentational/FormGroup';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 export class RenderInputTextField extends Component{
   constructor (props){
@@ -11,20 +13,66 @@ export class RenderInputTextField extends Component{
     return <InputTextField {...this.props}/>;
   }
 }
-const InputTextField = ({ name, label, value,  custom, touched, error, onChange, disabled }) => {
+const InputTextField = ({ name, label, value,  custom, touched, error, onChange, disabled,errorText }) => {
+  const styles = {
+    top : "5px",
+    cursor: "text",
+  maxWidth: "66.66%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  transformOrigin: "left bottom",
+  transform: "translate(0, 2.125rem) scale(1.5)",
+  padding: ".5rem .75rem",
+  fontSize: ".7rem",
+  lineHeight:" 1.50",
+  color: "#4950576b",
+    paddingLeft: "16px",
+
+    fontWeight: "100",
+  };
+  const stylesInput = {
+    fontSize: "15px",
+  paddingLeft: "16px",
+  }
   return (
-    <div className="container">
-      <FormControl >
+      <FormGroup >
         <TextField   hintText={label}
+          floatingLabelStyle={styles}
+                     floatingLabelFocusStyle={stylesInput}
           name={name}
+                   inputStyle={stylesInput}
           floatingLabelText={label}
+
           value={value}
           onBlur={onChange}
           disabled={disabled}
-          errorText={touched !== undefined &&  error !== undefined ? 'Required' : null}
+          errorText={touched !== undefined &&  error !== undefined ? errorText : null}
           onChange={onChange}
+
         />
-      </FormControl>
-    </div>
+        {/*<AvForm>*/}
+
+        {/*<AvField name={name} label={label} validate={{*/}
+          {/*required: {value: true, errorMessage: "Please enter a username"},*/}
+          {/*pattern: {value: '^[A-Za-z0-9]+$', errorMessage: 'Your username must be composed only with letter and numbers'},*/}
+          {/*minLength: {value: 6, errorMessage: 'Your username must be between 6 and 16 characters'},*/}
+          {/*maxLength: {value: 16, errorMessage: 'Your username must be between 6 and 16 characters'}*/}
+        {/*}} />*/}
+        {/*</AvForm>*/}
+        {/*<TextField   hintText={label}*/}
+          {/*floatingLabelStyle={styles}*/}
+                     {/*floatingLabelFocusStyle={stylesInput}*/}
+          {/*name={name}*/}
+                   {/*inputStyle={stylesInput}*/}
+          {/*floatingLabelText={label}*/}
+
+          {/*value={value}*/}
+          {/*onBlur={onChange}*/}
+          {/*disabled={disabled}*/}
+          {/*errorText={touched !== undefined &&  error !== undefined ? 'Required' : null}*/}
+          {/*onChange={onChange}*/}
+        {/*/>*/}
+      </FormGroup>
   );
 };

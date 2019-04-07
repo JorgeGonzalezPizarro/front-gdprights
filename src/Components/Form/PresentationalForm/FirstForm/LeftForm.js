@@ -20,14 +20,13 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
     change().then(onClickVisibleRightForm);
   };
   return (
-    <div>
-      <form >
-        <div>
+    <>
           {(function()  {
             switch (input.type) {
             case 'text' :
               return(  <RenderInputTextField
                 name={input.name}
+                errorText={input.errorText}
                 label={input.label}
                 value={input.value}
                 onChange={handleChange}
@@ -50,13 +49,11 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
               );
             case 'file' :
               return (
-                <ImageFile onChange={onChange} name={input.name}/>
+                <ImageFile label={input.label} onChange={onChange} name={input.name}/>
               );
             }
           })()}
 
-        </div>
-      </form>
-    </div>
+    </>
   );
 };

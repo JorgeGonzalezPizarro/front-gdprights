@@ -8,12 +8,12 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileEncode) ;
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileEncode , FilePondPluginFileValidateType) ;
 
-export const ImageFile = ({name, onChange}) =>  {
-  //const [files, setFiles] = useState([]);
+export const ImageFile = ({name, onChange , label}) =>  {
 
 
   const handleFiles1 = async (file) => {
@@ -43,11 +43,15 @@ export const ImageFile = ({name, onChange}) =>  {
       <FilePond
          //files={files}
         allowMultiple={false}
+
         id={name}
+        acceptedFileTypes={['image/png', 'image/jpeg']}
+        fileValidateTypeLabelExpectedTypes={'Expects {allButLastType} or {lastType}'}
         allowFileEncode
         onupdatefiles={handleFile}
         beforeRemoveFile = {handleRemove}
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+        labelIdle={`<span class="filepond--label-action">${label}</span>`}
+
       />
     </div>
   );

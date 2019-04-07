@@ -5,13 +5,13 @@ export const thirdForm =  {
       value: '',
       name: 'DNI front',
       required: true,
-      label: 'DNI front',
+      label: 'Imagen DNI frontal',
       disabled : false,
       backName : 'dniFront'
     },
     {
       type: 'file',
-      label: 'DNI back ',
+      label: 'Imagen DNI trasero',
       value: '',
       name: 'DNI back',
       required: true,

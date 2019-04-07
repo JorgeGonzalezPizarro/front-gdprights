@@ -1748,6 +1748,17 @@ autoprefixer@^9.4.2:
     postcss "^7.0.14"
     postcss-value-parser "^3.3.1"
 
+availity-reactstrap-validation@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.5.1.tgz#84f29a964d3f0fe2023ee319a966e768b0fca522"
+  integrity sha512-mASNeIx8ZpwEYL5hvEOur3ntRy87g75jPYohl+5Ote6qdfZoFI/EgKJwqvxamflboRJ0qgfzLPxzGaKirQXrag==
+  dependencies:
+    babel-runtime "^6.26.0"
+    classnames "^2.2.6"
+    lodash "^4.17.10"
+    moment "^2.22.2"
+    prop-types "^15.6.2"
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -2195,7 +2206,7 @@ bootstrap-social@^5.1.1:
     bootstrap "~3"
     font-awesome "~4.7"
 
-bootstrap@^4.2.1:
+bootstrap@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
   integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
@@ -4484,6 +4495,11 @@ filepond-plugin-file-encode@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/filepond-plugin-file-encode/-/filepond-plugin-file-encode-2.1.4.tgz#18c900ed372f69f028795671a911db9b7f08f9b8"
   integrity sha512-PM/jPbcHVBxT88aLhtmBAI5+A6a3loi5CTbAWKpiWOU2FcMuhPu0FgBi5ymY/D+Zg4+f/08uLWoXTdWPYFqvlQ==
+
+filepond-plugin-file-validate-type@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.4.tgz#ce7f5f469dbc7ce0da12fdef7b0f24e4c263c410"
+  integrity sha512-K1qD8mfahJoz2zRlWWvYoHuy4k/8tHggsoGbm/blpTp63OyahOdJBzMN3VK7USYn5OZ58uOFdMTMyi8ibFpW/Q==
 
 filepond-plugin-image-exif-orientation@^1.0.6:
   version "1.0.6"

@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { FormGroup } from '../FormPresentational/FormGroup';
 
 export const RenderInputCheck = ({name, label, defaultValue, onChange, value , valueChecked , valueUnchecked  })  => {
 
@@ -8,7 +9,7 @@ export const RenderInputCheck = ({name, label, defaultValue, onChange, value , v
     e.target.checked ===true ? onChange(name , valueChecked) :  onChange(name,valueUnchecked)
   }
   return (
-    <div>
+      <FormGroup>
       <FormControlLabel
         control={
           <Checkbox
@@ -20,7 +21,7 @@ export const RenderInputCheck = ({name, label, defaultValue, onChange, value , v
         }
         label={label}
       />
-    </div>
+      </FormGroup>
   );
 };
 

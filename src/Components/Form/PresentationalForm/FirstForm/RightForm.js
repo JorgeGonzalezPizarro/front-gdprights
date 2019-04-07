@@ -13,16 +13,13 @@ export const RightForm = ({ visible, data, errors, touched, onChange  }) => {
     return  value !== undefined ? value.name : select.label;
   };
   return (
-    <div>
-      <form>
-        <div>
+    <>
+
           <RenderSelectField onChange={onChange}  selectName={selectEntities.name} errors={errors.filter((error) => error === selectEntities.name)[0]} touched ={touched}  options={selectEntities.options}
             isLoading={selectEntities.isLoading} name={selectEntities.name} defaultValue={selectEntities.defaultValue}
             label={selectEntities.label} value={getValue(selectEntities)}  selected={selectEntities.defaultValue}/>
 
-        </div>
-      </form>
-    </div>
+    </>
   );
 };
 

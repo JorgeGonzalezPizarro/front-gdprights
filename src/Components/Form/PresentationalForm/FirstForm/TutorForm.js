@@ -25,8 +25,7 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
   };
   return (
     <div>
-      <form >
-        <div>
+
           {(function()  {
             switch (input.type) {
             case 'text' :
@@ -73,8 +72,7 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
           {/*  error = {errors.filter((error) => error === 'customEntityCommercialName' )[0]} */}
           {/*  disabled = {data.filter((input) => input.name === 'customEntityCommercialName')[0].disabled} */}
           {/* /> */}
-        </div>
-      </form>
+
     </div>
   );
 };

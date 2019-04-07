@@ -8,6 +8,10 @@ import {
   sendRequest_
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { Loading } from './Util/LoadingComponent';
+import { NavbarMenu } from './Header/NavbarMenu';
+import Header from './Header/Header';
+import { Section } from './Section/Section';
+import { FormPresentational } from './Form/PresentationalForm/FormPresentational/FormPresentational';
 
 const mapStateToProps = (state) => {
   return { form: state.form };
@@ -59,12 +63,16 @@ export class Main extends Component {
     } 
 
     return (
-      <div>
+      <>
+        <NavbarMenu/>
+      <Section>
         <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie} firstForm={this.props.form.firstForm}
           secondForm={this.props.form.secondForm}
           thirdForm ={this.props.form.thirdForm}
           currentStep={this.props.form.currentStep} onClick={this.props.sendRequest}/>
-      </div>
+      </Section>
+      </>
+
     );
     
   }

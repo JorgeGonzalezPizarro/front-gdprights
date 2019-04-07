@@ -5,6 +5,8 @@ export const firstForm =  {
       value: 'aa',
       name: 'customEntityName',
       required: true,
+      errorText : 'El nombre es requerido y solo debe conter letras',
+      regexp : '^[a-zA-Z]+$' ,
       label: 'Nombre',
       disabled : false,
       backName : 'customEntityName'
@@ -12,6 +14,8 @@ export const firstForm =  {
     {
       type: 'text',
       label: 'Email ',
+      errorText : 'Debe ser un email válido',
+      regexp : /[a-z0-9\._%+!$&*=^|~#%'`?{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,16})/,
       value: '',
       name: 'customEntityEmail',
       required: true,
@@ -24,6 +28,8 @@ export const firstForm =  {
       value: '',
       name: 'customEntityCommercialName',
       required: true,
+      errorText : 'El nombre es requerido y solo debe conter letras',
+      regexp : '^[a-zA-Z]+$' ,
       label: 'Commercial Name ',
       disabled : false,
       backName : 'customEntityCommercialName'

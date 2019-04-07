@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/es/Button/Button';
 import {LeftForm} from './FirstForm/LeftForm';
 import { RightForm } from './FirstForm/RightForm';
 import { deepEqual } from '../../Util/deepEqual';
 import { alertUtil } from '../../Util/alertUtil';
+import { FormGroup } from './FormPresentational/FormGroup';
+import { ButtonEmpresas } from './inputs/ButtonEmpresas';
+import Button from '@material-ui/core/Button';
 
 export default class FirstForm extends Component {
   constructor (props) {
@@ -173,21 +175,39 @@ export default class FirstForm extends Component {
         return e === name;
       })[0];
 
-      if(error && isTouched(error) && isRequired(error) && value.length !== 0)
+      if(error && isTouched(error) && isRequired(error) && validateRegexp(name,value))
       {
+        console.log("invali")
+
         const newError =errorCopy.filter(e => e !== error);
         this.setState({
           errors: newError
         });
       }
       else {
+        console.log("invalida")
         this.setState({
           errors: errorCopy
         });
       }
     };
+  const getInputByName = (name) => {
+    const input = this.state.firstForm.filter((input) => input.name === name)[0];
+    console.log(input)
+    if(!input)
+    {
+      return this.state.secondForm.filter((input) => input.name === name)[0]
 
+    }
+    return input;
+  }
+  const validateRegexp = (name , value) => {
+      const input = getInputByName(name);
+      const filter = new RegExp(input.regexp)
+    console.log(filter.test(value))
+      return filter.test(value)
 
+  }
     const handleChange = ( name, value, firstForm = false) => {
       if (firstForm === true) {
         const stateCopy = this.state.firstForm.map((data) => data);
@@ -253,9 +273,7 @@ export default class FirstForm extends Component {
       return null;
     }
     return (
-      <div>
-        <form>
-          <div>
+      <>
             {
               this.state.firstForm.map((input, key) => {
                 return(  <LeftForm onChange= {handleChange} key = {key} input={input} requiredFields={this.state.requiredFields}
@@ -276,12 +294,21 @@ export default class FirstForm extends Component {
                 onChange= {handleChange}
               /> : null
             }
-          </div>
-          <Button onClick={handleData} >{this.state.visibleSecondForm !== true ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'} </Button>
-          <Button disabled={!this.state.isValid} onClick={submit}>Siguiente
+            <FormGroup>
+              <div>
+              <ButtonEmpresas onClick={handleData} text={this.state.visibleSecondForm !== true ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'}/>
+              </div>
+
+            </FormGroup>
+        <FormGroup>
+
+          <Button disabled={!this.state.isValid} variant="outlined" color="primary"   onClick={submit}>Siguiente
           </Button>
-        </form>
-      </div>
+            </FormGroup>
+
+
+      </>
+
     );
   }
 }

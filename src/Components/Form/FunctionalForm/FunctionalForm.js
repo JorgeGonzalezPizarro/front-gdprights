@@ -4,7 +4,9 @@ import FirstForm from '../PresentationalForm/FirstForm';
 import SecondForm from '../PresentationalForm/SecondForm';
 import ThirdForm from '../PresentationalForm/ThirdForm';
 import { alertUtil } from '../../Util/alertUtil';
+import { FormPresentational } from '../PresentationalForm/FormPresentational/FormPresentational';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export class FunctionalForm extends Component {
   constructor (props) {
@@ -153,10 +155,19 @@ export class FunctionalForm extends Component {
 
     return (
       <div>
+        <TransitionGroup>
+          <CSSTransition key={this.state.currentStep} classNames="page" timeout={500}>
+        <FormPresentational>
+
+
         <FirstForm  getEntities = {this.props.getEntities} firstFormData={this.props.firstForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>
         {this.state.currentStep ===2 ? <SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep} previous={visibleFirstForm} nextStep={visibleThirdForm}/> : null }
         {this.state.currentStep ===3  ? <ThirdForm thirdFormData={this.state.thirdForm} currentStep={this.state.currentStep} previous={visibleFirstForm} submit={submit}/> : null }
-      </div>
+        </FormPresentational>
+          </CSSTransition></TransitionGroup>
+
+        </div>
+
     );
   }
 }
