@@ -33,6 +33,21 @@ export const firstForm =  {
       label: 'Commercial Name ',
       disabled : false,
       backName : 'customEntityCommercialName'
+    },
+    {
+      type: 'acceptTerms',
+      value: '',
+      name: 'acceptTerms ',
+      required: true,
+      errorText : 'Debe aceptar los términos y condiciones',
+      regexp : '^[a-zA-Z]+$' ,
+      label: 'Acepto los términos y condiciones',
+      disabled : false,
+      backName : 'acceptTerms',
+      link : true,
+      valueChecked : "true",
+      valueUnchecked : "",
+      linkText : 'Términos y condiciones legales'
 
     }
   ],

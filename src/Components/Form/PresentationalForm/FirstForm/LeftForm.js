@@ -4,12 +4,20 @@ import { RenderInputTextField } from '../inputs/RenderInputTextField';
 import { RenderInputCheck } from '../inputs/RenderInputCheck';
 import RenderFileField from '../inputs/RenderFileField';
 import { ImageFile } from '../inputs/ImageFile';
+import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
 
 export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onChange}) => {
   const handleChange = (e ) => {
     e.preventDefault();
     const { value, name } = e.target;
-    onChange( name, value, true);
+    switch (e.target.type) {
+      case 'checkbox':
+        console.log(e)
+        e.target.checked === true ? onChange(input.name,input.valueChecked) : onChange(input.name,input.valueUnchecked)
+          break;
+      default : onChange( name, value, true);
+      break;
+    }
 
   };
 
@@ -47,6 +55,20 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
                 disabled={input.disabled}
                 error={error}/>
               );
+              case 'acceptTerms' :
+                return( <RenderInputCheckTerms
+                    name={input.name}
+                    label={input.label}
+                    link={input.link}
+                    value={input.value}
+                    valueChecked={input.valueChecked}
+                    valueUnchecked={input.valueUnchecked}
+                    onChange={handleChange}
+                    touched={touched}
+                    linkText={input.linkText}
+                    disabled={input.disabled}
+                    error={error}/>
+                );
             case 'file' :
               return (
                 <ImageFile label={input.label} onChange={onChange} name={input.name}/>
