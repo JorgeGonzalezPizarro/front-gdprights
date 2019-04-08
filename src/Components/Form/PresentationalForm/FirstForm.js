@@ -6,6 +6,8 @@ import { alertUtil } from '../../Util/alertUtil';
 import { FormGroup } from './FormPresentational/FormGroup';
 import { ButtonEmpresas } from './inputs/ButtonEmpresas';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import { Label } from 'reactstrap';
 
 export default class FirstForm extends Component {
   constructor (props) {
@@ -133,11 +135,13 @@ export default class FirstForm extends Component {
 
     const submitSecondForm = () => {
       const requiredFields = this.state.firstForm.filter((input) => input.required = true ).map((input) => input.name);
+
       const secondFormDisabled = this.state.secondForm.map((input) => input);
       const firstFormEnabled = this.state.firstForm.map((input) => input);
       secondFormDisabled.map((i) =>{
         i.disabled = !i.disabled ;
         i.required = !i.required;
+        i.value = ''
       }  );
       firstFormEnabled.map((i) =>{ i.disabled = !i.disabled ;        i.required = !i.required;
       });
@@ -234,7 +238,8 @@ export default class FirstForm extends Component {
         stateCopy.filter((input) => input.name === name ? input.value = value : null);
         const changeState = async () => await this.setState({
           ...this.state,
-          secondForm: stateCopy
+          secondForm: stateCopy,
+          visibleSecondForm : !this.state.visibleSecondForm
         });
         console.log(this.state);
         changeState().then(() => handleError(false, true, name, value)).then(()=>
@@ -272,6 +277,23 @@ export default class FirstForm extends Component {
     if (this.props.currentStep !== 1) {
       return null;
     }
+    const isValueSelected = () => this.state.secondForm.filter((input) => input.value !== '')[0]
+
+    const valueSelectSelected = () => {
+      if(isValueSelected()) {
+        const selected = this.state.secondForm.filter((input) => input.value!=='')[0]
+        const option = selected.options.filter((option) => option.id === selected.value)[0]
+        return option!== null ? option.name : false;
+      }
+      return false;
+    }
+    const openModalEntities= () => {
+      this.setState({
+        ...this.state,
+        visibleSecondForm : !this.state.visibleSecondForm
+      });
+    }
+
     return (
       <>
             {
@@ -282,8 +304,19 @@ export default class FirstForm extends Component {
                   onClickVisibleRightForm={handleData}/>
                 );})
             }
+        { valueSelectSelected() !== false ? (
+        <FormGroup>
+          <div>
+            <FormGroup>
+              <div>
+                <ButtonEmpresas onClick={openModalEntities} text={valueSelectSelected()}/>
+              </div>
 
+            </FormGroup>
+          </div>
 
+        </FormGroup>) : null
+          }
             {
               this.state.visibleSecondForm === true ? <RightForm getEntities={this.props.getEntities}
                 data={this.state.secondForm}
