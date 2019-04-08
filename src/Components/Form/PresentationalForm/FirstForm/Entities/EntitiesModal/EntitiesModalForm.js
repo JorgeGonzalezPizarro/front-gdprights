@@ -31,24 +31,31 @@ export default class EntitiesModalForm extends Component {
       });
       this.props.onClick(this.props.selectName, this.props.selected.id);
     };
+    const handleClose = () => {
+     const handleChangeAndState = async () => await this.setState({
+        open : !this.state.open
+      })
+      handleChangeAndState().then(()=> this.props.onCloseEntitiesList())
+
+    }
     return (
 
       <div>
         <Dialog
           fullScreen
           open={this.state.open}
-          onClose={this.handleClose}
+          onClose={handleClose}
           TransitionComponent={Transition}
         >
           <AppBar className="position-relative">
             <Toolbar>
-              <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+              <IconButton color="inherit" onClick={handleClose} aria-label="Close">
                 <CloseIcon/>
               </IconButton>
               <Typography variant="h6" color="inherit" className="flex-1">
                 Listado de entidades
               </Typography>
-              <Button color="inherit" onClick={this.handleClose}>
+              <Button color="inherit" onClick={handleClose}>
                 save
               </Button>
             </Toolbar>

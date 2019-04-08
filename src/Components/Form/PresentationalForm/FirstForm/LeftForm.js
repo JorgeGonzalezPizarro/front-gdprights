@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/es/Button/Button';
 import { RenderInputTextField } from '../inputs/RenderInputTextField';
 import { RenderInputCheck } from '../inputs/RenderInputCheck';
-import RenderFileField from '../inputs/RenderFileField';
 import { ImageFile } from '../inputs/ImageFile';
-// import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
+import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
 
 export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onChange}) => {
   const handleChange = (e ) => {
@@ -12,8 +10,7 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
     const { value, name } = e.target;
     switch (e.target.type) {
       case 'checkbox':
-        console.log(e)
-        e.target.checked === true ? onChange(input.name,input.valueChecked) : onChange(input.name,input.valueUnchecked)
+        e.target.checked === true ? onChange(input.name,input.valueChecked,true) : onChange(input.name,input.valueUnchecked , true)
           break;
       default : onChange( name, value, true);
       break;
@@ -52,23 +49,25 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
                 valueUnchecked={input.valueUnchecked}
                 onChange={handleMultipleChange}
                 touched={touched}
+                errorText = {input.errorText}
                 disabled={input.disabled}
                 error={error}/>
               );
-              // case 'acceptTerms' :
-              //   return( <RenderInputCheckTerms
-              //       name={input.name}
-              //       label={input.label}
-              //       link={input.link}
-              //       value={input.value}
-              //       valueChecked={input.valueChecked}
-              //       valueUnchecked={input.valueUnchecked}
-              //       onChange={handleChange}
-              //       touched={touched}
-              //       linkText={input.linkText}
-              //       disabled={input.disabled}
-              //       error={error}/>
-              //   );
+              case 'acceptTerms' :
+                return( <RenderInputCheckTerms
+                    name={input.name}
+                    label={input.label}
+                    link={input.link}
+                    errorText={input.errorText}
+                    value={input.value}
+                    valueChecked={input.valueChecked}
+                    valueUnchecked={input.valueUnchecked}
+                    onChange={handleChange}
+                    touched={touched}
+                    linkText={input.linkText}
+                    disabled={input.disabled}
+                    error={error}/>
+                );
             case 'file' :
               return (
                 <ImageFile label={input.label} onChange={onChange} name={input.name}/>

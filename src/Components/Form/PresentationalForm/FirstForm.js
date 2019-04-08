@@ -181,7 +181,6 @@ export default class FirstForm extends Component {
 
       if(error && isTouched(error) && isRequired(error) && validateRegexp(name,value))
       {
-        console.log("invali")
 
         const newError =errorCopy.filter(e => e !== error);
         this.setState({
@@ -189,7 +188,6 @@ export default class FirstForm extends Component {
         });
       }
       else {
-        console.log("invalida")
         this.setState({
           errors: errorCopy
         });
@@ -208,7 +206,6 @@ export default class FirstForm extends Component {
   const validateRegexp = (name , value) => {
       const input = getInputByName(name);
       const filter = new RegExp(input.regexp)
-    console.log(filter.test(value))
       return filter.test(value)
 
   }
@@ -239,9 +236,8 @@ export default class FirstForm extends Component {
         const changeState = async () => await this.setState({
           ...this.state,
           secondForm: stateCopy,
-          visibleSecondForm : !this.state.visibleSecondForm
+          //visibleSecondForm : !this.state.visibleSecondForm
         });
-        console.log(this.state);
         changeState().then(() => handleError(false, true, name, value)).then(()=>
 
           this.setState({
@@ -324,6 +320,7 @@ export default class FirstForm extends Component {
                 requiredFields={this.state.requiredFields}
                 errors={this.state.errors}
                 touched={this.state.touched}
+                onCloseEntitiesList={submitSecondForm}
                 onChange= {handleChange}
               /> : null
             }
