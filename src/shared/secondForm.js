@@ -16,7 +16,7 @@ export const secondForm =  {
       name: 'Apellidos',
       required: true,
       disabled : false,
-      backName : 'lasName'
+      backName : 'lastName'
 
     },
     {
@@ -24,9 +24,9 @@ export const secondForm =  {
       value: '',
       name: 'DNI',
       required: true,
-      label: 'DNI',
+      label: 'dni',
       disabled : false,
-      backName : 'DNI'
+      backName : 'dni'
 
     },
     {

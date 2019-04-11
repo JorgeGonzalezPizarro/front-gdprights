@@ -7,8 +7,8 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 const RenderFileField = (props) => {
   const { classes } = props;
   const handle = (e) => {
-    console.log(e.target , e.target.files)
-  }
+    console.log(e.target, e.target.files);
+  };
   return(
     <div>
       <input

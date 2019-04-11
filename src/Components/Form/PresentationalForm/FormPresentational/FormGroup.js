@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+
 export const FormGroup = (props) =>
 {
-return(
+  return(
   <>
     <div className="form-group field col-md-12">
 
-    {props.children}
+      {props.children}
     </div>
   </>
-);
-}
+  );
+};

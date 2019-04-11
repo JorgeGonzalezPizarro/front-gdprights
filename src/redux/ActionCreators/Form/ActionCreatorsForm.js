@@ -9,11 +9,11 @@ import { alertUtil } from '../../../Components/Util/alertUtil';
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());
   setTimeout(() => {
-    return  dispatch(fetch(firstForm, secondForm , thirdForm));
+    return dispatch(fetch(firstForm, secondForm, thirdForm));
   }, 500);
 };
 
-export const fetchEntities_ =  () => (dispatch) => {
+export const fetchEntities_ = () => (dispatch) => {
   dispatch(loadingEntities());
   const data = () => {
     return axios.get('http://localhost/gdprights/public/index.php/entities/').then(result => {
@@ -28,62 +28,79 @@ export const fetchCountries_ = (entitieId) => (dispatch) => {
 
   dispatch(loadingCountries());
   setTimeout(() => {
-    dispatch(fetchCountries(entitieId));}
+    dispatch(fetchCountries(entitieId));
+  }
   , 1000
   );
 };
 
 export const fetchCountries = (entitieId) => ({
-  type : ActionTypes.FETCH_COUNTRIES,
-  payload : {
+  type: ActionTypes.FETCH_COUNTRIES,
+  payload: {
     entitieId,
-    isLoading : false
+    isLoading: false
   }
 });
 
 export const sendRequest_ = (data) => (dispatch) => {
-  console.log(data);
   alertUtil(data);
-  axios.post('http://localhost/gdprights/public/index.php/',Object.assign({},data), {
-    headers: {
-      'Content-Type': 'application/json'
-    }}).then(result => {
-    return result.data;
-  }).then((response) => {
-    console.log(response);
-  }).then(dispatch(getPdf));
+  dispatch(pdf_loading());
+
+  const response = async () => {
+
+    const response = await axios.post('http://localhost/gdprights/public/index.php/', Object.assign({}, data), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const { file, requestId } = response.data;
+    dispatch(pdf_success(requestId, file));
+  };
+  response();
+};
+
+export const confirmPdf_ = ( confirmed, requestId) => (dispatch) => {
+  alertUtil(confirmed);
+  alertUtil(requestId);
+  if (confirmed === false) {
+    return  dispatch(reject_pdf());
+  }
+  dispatch(confirm_pdf_loading());
+
+  const confirmedSendEmail = async () => {
+
+    const requestToConfirm = await axios.put('http://localhost/gdprights/public/index.php/confirm', Object.assign({}, {
+      requestId,
+      confirmed
+    }), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (requestToConfirm.status === 200) {
+      dispatch(notification_send_success());
+    }
+  };
+
+  confirmedSendEmail();
 
 };
-export const getPdf =  () => ({
-  type : ActionTypes.GET_PDF,
-    payload : {
-    isLoading : true,
-      error : null,
-  }});
-export const loadingCountries = () =>({
 
-  type : ActionTypes.LOADING_COUNTRIES,
-  payload : {
-    isLoading : true,
-    error : null,
-  }});
+export const loadingCountries = () => ({
 
-export const sendRequest = (data) =>({
-
-  type : ActionTypes.SEND_REQUEST,
-  payload : {
-    isLoading : true,
-    error : null,
-    pdf : data
-  }});
-
+  type: ActionTypes.LOADING_COUNTRIES,
+  payload: {
+    isLoading: true,
+    error: null
+  }
+});
 
 export const loading = () => ({
 
   type: ActionTypes.LOADING,
   payload: {
     isLoading: true,
-    error : null,
+    error: null
   }
 });
 
@@ -91,21 +108,20 @@ export const loadingEntities = () => ({
 
   type: ActionTypes.LOADING_ENTITIES,
   payload: {
-    isLoading: true,
+    isLoading: true
   }
 });
 
 export const fetchEntities = (entities) => ({
 
   type: ActionTypes.FETCH_ENTITIES,
-  payload : {
+  payload: {
     options: entities,
-    isLoading : false
+    isLoading: false
   }
 });
 
-
-export const fetch = (firstForm, secondForm , thirdForm) => (
+export const fetch = (firstForm, secondForm, thirdForm) => (
   {
     type: ActionTypes.FETCH,
     payload: {
@@ -117,4 +133,78 @@ export const fetch = (firstForm, secondForm , thirdForm) => (
     }
   }
 );
+
+/** ***********   PDF   *********** */
+
+
+
+export const pdf_loading = () => ({
+
+  type: ActionTypes.PDF_LOADING,
+  payload: {
+    pdf: {
+      isLoading: true,
+      error: null,
+      pdf: null
+    },
+    requestId: null
+  }
+});
+export const pdf_success = (requestId, pdf) => ({
+
+  type: ActionTypes.PDF_SUCCESS,
+  payload: {
+    pdf: {
+      isLoading: false,
+      error: null,
+      file : pdf
+    },
+    requestId
+  }
+});
+
+export const confirm_pdf_loading = () => ({
+
+  type: ActionTypes.CONFIRM_PDF_LOADING,
+  payload: {
+    isLoading: true,
+    error: null,
+    confirmed: {
+      confirmed: null,
+      isLoading: true
+    }
+  }
+});
+
+export const reject_pdf = () => ({
+
+  type: ActionTypes.REJECT_PDF,
+  payload: {
+    isLoading: false,
+    error: null,
+    confirmed: {
+      confirmed: false,
+      isLoading: false
+    }
+  }
+});
+
+export const notification_send_success = () => ({
+
+  type: ActionTypes.NOTIFICATION_SENDED_SUCCESS,
+  payload: {
+    isLoading: false,
+    error: null,
+    confirmed: {
+      confirmed: true,
+      isLoading: false,
+      notificationSent: true
+
+    },
+  }
+});
+
+
+
+
 

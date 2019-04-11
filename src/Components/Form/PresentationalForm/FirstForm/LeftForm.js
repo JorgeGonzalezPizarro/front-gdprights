@@ -3,19 +3,20 @@ import { RenderInputTextField } from '../inputs/RenderInputTextField';
 import { RenderInputCheck } from '../inputs/RenderInputCheck';
 import { ImageFile } from '../inputs/ImageFile';
 import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
+import CameraInputField from '../inputs/CameraInputField';
+import ButtonCameraAccess from '../inputs/ButtonCameraAccess';
 
 export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onChange}) => {
   const handleChange = (e ) => {
     e.preventDefault();
     const { value, name } = e.target;
     switch (e.target.type) {
-      case 'checkbox':
-        e.target.checked === true ? onChange(input.name,input.valueChecked,true) : onChange(input.name,input.valueUnchecked , true)
-          break;
-      default : onChange( name, value, true);
+    case 'checkbox':
+      e.target.checked === true ? onChange(input.name, input.valueChecked, true) : onChange(input.name, input.valueUnchecked, true);
+      break;
+    default : onChange( name, value, true);
       break;
     }
-
   };
 
   const handleMultipleChange = (name, value) => {
@@ -53,24 +54,28 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
                 disabled={input.disabled}
                 error={error}/>
               );
-              case 'acceptTerms' :
-                return( <RenderInputCheckTerms
-                    name={input.name}
-                    label={input.label}
-                    link={input.link}
-                    errorText={input.errorText}
-                    value={input.value}
-                    valueChecked={input.valueChecked}
-                    valueUnchecked={input.valueUnchecked}
-                    onChange={handleChange}
-                    touched={touched}
-                    linkText={input.linkText}
-                    disabled={input.disabled}
-                    error={error}/>
-                );
+            case 'acceptTerms' :
+              return( <RenderInputCheckTerms
+                name={input.name}
+                label={input.label}
+                link={input.link}
+                errorText={input.errorText}
+                value={input.value}
+                valueChecked={input.valueChecked}
+                valueUnchecked={input.valueUnchecked}
+                onChange={handleChange}
+                touched={touched}
+                linkText={input.linkText}
+                disabled={input.disabled}
+                error={error}/>
+              );
             case 'file' :
               return (
                 <ImageFile label={input.label} onChange={onChange} name={input.name}/>
+              );
+            case 'camera' :
+              return (
+                <ButtonCameraAccess value ={input.value} label={input.label} onChange={onChange} name={input.name} open={false}/>
               );
             }
           })()}

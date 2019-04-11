@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
 import {
+  fetchCountries_,
   fetchEntities_,
   fetchForm,
-  fetchCountries_,
-  sendRequest_
+  sendRequest_,
+  confirmPdf_,
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { Loading } from './Util/LoadingComponent';
 import { NavbarMenu } from './Header/NavbarMenu';
-import Header from './Header/Header';
-import { Section } from './Section/Section';
-import { FormPresentational } from './Form/PresentationalForm/FormPresentational/FormPresentational';
+import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
+import {FunctionalPDF} from './PDF/FunctionalPDF';
 
 const mapStateToProps = (state) => {
-  return { form: state.form };
+  return { form: state.form, ...state.form.pdf };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   fetchForm: () => {
     dispatch(fetchForm());
   },
-  sendRequest : (data) => {
+  sendRequest: (data) => {
     dispatch(sendRequest_(data));
   },
   fetchEntities: () => {
@@ -29,6 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchCountries: (id) => {
     dispatch(fetchCountries_(id));
+  },
+  confirmPdf : (confirm, requestId) => {
+    dispatch(confirmPdf_(confirm, requestId));
   }
 }
 );
@@ -37,7 +39,8 @@ export class Main extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      form: props.form
+      form: props.form,
+      pdf: props.form.pdf
     };
   }
 
@@ -57,24 +60,39 @@ export class Main extends Component {
     const fetchCountrieForEntitie = (id) => {
       this.props.fetchCountries(id);
     };
+
+
+    const onClickPdf = (confirm) => {
+      const {requestId} = this.props.form;
+      console.log(this.props);
+
+      this.props.confirmPdf(confirm, requestId);
+    };
+
     if (this.props.form.isLoading === true) {
 
       return (<div><Loading/></div>);
-    } 
+    }
 
     return (
+
       <>
         <NavbarMenu/>
-      <Section>
-        <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie} firstForm={this.props.form.firstForm}
-          secondForm={this.props.form.secondForm}
-          thirdForm ={this.props.form.thirdForm}
-          currentStep={this.props.form.currentStep} onClick={this.props.sendRequest}/>
-      </Section>
+        {this.props.form.pdf !== undefined ? <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/> :
+
+          <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie}
+            firstForm={this.props.form.firstForm}
+            secondForm={this.props.form.secondForm}
+            thirdForm={this.props.form.thirdForm}
+            currentStep={this.props.form.currentStep}
+            onClick={this.props.sendRequest}/>
+
+        }
+
       </>
 
     );
-    
+
   }
 }
 

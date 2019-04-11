@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { alertUtil } from '../../../../Util/alertUtil';
 
 export default class AcceptTermsModal extends React.Component {
   constructor (props)
@@ -14,16 +15,17 @@ export default class AcceptTermsModal extends React.Component {
       open: this.props.open,
       scroll: 'paper',
     };
+
   }
 
 
 
 
   render() {
-    console.log("entry ")
-  const  handleClose = (acceptOrDecline = false) => {
+    const  handleClose = (acceptOrDecline = false) => {
+      alertUtil(this.props);
       this.setState({ open: false });
-      this.props.onClick(acceptOrDecline)
+      this.props.onClick(acceptOrDecline);
     };
     return (
       <div>
@@ -75,9 +77,7 @@ export default class AcceptTermsModal extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() =>handleClose(false)} color="primary">
-              Declino
-            </Button>
+
             <Button onClick={ () =>handleClose(true)} color="primary">
               Acepto
             </Button>

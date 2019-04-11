@@ -8,28 +8,28 @@ export const FormEntities = (props) => {
     <Form inline>
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
 
-      <Label for="exampleEmail" className="mr-sm-2">Nombre</Label>
-      <Input type="email"  name="email" disabled id="exampleEmail" placeholder={props.name}/>
-    </FormGroup>
+        <Label for="exampleEmail" className="mr-sm-2">Nombre</Label>
+        <Input type="email"  name="email" disabled id="exampleEmail" placeholder={props.name}/>
+      </FormGroup>
 
-    <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">Persona legal / física</Label>
-      <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.legalPerson}/>
+      <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
+        <Label for="exampleEmail" className="mr-sm-2">Persona legal / física</Label>
+        <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.legalPerson}/>
       </FormGroup>
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-      <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.email}/>
+        <Label for="exampleEmail" className="mr-sm-2">Email</Label>
+        <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.email}/>
       </FormGroup>
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">Email secundario</Label>
-      <Input type="email" name="email"  disabled id="exampleEmail" placeholder={props.emailSec}/>
+        <Label for="exampleEmail" className="mr-sm-2">Email secundario</Label>
+        <Input type="email" name="email"  disabled id="exampleEmail" placeholder={props.emailSec}/>
       </FormGroup>
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">CIF</Label>
-      <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.cif}/>
+        <Label for="exampleEmail" className="mr-sm-2">CIF</Label>
+        <Input type="email" name="email" disabled id="exampleEmail" placeholder={props.cif}/>
       </FormGroup>
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">Información</Label>
+        <Label for="exampleEmail" className="mr-sm-2">Información</Label>
         <Link href={props.moreInfo}> {props.moreInfo} </Link>
       </FormGroup>
     </Form>

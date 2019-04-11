@@ -6,7 +6,7 @@ export const firstForm =  {
       name: 'customEntityName',
       required: true,
       errorText : 'El nombre es requerido y solo debe conter letras',
-      regexp : '^[a-zA-Z]+$' ,
+      regexp : '^[a-zA-Z]+$',
       label: 'Nombre',
       disabled : false,
       backName : 'customEntityName'
@@ -29,24 +29,24 @@ export const firstForm =  {
       name: 'customEntityCommercialName',
       required: true,
       errorText : 'El nombre es requerido y solo debe conter letras',
-      regexp : '^[a-zA-Z]+$' ,
+      regexp : '^[a-zA-Z]+$',
       label: 'Commercial Name ',
       disabled : false,
       backName : 'customEntityCommercialName'
     },
     {
       type: 'acceptTerms',
-      value: '',
+      value: false,
       name: 'acceptTerms ',
       required: true,
       errorText : 'Debe aceptar los términos y condiciones',
-      regexp : '^[a-zA-Z]+$' ,
+      regexp : '^[a-zA-Z]+$',
       label: 'Acepto los términos y condiciones',
       disabled : false,
       backName : 'acceptTerms',
       link : true,
-      valueChecked : "true",
-      valueUnchecked : "",
+      valueChecked : true,
+      valueUnchecked : false,
       linkText : 'Términos y condiciones legales'
 
     }
@@ -80,6 +80,7 @@ export const firstForm =  {
           // }
         ],
 
+  currentForm : 1
 
 
 };

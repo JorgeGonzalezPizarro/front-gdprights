@@ -1,10 +1,15 @@
 export const LOADING = 'LOADING';
-export const PUT = 'PUT';
-export const POST = 'POST';
 export const FETCH = 'FETCH';
 export const FETCH_ENTITIES = 'FETCH_ENTITIES';
 export const LOADING_ENTITIES = 'LOADING_ENTITIES';
 export const LOADING_COUNTRIES = 'LOADING_COUNTRIES';
 export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';
-export const SEND_REQUEST = 'SEND_REQUEST';
-export const GET_PDF = 'GET_PDF';
+export const PDF_LOADING = 'PDF_LOADING';
+export const PDF_SUCCESS  = 'PDF_SUCCESS';
+export const CONFIRM_PDF  = 'CONFIRM_PDF';
+export const REJECT_PDF  = 'REJECT_PDF';
+export const CONFIRM_PDF_LOADING = 'CONFIRM_PDF_LOADING';
+export const NOTIFICATION_SENDED_SUCCESS  = 'NOTIFICATION_SENDED_SUCCESS';
+
+
+

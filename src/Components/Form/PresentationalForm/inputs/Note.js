@@ -5,7 +5,7 @@ export const Note = ({ Tag = 'div', ...props }) => (
     css={{
       color: 'hsl(0, 0%, 40%)',
       display: 'inline-block',
-      fontSize: 9,
+      fontSize: 12,
       fontStyle: 'italic',
       marginTop: '1em',
     }}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const NavbarMenu = () => {
   return (
@@ -7,7 +7,7 @@ export const NavbarMenu = () => {
 
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMenu"
-                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"/>
         </button>
 
@@ -16,11 +16,11 @@ export const NavbarMenu = () => {
           <ul className="margin_top_6 navbar-nav ml-auto bg-gris navbar-dark color_navbar">
             <li className="nav-item2">
               <a data-toggle="modal" data-target="#exampleModalScrollable" href="" className="nav-link btn navbar-btn"
-                 id="btn-alta">Ayuda</a>
+                id="btn-alta">Ayuda</a>
             </li>
             <li className="nav-item2">
               <a data-toggle="modal" data-target="#exampleModalScrollable2" href="" className="nav-link btn navbar-btn"
-                 id="btn-alta">Acerca de</a>
+                id="btn-alta">Acerca de</a>
             </li>
 
           </ul>
@@ -29,6 +29,6 @@ export const NavbarMenu = () => {
       </div>
     </nav>
 
-  )
+  );
 
-}
+};

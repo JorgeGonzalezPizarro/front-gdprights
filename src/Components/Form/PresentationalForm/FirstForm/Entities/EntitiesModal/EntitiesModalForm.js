@@ -32,12 +32,12 @@ export default class EntitiesModalForm extends Component {
       this.props.onClick(this.props.selectName, this.props.selected.id);
     };
     const handleClose = () => {
-     const handleChangeAndState = async () => await this.setState({
+      const handleChangeAndState = async () => await this.setState({
         open : !this.state.open
-      })
-      handleChangeAndState().then(()=> this.props.onCloseEntitiesList())
+      });
+      handleChangeAndState().then(()=> this.props.onCloseEntitiesList());
 
-    }
+    };
     return (
 
       <div>
@@ -72,7 +72,7 @@ export default class EntitiesModalForm extends Component {
           </Form>
           {this.props.selected !== undefined ? <FormEntities {...this.props.selected} /> : null}
           {this.props.selected !== undefined ? <Button className="btn-primary"
-                                                       onClick={handleAccept}> Aceptar</Button> : null}
+            onClick={handleAccept}> Aceptar</Button> : null}
         </Dialog>
       </div>
 

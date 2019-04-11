@@ -10,7 +10,7 @@ import { TutorForm } from './FirstForm/TutorForm';
 export default class ThirdForm extends Component {
   constructor (props) {
     super(props);
-    const { thirdFormData: { firstForm} , currentStep } = props;
+    const { thirdFormData: { firstForm}, currentStep } = props;
     this.state = {
       currentForm : 1,
       ...{ firstForm, currentStep },
@@ -23,7 +23,6 @@ export default class ThirdForm extends Component {
   }
 
   render () {
-    console.log(this.state)
     const isRequired = (input) => this.state.requiredFields.filter(req => req===input);
     const isTouched = (input) => this.state.touched.filter(req => req===input);
 
@@ -53,7 +52,6 @@ export default class ThirdForm extends Component {
 
 
     const handleChange = ( name, value, firstForm = false) => {
-      console.log(name,value)
 
       if (firstForm === true) {
         const stateCopy = this.state.firstForm.map((data) => data);
@@ -94,8 +92,6 @@ export default class ThirdForm extends Component {
     const submitFirstForm = () => {
       const requiredFields = this.state.requiredFields.concat(this.state.secondForm.filter((input) => input.required = true).map((input) => input.name));
 
-
-      console.log(requiredFields);
       const setState = async () => await this.setState({
         ...this.state,
         currentForm : !this.state.visibleSecondForm === true ? 2 : 1,
@@ -140,8 +136,6 @@ export default class ThirdForm extends Component {
 
     };
 
-
-
     const enableSend = () => {
       const enableAll = this.state.firstForm.map((input) => {
         if (this.state.requiredFields.includes(input.name)) {
@@ -151,9 +145,7 @@ export default class ThirdForm extends Component {
           return false;
         }
         return true;
-      })
-
-
+      });
 
       return !enableAll.includes(false);
 
