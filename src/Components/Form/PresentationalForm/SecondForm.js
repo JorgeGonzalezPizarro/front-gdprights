@@ -6,6 +6,8 @@ import { deepEqual } from '../../Util/deepEqual';
 import { LeftForm } from './FirstForm/LeftForm';
 import { RightForm } from './FirstForm/RightForm';
 import { TutorForm } from './FirstForm/TutorForm';
+import { FormFieldSet } from './FormPresentational/FormFieldSet';
+import FormButtons from './FormPresentational/FormButtons';
 
 export default class SecondForm extends Component {
   constructor (props) {
@@ -188,37 +190,40 @@ export default class SecondForm extends Component {
        }
      };
      return (
-       <div>
-         <form>
+       <>
+       <FormFieldSet>
+         {
+           this.state.firstForm.map((input, key) => {
+             return(  <LeftForm onChange= {handleChange} key = {key} input={input} requiredFields={this.state.requiredFields}
+               error={this.state.errors.filter((error) => error === input.name)[0]}
+               touched={this.state.touched.filter((touched) => touched===input.name)[0]}
+               onClickVisibleRightForm={handleData}/>
+             );})
+         }
+
+
+         {
+           this.state.secondForm.map((input, key) => {
+             return ( this.state.visibleSecondForm === true ? <TutorForm
+               input={input} key={key}
+               visible={this.state.visibleSecondForm}
+               requiredFields={this.state.requiredFields}
+               error={this.state.errors.filter((error) => error === input.name)[0]}
+               touched={this.state.touched.filter((touched) => touched===input.name)[0]}
+               onChange= {handleChange}
+             /> : null
+             ); })
+         }
+       </FormFieldSet>
+         <FormButtons>
            <div>
-             {
-               this.state.firstForm.map((input, key) => {
-                 return(  <LeftForm onChange= {handleChange} key = {key} input={input} requiredFields={this.state.requiredFields}
-                   error={this.state.errors.filter((error) => error === input.name)[0]}
-                   touched={this.state.touched.filter((touched) => touched===input.name)[0]}
-                   onClickVisibleRightForm={handleData}/>
-                 );})
-             }
-
-
-             {
-               this.state.secondForm.map((input, key) => {
-                 return ( this.state.visibleSecondForm === true ? <TutorForm
-                   input={input} key={key}
-                   visible={this.state.visibleSecondForm}
-                   requiredFields={this.state.requiredFields}
-                   error={this.state.errors.filter((error) => error === input.name)[0]}
-                   touched={this.state.touched.filter((touched) => touched===input.name)[0]}
-                   onChange= {handleChange}
-                 /> : null
-                 ); })
-             }
+             <Button color='secondary' onClick={this.props.previous}>Volver</Button>
+             <Button disabled={!this.state.isValid} variant="outlined" color="primary" onClick={nextStep}>Siguiente
+             </Button>
            </div>
-           <Button color='secondary' onClick={this.props.previous}>Volver</Button>
-           <Button disabled={!this.state.isValid} onClick={nextStep}>Siguiente
-           </Button>
-         </form>
-       </div>
+         </FormButtons>
+
+       </>
      );
    }
 

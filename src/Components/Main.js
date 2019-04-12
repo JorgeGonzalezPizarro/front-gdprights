@@ -11,6 +11,8 @@ import { Loading } from './Util/LoadingComponent';
 import { NavbarMenu } from './Header/NavbarMenu';
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
 import {FunctionalPDF} from './PDF/FunctionalPDF';
+import  GridContainer  from './Grid/GridContainer';
+import ContentMain from './Grid/ContentMain';
 
 const mapStateToProps = (state) => {
   return { form: state.form, ...state.form.pdf };
@@ -76,9 +78,10 @@ export class Main extends Component {
 
     return (
 
-      <>
+      <GridContainer>
+
         <NavbarMenu/>
-        {this.props.form.pdf !== undefined ? <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/> :
+        <ContentMain>
 
           <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie}
             firstForm={this.props.form.firstForm}
@@ -86,10 +89,11 @@ export class Main extends Component {
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
             onClick={this.props.sendRequest}/>
+          <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/>
 
-        }
+        </ContentMain>
 
-      </>
+      </GridContainer>
 
     );
 

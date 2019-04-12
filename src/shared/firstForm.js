@@ -35,6 +35,13 @@ export const firstForm =  {
       backName : 'customEntityCommercialName'
     },
     {
+      type: 'linkList',
+      value: false,
+      name: 'acceptTerms ',
+
+
+    },
+    {
       type: 'acceptTerms',
       value: false,
       name: 'acceptTerms ',

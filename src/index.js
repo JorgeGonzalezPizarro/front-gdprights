@@ -8,7 +8,7 @@ import 'bootstrap-social/bootstrap-social.css';
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './statics/css/style_gdprights.css';
-
+import './statics/css/front-gdprights.css';
 // import './statics/css/style.css'
 ReactDOM.render(<App />, document.getElementById('root'));
 

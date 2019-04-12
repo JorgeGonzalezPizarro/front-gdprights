@@ -13,7 +13,7 @@ import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileEncode, FilePondPluginFileValidateType) ;
 
-export const ImageFile = ({name, onChange, label}) =>  {
+export const ImageFile = ({name, onChange, label , disabled}) =>  {
 
 
   const handleFiles1 = async (file) => {
@@ -43,7 +43,7 @@ export const ImageFile = ({name, onChange, label}) =>  {
       <FilePond
         // files={files}
         allowMultiple={false}
-
+        disabled={disabled}
         id={name}
         acceptedFileTypes={['image/png', 'image/jpeg']}
         fileValidateTypeLabelExpectedTypes={'Expects {allButLastType} or {lastType}'}

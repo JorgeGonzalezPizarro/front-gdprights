@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import CameraInputField from './CameraInputField';
 
 import ModalCamera from './ModalCamera';
 import { alertUtil } from '../../../Util/alertUtil';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-library.add(faTrash)
+
+library.add(faTrash);
 
 
 export default class ButtonCameraAccess extends Component {
@@ -25,7 +26,7 @@ export default class ButtonCameraAccess extends Component {
       return (
         <>
         <img src={this.props.value} height={100} width={100} alt={this.props.name}/>
-          <a  href="#"  onClick={()=>this.props.onChange('', this.props.name, true)}> <FontAwesomeIcon icon={faTrash}/></a>
+          <a  href="#"  onClick={()=>this.props.onChange( this.props.name , '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
     </>
       );
     };
@@ -44,7 +45,7 @@ export default class ButtonCameraAccess extends Component {
     }
     return (
       this.props.value !== '' ? image() :
-        <Button onClick={handleOpen}>
+        <Button disabled={this.props.disabled} onClick={handleOpen}>
           {this.props.label}
 
         </Button>

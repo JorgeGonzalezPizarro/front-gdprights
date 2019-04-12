@@ -24,7 +24,7 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
     change().then(onClickVisibleRightForm);
   };
   return (
-    <div>
+    <>
 
       {(function()  {
         switch (input.type) {
@@ -73,6 +73,6 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
       {/*  disabled = {data.filter((input) => input.name === 'customEntityCommercialName')[0].disabled} */}
       {/* /> */}
 
-    </div>
+    </>
   );
 };

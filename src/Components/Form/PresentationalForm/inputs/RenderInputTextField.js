@@ -2,7 +2,8 @@ import TextField from 'material-ui/TextField';
 import React, {Component} from 'react';
 import { FormControl } from '@material-ui/core';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { FormGroup } from '../FormPresentational/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import { FormFieldSet } from '../FormPresentational/FormFieldSet';
 
 export class RenderInputTextField extends Component{
   constructor (props){
@@ -35,22 +36,25 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
     fontSize: '15px',
     paddingLeft: '16px',
   };
+  const errorTextField = (string) => {
+    return(<FormHelperText style={{marginTop : 0 }} error>{ touched !== undefined && error!==undefined ? string : ''}</FormHelperText>);
+  };
+
   return (
-    <FormGroup >
-      <TextField   hintText={label}
+    <>
+      <TextField
         floatingLabelStyle={styles}
         floatingLabelFocusStyle={stylesInput}
         name={name}
         inputStyle={stylesInput}
         floatingLabelText={label}
-
         value={value}
         onBlur={onChange}
         disabled={disabled}
-        errorText={touched !== undefined &&  error !== undefined ? errorText : null}
         onChange={onChange}
-
       />
+      { errorTextField(errorText)}
+
       {/* <AvForm> */}
 
       {/* <AvField name={name} label={label} validate={{ */}
@@ -73,6 +77,6 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
       {/* errorText={touched !== undefined &&  error !== undefined ? 'Required' : null} */}
       {/* onChange={onChange} */}
       {/* /> */}
-    </FormGroup>
+      </>
   );
 };

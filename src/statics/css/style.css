@@ -60,14 +60,14 @@
     font-weight: 800;
 }
 html,
-body {
-    height: 100%;
-    font-family: Roboto, sans-serif;
-}
-body {
-    padding-right: 0px !important;
-    overflow-x: hidden;
-}
+/*body {*/
+/*    height: 100%;*/
+/*    font-family: Roboto, sans-serif;*/
+/*}*/
+/*body {*/
+/*    padding-right: 0px !important;*/
+/*    overflow-x: hidden;*/
+/*}*/
 .home-wrapper h1 {
     color: #fff;
 }

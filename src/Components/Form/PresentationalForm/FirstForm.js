@@ -3,9 +3,10 @@ import Button from '@material-ui/core/Button';
 import { LeftForm } from './FirstForm/LeftForm';
 import { RightForm } from './FirstForm/RightForm';
 import { deepEqual } from '../../Util/deepEqual';
-import { FormGroup } from './FormPresentational/FormGroup';
+import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import { ButtonEmpresas } from './inputs/ButtonEmpresas';
-import { alertUtil } from '../../Util/alertUtil';
+import FormButtons from './FormPresentational/FormButtons'
+
 
 export default class FirstForm extends Component {
   constructor (props) {
@@ -176,7 +177,7 @@ export default class FirstForm extends Component {
       const setState = async () => {
         return await this.setState({
           ...this.state,
-         // visibleSecondForm: !this.state.visibleSecondForm,
+          // visibleSecondForm: !this.state.visibleSecondForm,
           firstForm: firstFormEnabled,
           secondForm: secondFormDisabled,
           requiredFields
@@ -280,7 +281,7 @@ export default class FirstForm extends Component {
       } else {
         this.setState({
           visibleSecondForm : !this.state.visibleSecondForm
-        })
+        });
         submitSecondForm(data);
       }
     };
@@ -311,21 +312,24 @@ export default class FirstForm extends Component {
       {
         this.setState({
           visibleSecondForm : !this.state.visibleSecondForm
-        })
-        submitSecondForm()
+        });
+        submitSecondForm();
 
         this.props.handleFirstForm(1);
-      return;
+        return;
       }
       this.setState({
         visibleSecondForm : !this.state.visibleSecondForm
-      })
+      });
       this.props.handleFirstForm(2);
 
 
-    }
+    };
+console.log(this.props.currentForm)
     return (
       <>
+      <FormFieldSet>
+
         {
           this.state.firstForm.map((input, key) => {
             return (<LeftForm onChange={handleChange} key={key} input={input} requiredFields={this.state.requiredFields}
@@ -336,13 +340,12 @@ export default class FirstForm extends Component {
           })
         }
         {valueSelectSelected() !== false ? (
-          <FormGroup>
-            <div>
-              <ButtonEmpresas onClick={toggleEntitiesModal} text={valueSelectSelected()}/>
-            </div>
+          <div>
+            <ButtonEmpresas onClick={toggleEntitiesModal} text={valueSelectSelected()}/>
+          </div>
 
 
-          </FormGroup>) : null
+        ) : null
         }
         {
           this.props.currentForm !== 1 ? <RightForm getEntities={this.props.getEntities}
@@ -355,19 +358,18 @@ export default class FirstForm extends Component {
             onChange={handleChange}
           /> : null
         }
-        <FormGroup>
+        <div>
+          <ButtonEmpresas onClick={handleData}
+            text={this.props.currentForm === 1 || this.props.currentForm === undefined ? 'Seleccionar del listado' :   'Ingresar datos de forma manual'}/>
+        </div>
+      </FormFieldSet>
+
+        <FormButtons>
           <div>
-            <ButtonEmpresas onClick={handleData}
-              text={this.props.currentForm === 1 ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'}/>
-          </div>
-
-        </FormGroup>
-        <FormGroup>
-
           <Button disabled={!this.state.isValid} variant="outlined" color="primary" onClick={submit}>Siguiente
           </Button>
-        </FormGroup>
-
+          </div>
+        </FormButtons>
 
       </>
 

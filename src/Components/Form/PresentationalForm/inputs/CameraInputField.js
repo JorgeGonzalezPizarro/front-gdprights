@@ -40,8 +40,9 @@ export default class CameraInputField  extends Component{
           ref={this.setRef}
           screenshotFormat="image/jpeg"
           videoConstraints={videoConstraints}
+          style ={{width : '100%' , height : '100%'}}
         />
-        <Button onClick={ () =>  this.capture(true)} color="primary">
+        <Button onClick={ () =>  this.capture(true)} color="primary" >
           Capturar
         </Button>
         <Button onClick={  () => this.capture(false)} color="secondary">

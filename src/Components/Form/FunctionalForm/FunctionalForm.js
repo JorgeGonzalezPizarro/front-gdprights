@@ -21,8 +21,6 @@ export class FunctionalForm extends Component {
 
   }
 
-
-
   render()
   {
     const visibleSecondForm = (firstForm, secondForm, selected) => {
@@ -63,6 +61,8 @@ export class FunctionalForm extends Component {
         ...this.state,
         currentStep: nextStep,
         firstForm : {
+          ...this.state.firstForm,
+
           firstForm,
           secondForm,
           currentForm : selected
@@ -106,7 +106,10 @@ export class FunctionalForm extends Component {
             return newObject;
           } ));
           this.setState({
+            ...this.state,
             firstForm : {
+              ...this.state.firstForm,
+
               firstForm,
               secondForm
             },
@@ -118,7 +121,9 @@ export class FunctionalForm extends Component {
       }
 
       const setState = async () => this.setState({
+        ...this.state,
         firstForm : {
+          ...this.state.firstForm,
           firstForm,
           secondForm
         },
@@ -142,8 +147,6 @@ export class FunctionalForm extends Component {
         return newObject;
       } ));
 
-      console.log(thirdForm);
-      console.log(this.state);
 
       const setState = async () => this.setState({
         ...this.state,
@@ -186,24 +189,19 @@ export class FunctionalForm extends Component {
       });
 
     };
+    console.log(this.state.firstForm)
     return (
+<>
+      {/*<TransitionGroup>*/}
+      {/*  <CSSTransition key={this.state.currentStep} classNames="page" timeout={500}>*/}
+          <FormPresentational>
 
-      <div>
-        <Section>
-
-        <TransitionGroup>
-          <CSSTransition key={this.state.currentStep} classNames="page" timeout={500}>
-            <FormPresentational>
-
-
-              <FirstForm  getEntities = {this.props.getEntities} handleFirstForm={handleFirstStepOfFirstForm} firstFormData={this.props.firstForm} currentForm = {this.state.firstForm.currentForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>
-              {this.state.currentStep ===2 ? <SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep} previous={visibleFirstForm} nextStep={visibleThirdForm}/> : null }
-              {this.state.currentStep ===3  ? <ThirdForm thirdFormData={this.state.thirdForm} currentStep={this.state.currentStep} previous={previousStep} submit={submit}/> : null }
-            </FormPresentational>
-          </CSSTransition></TransitionGroup>
-        </Section>
-      </div>
-
+            <FirstForm  getEntities = {this.props.getEntities} handleFirstForm={handleFirstStepOfFirstForm} firstFormData={this.props.firstForm} currentForm = {this.state.firstForm.currentForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>
+            {this.state.currentStep ===2 ? <SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep} previous={visibleFirstForm} nextStep={visibleThirdForm}/> : null }
+            {this.state.currentStep ===3  ? <ThirdForm thirdFormData={this.state.thirdForm} currentStep={this.state.currentStep} previous={previousStep} submit={submit}/> : null }
+          </FormPresentational>
+         {/*</CSSTransition></TransitionGroup>*/}
+</>
     );
   }
 }

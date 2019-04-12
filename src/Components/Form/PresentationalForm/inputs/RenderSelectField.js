@@ -1,14 +1,14 @@
 import React  from 'react';
 import { FormControl } from '@material-ui/core';
 import Select from 'react-select';
-import { FormGroup } from '../FormPresentational/FormGroup';
+import { FormFieldSet } from '../FormPresentational/FormFieldSet';
 
 export const RenderSelectField = ({selectName, errors, touched, isLoading, options,  name, onChange, value}) => {
   const handleChange = ({name, value}) =>{
     onChange( name, value);
   };
   return (
-    <FormGroup >
+    <FormFieldSet >
       <Select
         errorText={touched !== undefined &&  errors === name ? 'Required' : null}
         className="select-dropdown"
@@ -19,7 +19,7 @@ export const RenderSelectField = ({selectName, errors, touched, isLoading, optio
         options={options.map((option)=> Object.assign({}, {name :selectName, label:option.name, value:  option.id, id : option.id })
         )}
       />
-    </FormGroup>
+    </FormFieldSet>
 
 
   );};

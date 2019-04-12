@@ -1,16 +1,18 @@
 import React from 'react';
+import HeaderForm from './HeaderForm';
 
-const css = {
-  color: '#76b39d',
-  letterSpacing: '2px'
-};
-const css2 = {
-  fontWeight: 200,
-  color: '#76b39d',
-  letterSpacing: '2px'
-};
+
 export const FormPresentational = (props) => {
   return (
+    <div className="formContent">
+      <HeaderForm/>
+      {props.children}
+    </div>
+  );
+};
+
+
+/*
     <div className="section-form form_isign_me3" id="alta_usuarios">
       <div className="wrapper-form">
         <div className="padding_form">
@@ -26,5 +28,4 @@ export const FormPresentational = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+ */
