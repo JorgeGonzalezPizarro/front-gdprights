@@ -26,7 +26,7 @@ export default class ButtonCameraAccess extends Component {
       return (
         <>
         <img src={this.props.value} height={100} width={100} alt={this.props.name}/>
-          <a  href="#"  onClick={()=>this.props.onChange( this.props.name , '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
+          <a  href="#"  onClick={()=>this.props.onChange( this.props.name, '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
     </>
       );
     };

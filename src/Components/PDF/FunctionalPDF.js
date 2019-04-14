@@ -9,11 +9,8 @@ import PdfContent from '../Grid/PdfContent';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${ pdfjs.version }/pdf.worker.js`;
 
 export  const FunctionalPDF = (props) => {
+  console.log(props);
 
-  if(props.pdf === undefined)
-  {
-  return  <PdfContent/>
-  }
 
   if (props.isLoading === true) {
     return <PdfContent><Loading/></PdfContent>;
@@ -25,14 +22,12 @@ export  const FunctionalPDF = (props) => {
   }
 
 
-
   return (
-    <PdfContent>
-      <ConfirmedPdf {...props} >
-        <PdfDocumentPresentational {...props}/>
-      </ConfirmedPdf>
+    <>
+      <ConfirmedPdf {...props} />
 
-    </PdfContent>
+      <PdfDocumentPresentational {...props}> </PdfDocumentPresentational>
+    </>
   );
 
 

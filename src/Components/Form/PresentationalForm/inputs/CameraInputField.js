@@ -25,7 +25,7 @@ export default class CameraInputField  extends Component{
     }
 
     const imageSrc = async() => await this.webcam.getScreenshot();
-    imageSrc().then((data) =>     this.props.onChange(this.props.name, data, true)).then(()=>    this.props.handleClose());
+    imageSrc().then((data) =>     this.props.onChange(this.props.name, data !== null ? data : '', true)).then(()=>    this.props.handleClose());
   };
 
   render() {
@@ -40,7 +40,7 @@ export default class CameraInputField  extends Component{
           ref={this.setRef}
           screenshotFormat="image/jpeg"
           videoConstraints={videoConstraints}
-          style ={{width : '100%' , height : '100%'}}
+          style ={{width : '100%', height : '100%'}}
         />
         <Button onClick={ () =>  this.capture(true)} color="primary" >
           Capturar

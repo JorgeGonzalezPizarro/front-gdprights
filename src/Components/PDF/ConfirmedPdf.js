@@ -1,7 +1,10 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 import { FormPresentational } from '../Form/PresentationalForm/FormPresentational/FormPresentational';
 import { Loading } from '../Util/LoadingComponent';
 import { Section } from '../Section/Section';
+import { FormFieldSet } from '../Form/PresentationalForm/FormPresentational/FormFieldSet';
+import FormButtons from '../Form/PresentationalForm/FormPresentational/FormButtons';
 
 export const ConfirmedPdf = (props) => {
   console.log(props);
@@ -12,10 +15,10 @@ export const ConfirmedPdf = (props) => {
 
   if (!confirmed) {
     return (
-      <>
-        <Section>
-          <FormPresentational>
-            <p>
+      <FormPresentational>
+
+        <FormFieldSet>
+          <p>
               Apreciado Usuario
 
               Para validar la solicitud de ejercicio del derecho de oposición a la entidad (nombre empresa destino) haz
@@ -29,30 +32,33 @@ export const ConfirmedPdf = (props) => {
               evidencias de las transacciones entre terceros por intermediación.
 
               Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio aquí
-            </p>
-            <p>
+          </p>
+          <p>
               GDPRights es un servicio de EIS Digitall. Actuamos en calidad de Tercero de Confianza, para generar las
               evidencias de las transacciones entre terceros por intermediación.
 
               Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio <a
-                href="#"> aquí</a>
+              href="#"> aquí</a>
 
-            </p>
-          </FormPresentational>
+          </p>
 
-          <FormPresentational>
-            {props.children}
-          </FormPresentational>
-        </Section>
+        </FormFieldSet>
 
-      </>
-
+        <FormButtons>
+          <Button className="btn btn-primary1 btn-sm btn-block" color="link"
+                  onClick={() => props.onClickPdf(true)}>Confirmar</Button>
+          <Button className="btn btn-primary1 btn-sm btn-block" color="link"
+                  onClick={() => props.onClickPdf(false)}>Rechazar</Button>
+        </FormButtons>
+      </FormPresentational>
     );
 
   }
   if (confirmed && notificationSent) {
     return (
-      <p>
+      <FormPresentational>
+        <FormFieldSet>
+          <p>
         Apreciado Usuario
 
         El intento de notificación de tu ejercicio de derechos de oposición frente a la entidad (nombre entidad destino)
@@ -65,9 +71,11 @@ export const ConfirmedPdf = (props) => {
         evidencias de las transacciones entre terceros por intermediación.
 
         Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio <a
-          href="#"> aquí</a>
+              href="#"> aquí</a>
 
-      </p>
+          </p>
+        </FormFieldSet>
+      </FormPresentational>
     );
   }
   return null;

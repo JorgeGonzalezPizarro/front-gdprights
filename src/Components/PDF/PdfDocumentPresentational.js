@@ -1,7 +1,8 @@
-import React ,{Component} from 'react';
+import React, {Component} from 'react';
 import { Document, Page } from 'react-pdf';
 import { Button } from 'reactstrap';
 import { Loading } from '../Util/LoadingComponent';
+import { alertUtil } from '../Util/alertUtil';
 
 export default class PdfDocumentPresentational extends Component {
 
@@ -11,6 +12,8 @@ export default class PdfDocumentPresentational extends Component {
       currentPage: 1,
       numPages: null
     };
+    alertUtil("sdfdsfs")
+    console.log(props)
     this.onDocumentLoadSuccess = this.onDocumentLoadSuccess.bind(this);
     this.changePage = this.changePage.bind(this);
   }
@@ -32,13 +35,12 @@ export default class PdfDocumentPresentational extends Component {
   render () {
     const { file, onClickPdf } = this.props;
     const { currentPage, numPages } = this.state;
-
     return (
-      <div>
+      <div className="pdfContent">
         <Document file={file}
-                  onLoadSuccess={this.onDocumentLoadSuccess}
+          onLoadSuccess={this.onDocumentLoadSuccess}
         >
-          <Page pageNumber={currentPage}/>
+          <Page  pageNumber={currentPage}/>
 
         </Document>
         <div>
@@ -60,10 +62,6 @@ export default class PdfDocumentPresentational extends Component {
             Next
           </button>
         </div>
-        <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-                onClick={() => onClickPdf(true)}>Confirmar</Button>
-        <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-                onClick={() => onClickPdf(false)}>Rechazar</Button>
       </div>
 
     );

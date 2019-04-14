@@ -14,9 +14,7 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
   const handleMultipleChange = (e) => {
 
     e.preventDefault();
-    console.log(e.target);
     const { value, name } = e.target;
-    console.log(name, 'aa', value, 'aaaa');
     const change = async () => {
       await onChange(name, value, false);
     };
@@ -54,24 +52,7 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
         }
 
       })()}
-      {/* <RenderInputTextField */}
-      {/*  name={data.filter((input) => input.name === 'customEntityEmail')[0].name} */}
-      {/*  label={data.filter((input) => input.name === 'customEntityEmail')[0].label} */}
-      {/*  value={data.filter((input) => input.name === 'customEntityEmail')[0].value} */}
-      {/*  onChange={handleChange} */}
-      {/*  touched = {touched.filter((input) => input === 'customEntityEmail')[0]} */}
-      {/*  error = {errors.filter((error) => error === 'customEntityEmail' )[0]} */}
-      {/*  disabled = {data.filter((input) => input.name === 'customEntityEmail')[0].disabled} */}
-      {/* /> */}
-      {/* <RenderInputTextField */}
-      {/*  name={data.filter((input) => input.name === 'customEntityCommercialName')[0].name} */}
-      {/*  label={data.filter((input) => input.name === 'customEntityCommercialName')[0].label} */}
-      {/*  value={data.filter((input) => input.name === 'customEntityCommercialName')[0].value} */}
-      {/*  onChange={handleChange} */}
-      {/*  touched = {touched.filter((input) => input === 'customEntityCommercialName')[0]} */}
-      {/*  error = {errors.filter((error) => error === 'customEntityCommercialName' )[0]} */}
-      {/*  disabled = {data.filter((input) => input.name === 'customEntityCommercialName')[0].disabled} */}
-      {/* /> */}
+
 
     </>
   );

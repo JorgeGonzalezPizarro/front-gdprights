@@ -24,7 +24,7 @@ export class FunctionalForm extends Component {
   render()
   {
     const visibleSecondForm = (firstForm, secondForm, selected) => {
-      alertUtil(selected);
+
       this.setState({
         ...this.state,
         firstForm: {
@@ -140,25 +140,35 @@ export class FunctionalForm extends Component {
       });
     };
     const submit = (thirdForm) => {
+      console.log(thirdForm)
       const previousResponse = this.state.response.map((response) => response);
       const responseCopy =  previousResponse.concat(thirdForm.map((responseInput) => {
-        const newObject = Object.assign({}, {});
-        newObject[responseInput.backName] = responseInput.value;
-        return newObject;
-      } ));
+        console.log(responseInput.backName)
+        console.log(responseInput.value)
+        if (responseInput.value !== '') {
+          console.log(responseInput)
+          const newObject = Object.assign({}, {});
+          newObject[responseInput.backName] = responseInput.value;
+          console.log(newObject)
+          return newObject;
+        }
+        return '';
+      }));
+      console.log(responseCopy)
 
-
-      const setState = async () => this.setState({
+      const setState = async () =>  await this.setState({
         ...this.state,
         thirdForm,
         response : responseCopy,
       });
 
       setState().then(()=>{
+
+        console.log(this.state)
         const obj = this.state.response.reduce(function(obj1, item){
           obj1[Object.keys(item)[0]] = Object.values(item)[0]; return obj1;
         }, {});
-
+          console.log(obj);
         this.props.onClick(obj);
       });
     };
@@ -189,18 +199,18 @@ export class FunctionalForm extends Component {
       });
 
     };
-    console.log(this.state.firstForm)
+    console.log(this.state.firstForm);
     return (
 <>
-      {/*<TransitionGroup>*/}
-      {/*  <CSSTransition key={this.state.currentStep} classNames="page" timeout={500}>*/}
+      {/* <TransitionGroup> */}
+      {/*  <CSSTransition key={this.state.currentStep} classNames="page" timeout={500}> */}
           <FormPresentational>
 
             <FirstForm  getEntities = {this.props.getEntities} handleFirstForm={handleFirstStepOfFirstForm} firstFormData={this.props.firstForm} currentForm = {this.state.firstForm.currentForm} currentStep={this.state.currentStep}  onClick={visibleSecondForm}/>
             {this.state.currentStep ===2 ? <SecondForm secondFormData={this.state.secondForm} currentStep={this.state.currentStep} previous={visibleFirstForm} nextStep={visibleThirdForm}/> : null }
             {this.state.currentStep ===3  ? <ThirdForm thirdFormData={this.state.thirdForm} currentStep={this.state.currentStep} previous={previousStep} submit={submit}/> : null }
           </FormPresentational>
-         {/*</CSSTransition></TransitionGroup>*/}
+         {/* </CSSTransition></TransitionGroup> */}
 </>
     );
   }

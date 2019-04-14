@@ -5,7 +5,7 @@ const css = {
   letterSpacing: '2px !important'
 };
 const css2 = {
-  fontWeight: 900 ,
+  fontWeight: 900,
   color: '#76b39d',
   letterSpacing: '2px !important'
 };

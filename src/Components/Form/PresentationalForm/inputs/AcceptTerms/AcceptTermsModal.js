@@ -23,7 +23,6 @@ export default class AcceptTermsModal extends React.Component {
 
   render() {
     const  handleClose = (acceptOrDecline = false) => {
-      alertUtil(this.props);
       this.setState({ open: false });
       this.props.onClick(acceptOrDecline);
     };

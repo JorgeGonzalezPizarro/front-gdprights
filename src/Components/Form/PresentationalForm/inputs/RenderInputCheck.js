@@ -18,11 +18,13 @@ export const RenderInputCheck = ({name, label, defaultValue, touched, error, onC
             onChange={handleChange}
             value={value}
             name={name}
+
             color="primary"
           />
+
         }
+        style={{    width: '100%'}}
         label={label}
-        style={{padding : '10px 2px 10px'}}
 
       />
       {  touched !== undefined &&  error !== undefined ? <FormHelperText>{errorText}</FormHelperText> : null }

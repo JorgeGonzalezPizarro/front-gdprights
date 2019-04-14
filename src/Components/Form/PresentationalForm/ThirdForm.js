@@ -92,7 +92,7 @@ export default class ThirdForm extends Component {
 
             const stateCopy = this.state.firstForm.map((stateInput) => stateInput);
             const newState = stateCopy.filter((i2) => {
-             return  sameWithNotValue.filter((i3) => {
+              return  sameWithNotValue.filter((i3) => {
 
                 if (i2.name === i3.name) {
                   i2.required = true;
@@ -101,7 +101,7 @@ export default class ThirdForm extends Component {
                 return i2;
               });
             });
-          const requiredFields = newState.map((requiredInput) => requiredInput.name)
+            const requiredFields = newState.map((requiredInput) => requiredInput.name);
             this.setState({
               ...this.state,
               firstForm : newState,

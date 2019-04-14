@@ -5,7 +5,7 @@ import { RightForm } from './FirstForm/RightForm';
 import { deepEqual } from '../../Util/deepEqual';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import { ButtonEmpresas } from './inputs/ButtonEmpresas';
-import FormButtons from './FormPresentational/FormButtons'
+import FormButtons from './FormPresentational/FormButtons';
 
 
 export default class FirstForm extends Component {
@@ -325,7 +325,7 @@ export default class FirstForm extends Component {
 
 
     };
-console.log(this.props.currentForm)
+    console.log(this.props.currentForm);
     return (
       <>
       <FormFieldSet>
@@ -366,8 +366,8 @@ console.log(this.props.currentForm)
 
         <FormButtons>
           <div>
-          <Button disabled={!this.state.isValid} variant="outlined" color="primary" onClick={submit}>Siguiente
-          </Button>
+            <Button disabled={!this.state.isValid} variant="outlined" color="primary" onClick={submit}>Siguiente
+            </Button>
           </div>
         </FormButtons>
 

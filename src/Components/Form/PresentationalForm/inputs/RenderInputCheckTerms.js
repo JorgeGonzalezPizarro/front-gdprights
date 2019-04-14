@@ -69,7 +69,7 @@ export default class RenderInputCheckTerms extends Component {
     };
 
     return (
-      <div id="instanceCheckboxes" style={{ padding : "10px 0px " , display: 'inline-flex', flexDirection: 'row' }}>
+      <div id="instanceCheckboxes" style={{ padding : '10px 0px ', display: 'inline-flex', flexDirection: 'row' }}>
         <Checkbox
           style={{padding: '10px 2px 10px'}}
           checked={this.props.value}

@@ -1,6 +1,6 @@
 .mainGrid {
     display: grid;
-    grid-template-columns: [left-margin] 0.5fr [wrapperMain] 12fr [right-margin] 2fr;
+    grid-template-columns: [left-margin] 10px [wrapperMain] 1fr [right-margin] 10px;
     background: url('../images/cabecera.jpg') no-repeat;
 }
 
@@ -8,8 +8,8 @@
 .wrapperMain{
     grid-column: wrapperMain ;
     display: grid;
-    grid-template-columns: [wrapper] auto;
-    grid-template-rows: [headerNav] 80px [body] auto;
+    grid-template-columns: [wrapper] 1fr;
+    grid-template-rows: [headerNav] 80px [body] 1fr;
     grid-row-gap : 0.4rem;
     grid-column-gap : 1rem;
     background: transparent;
@@ -22,23 +22,34 @@
     box-shadow: none;
 }
 
+
 .contentMain {
-    display: grid;
-    grid-row: body;
-    grid-column: wrapper;
-    background: transparent;
-    grid-template-columns: [firstForm] minmax(300px, 30%)  [pdf] auto ;
-    grid-template-rows: [headers] 0.1fr [main] 3fr [footer] 0.2fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 15px;
+    display: flex;
+    /*grid-row: body;*/
+    /*grid-column: wrapper;*/
+    /*background: transparent;*/
+    /*grid-template-columns: [firstForm] minmax(300px, 1fr)  [pdf] minmax(600px, 3fr) ;*/
+    /*grid-template-rows: [headers] 0.1fr [main] 1fr [footer] 0.2fr;*/
+    /*grid-column-gap: 10px;*/
+    /*grid-row-gap: 15px;*/
+    flex-direction: column;
+    /*min-height: 100vh;*/
 }
 
-
+@media (min-width: 768px) {
+    .contentMain {
+        grid-row: body;
+        grid-column: wrapper;
+        display: grid;
+        grid-template-columns: [firstForm] minmax(300px, 1fr) [pdf] minmax(600px, 3fr);
+        grid-template-rows: 10px 1fr 10px;
+    }
+}
 .formContent {
     grid-column: firstForm ;
     grid-row: main;
     display : grid;
-    grid-template-rows: [titleForm] 1fr [contentForm] 3fr [buttonsForm] 0.7fr;
+    grid-template-rows: [titleForm] 120px [contentForm] 3fr [buttonsForm] 100px;
     background-color: #f2f2f2;
     border-radius: 23px;
     padding: 0 20px 2px 20px ;
@@ -53,7 +64,7 @@
     grid-column: pdf ;
     grid-row: main ;
     display : grid;
-    grid-template-rows: [titleForm] 1fr [contentForm] 3fr [buttonsForm] 1fr;
+    grid-template-rows: [titleForm] 120px [contentForm] 1fr [buttonsForm] 100px;
 }
 .headerFormContent {
     grid-row: titleForm;

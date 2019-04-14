@@ -83,14 +83,15 @@ export class Main extends Component {
         <NavbarMenu/>
         <ContentMain>
 
-          <FunctionalForm getEntities={getEntities} fetchCountrieForEntitie={fetchCountrieForEntitie}
+          {this.props.form.pdf === undefined ? <FunctionalForm getEntities={getEntities}
+            fetchCountrieForEntitie={fetchCountrieForEntitie}
             firstForm={this.props.form.firstForm}
             secondForm={this.props.form.secondForm}
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
-            onClick={this.props.sendRequest}/>
-          <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/>
-
+            onClick={this.props.sendRequest}/> :
+            <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/>
+          }
         </ContentMain>
 
       </GridContainer>

@@ -16,7 +16,7 @@ export const fetchForm = () => (dispatch) => {
 export const fetchEntities_ = () => (dispatch) => {
   dispatch(loadingEntities());
   const data = () => {
-    return axios.get('http://localhost/gdprights/public/index.php/entities/').then(result => {
+    return axios.get('https://localhost/gdprights/public/index.php/entities/').then(result => {
       return result.data;
     }).then((data) => {
       dispatch(fetchEntities(data));
@@ -48,7 +48,7 @@ export const sendRequest_ = (data) => (dispatch) => {
 
   const response = async () => {
 
-    const response = await axios.post('http://localhost/gdprights/public/index.php/', Object.assign({}, data), {
+    const response = await axios.post('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', Object.assign({}, data), {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -69,7 +69,7 @@ export const confirmPdf_ = ( confirmed, requestId) => (dispatch) => {
 
   const confirmedSendEmail = async () => {
 
-    const requestToConfirm = await axios.put('http://localhost/gdprights/public/index.php/confirm', Object.assign({}, {
+    const requestToConfirm = await axios.put('http://localhost/gdprights/public/index.php/confirm?XDEBUG_SESSION_START=11556', Object.assign({}, {
       requestId,
       confirmed
     }), {
@@ -203,8 +203,4 @@ export const notification_send_success = () => ({
     },
   }
 });
-
-
-
-
 

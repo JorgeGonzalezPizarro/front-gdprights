@@ -18,7 +18,7 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
   const styles = {
     top : '5px',
     cursor: 'text',
-    maxWidth: '66.66%',
+    maxWidth: '100%',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
