@@ -7,12 +7,16 @@ export const thirdForm =  {
       required: true,
       label: 'Imagen DNI frontal',
       disabled : false,
-      backName : 'dniFront'
+      backName : 'dniFront',
+      errorTextDisabled : 'Elimine la imagen previa'
+
     },
     {
       type: 'camera',
       label: 'Capturar imagen DNI trasero ',
       value: '',
+      errorTextDisabled : 'Elimine la imagen previa',
+
       name: 'DNI front camera',
       required: true,
       disabled : false,
@@ -26,7 +30,8 @@ export const thirdForm =  {
       name: 'DNI back ',
       required: true,
       disabled : false,
-      backName : 'dniBack'
+      backName : 'dniBack',
+      errorTextDisabled : 'Elimine la imagen previa'
 
     },
 
@@ -37,8 +42,8 @@ export const thirdForm =  {
       name: 'DNI back camera',
       required: true,
       disabled : false,
-      backName : 'dniBack'
-
+      backName : 'dniBack',
+      errorTextDisabled : 'Elimine la imagen previa'
     },
   ]
 

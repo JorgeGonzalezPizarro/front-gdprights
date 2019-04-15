@@ -5,10 +5,10 @@ import Link from '@material-ui/core/es/Link/Link';
 
 export const FormEntities = (props) => {
   return (
-    <Form inline>
+    <Form  inline className="formEntities">
       <FormGroup className="mb-4 mr-sm-4 mb-sm-0">
 
-        <Label for="exampleEmail" className="mr-sm-2">Nombre</Label>
+        <Label for="exampleEmail"   className="mr-sm-2">Nombre</Label>
         <Input type="email"  name="email" disabled id="exampleEmail" placeholder={props.name}/>
       </FormGroup>
 

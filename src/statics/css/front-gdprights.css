@@ -1,12 +1,25 @@
+body {
+    background: url(../images/cabecera.jpg);
+    background-size: cover;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+html , #root , .App  {
+    min-height: 100vh;
+}
+
 .mainGrid {
     display: grid;
-    grid-template-columns: [left-margin] 10px [wrapperMain] 1fr [right-margin] 10px;
-    background: url('../images/cabecera.jpg') no-repeat;
+    grid-template-columns: [left-margin] 50px [wrapperMainColumn] 1fr [right-margin] 10px;
+    grid-template-rows: [margin-top] 0  [wrapperMainRow] 1fr [marginButton] 100px;
 }
 
 
 .wrapperMain{
-    grid-column: wrapperMain ;
+    grid-column: wrapperMainColumn ;
+    grid-row: wrapperMainRow ;
     display: grid;
     grid-template-columns: [wrapper] 1fr;
     grid-template-rows: [headerNav] 80px [body] 1fr;
@@ -24,36 +37,34 @@
 
 
 .contentMain {
-    display: flex;
-    /*grid-row: body;*/
-    /*grid-column: wrapper;*/
-    /*background: transparent;*/
-    /*grid-template-columns: [firstForm] minmax(300px, 1fr)  [pdf] minmax(600px, 3fr) ;*/
-    /*grid-template-rows: [headers] 0.1fr [main] 1fr [footer] 0.2fr;*/
-    /*grid-column-gap: 10px;*/
-    /*grid-row-gap: 15px;*/
-    flex-direction: column;
-    /*min-height: 100vh;*/
+    grid-row: body;
+    grid-column: wrapper;
+    display: grid;
+    grid-template-columns: [firstForm]300px [pdf] minmax(600px, 4fr);
+    grid-template-rows: [mainContent] minmax(300px , auto);
+    grid-column-gap: 50px;
+    grid-row-gap: 20px;
 }
 
-@media (min-width: 768px) {
+
+@media (max-width: 768px) {
     .contentMain {
-        grid-row: body;
-        grid-column: wrapper;
-        display: grid;
-        grid-template-columns: [firstForm] minmax(300px, 1fr) [pdf] minmax(600px, 3fr);
-        grid-template-rows: 10px 1fr 10px;
+
+        display: flex;
+        width: 80%;
+        flex-direction: column;
+        margin: 0 auto;
     }
 }
 .formContent {
     grid-column: firstForm ;
-    grid-row: main;
+    grid-row: mainContent;
     display : grid;
-    grid-template-rows: [titleForm] 120px [contentForm] 3fr [buttonsForm] 100px;
+    grid-template-rows: [titleForm] 80px [contentForm] 1fr [buttonsForm] 80px;
     background-color: #f2f2f2;
     border-radius: 23px;
     padding: 0 20px 2px 20px ;
-    align-items: center;
+    align-items: start;
     justify-items: center;
 }
 .formContent > div{
@@ -62,9 +73,14 @@
 }
 .pdfContent {
     grid-column: pdf ;
-    grid-row: main ;
+    grid-row: mainContent ;
     display : grid;
-    grid-template-rows: [titleForm] 120px [contentForm] 1fr [buttonsForm] 100px;
+    grid-template-rows:  [contentPdf] auto [pdf-buttons] 80px;
+}
+
+.pdfContent > canvas {
+    height: 750px;
+
 }
 .headerFormContent {
     grid-row: titleForm;
@@ -80,10 +96,21 @@
 
 .formButtons {
     grid-row: buttonsForm;
+    display: inline-flex;
 }
 .formButtons > * {
     align-self: center;
     justify-self: center;
+    display: inline-flex;
+}
+
+.contentPdf {
+    grid-row: contentPdf;
+}
+.pdfButtons {
+    grid-row: pdf-buttons;
+    align-self: center;
+    justify-self: start;
 }
 
 
@@ -117,9 +144,35 @@ input[type="checkbox"]{
 }
 
 
+.buttonAccept:hover {
+    color: #308969;
+    border: 1px solid #28a745;
+}
+.buttonAccept {
+    color: #308969 !important;
+    border: 1px solid #28a745 !important;
+}
 
+.buttonAcceptDisabled {
+    color: rgba(0, 0, 0, 0.26);
+    border: 1px solid rgba(0, 0, 0, 0.26);
+}
+.modalEntities {
+    background: transparent !important;
+}
 
-
+.formEntities{
+    padding: 1% 20% 0 20%;
+}
+.formEntities > .mr-sm-2{
+    color: #ffffff !important;
+}
+.formEntities > a{
+    color: #76b39d !important;
+}
+.mr-sm-2{
+    color: white;
+}
 
 
 

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/es/Button/Button';
 import { LeftForm } from './FirstForm/LeftForm';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import FormButtons from './FormPresentational/FormButtons';
+import { TooltipDisabled } from './inputs/TooltipDisabled';
 
 export default class ThirdForm extends Component {
   constructor (props) {
@@ -53,7 +54,7 @@ export default class ThirdForm extends Component {
 
         const add = () => touched.indexOf(name) === -1 ? touched.push(name) : null;
         add();
-        const inputChanged =  this.state.firstForm.filter((i) => i.name === name )[0];
+        const inputChanged = this.state.firstForm.filter((i) => i.name === name)[0];
         const changeState = async () => await stateCopy.filter((input) => input.name === name ? input.value = value : null);
         this.setState({
           ...this.state,
@@ -65,7 +66,7 @@ export default class ThirdForm extends Component {
             ...this.state,
             isValid: enableSend()
           })).then(() => {
-          const sameWithNotValue = this.state.firstForm.filter((i) =>{
+          const sameWithNotValue = this.state.firstForm.filter((i) => {
             return i.backName === inputChanged.backName && i.value.length === 0;
           });
           let sameWithNotValueFiltered = {};
@@ -80,19 +81,18 @@ export default class ThirdForm extends Component {
               }
               return i2;
             });
-            const requiredFields = newState.filter((requiredInput) => requiredInput.required === true ).map((required) =>required.name);
-
+            const requiredFields = newState.filter((requiredInput) => requiredInput.required === true).map((required) => required.name);
 
             this.setState({
               ...this.state,
-              firstForm : newState,
+              firstForm: newState,
               requiredFields
             });
           } else {
 
             const stateCopy = this.state.firstForm.map((stateInput) => stateInput);
             const newState = stateCopy.filter((i2) => {
-              return  sameWithNotValue.filter((i3) => {
+              return sameWithNotValue.filter((i3) => {
 
                 if (i2.name === i3.name) {
                   i2.required = true;
@@ -104,15 +104,15 @@ export default class ThirdForm extends Component {
             const requiredFields = newState.map((requiredInput) => requiredInput.name);
             this.setState({
               ...this.state,
-              firstForm : newState,
+              firstForm: newState,
               requiredFields
             });
 
           }
 
-        }).then(()=>this.setState({
+        }).then(() => this.setState({
           ...this.state,
-          isValid : enableSend()
+          isValid: enableSend()
         }));
       }
 
@@ -185,9 +185,7 @@ export default class ThirdForm extends Component {
       }
     };
 
-
     enableSend();
-
 
     return (
       <>
@@ -207,8 +205,9 @@ export default class ThirdForm extends Component {
         <FormButtons>
           <div>
             <Button color='secondary' onClick={this.props.previous}>Volver</Button>
-            <Button disabled={!this.state.isValid} onClick={submit}>Enviar
-            </Button>
+            <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
+              children={<Button className={!this.state.isValid ? 'buttonAcceptDisabled' : 'buttonAccept'} disabled={!this.state.isValid} variant="outlined" color="primary"
+                onClick={submit}>Enviar </Button>}/>
           </div>
         </FormButtons>
       </>

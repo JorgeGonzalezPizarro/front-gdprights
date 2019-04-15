@@ -5,7 +5,7 @@ import {
   fetchEntities_,
   fetchForm,
   sendRequest_,
-  confirmPdf_,
+  confirmPdf_, downloadPdf_
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { Loading } from './Util/LoadingComponent';
 import { NavbarMenu } from './Header/NavbarMenu';
@@ -13,6 +13,7 @@ import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
 import {FunctionalPDF} from './PDF/FunctionalPDF';
 import  GridContainer  from './Grid/GridContainer';
 import ContentMain from './Grid/ContentMain';
+import { LoadingForm } from './Util/LoadingForm';
 
 const mapStateToProps = (state) => {
   return { form: state.form, ...state.form.pdf };
@@ -33,7 +34,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   confirmPdf : (confirm, requestId) => {
     dispatch(confirmPdf_(confirm, requestId));
-  }
+  },
+    downloadPdf : (file) => {
+    dispatch(downloadPdf_(file));
+    }
 }
 );
 
@@ -73,8 +77,23 @@ export class Main extends Component {
 
     if (this.props.form.isLoading === true) {
 
-      return (<div><Loading/></div>);
+      return (<>
+        <GridContainer>
+
+          <NavbarMenu/>
+          <ContentMain>
+        <LoadingForm/>
+          </ContentMain></GridContainer>
+        </>);
     }
+
+    const onClickDownload = () => {
+      const {file} = this.props.form.pdf;
+      this.props.downloadPdf(file);
+
+    };
+
+
 
     return (
 
@@ -90,7 +109,7 @@ export class Main extends Component {
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
             onClick={this.props.sendRequest}/> :
-            <FunctionalPDF {...this.props.form.pdf} onClickPdf={onClickPdf}/>
+            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
 

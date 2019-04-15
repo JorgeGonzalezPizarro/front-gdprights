@@ -71,11 +71,11 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
               );
             case 'file' :
               return (
-                <ImageFile disabled={input.disabled} label={input.label} onChange={onChange} name={input.name}/>
+                <ImageFile disabled={input.disabled} label={input.label} errorTextDisabled={input.errorTextDisabled} onChange={onChange} name={input.name}/>
               );
             case 'camera' :
               return (
-                <ButtonCameraAccess disabled={input.disabled} value ={input.value} label={input.label} onChange={onChange} name={input.name} open={false}/>
+                <ButtonCameraAccess errorTextDisabled={input.errorTextDisabled} disabled={input.disabled} value ={input.value} label={input.label} onChange={onChange} name={input.name} open={false}/>
               );
             }
           })()}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 import Dialog from '@material-ui/core/Dialog';
 import { Button, Col, Form, FormGroup } from 'reactstrap';
@@ -9,13 +10,21 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Row } from 'mdbreact';
+import blue from '@material-ui/core/colors/blue';
+import withStyles from '@material-ui/core/es/styles/withStyles';
 import { FormEntities } from '../FormEntities';
 
 function Transition (props) {
   return <Slide direction="up" timeout={500} mountOnEnter unmountOnExit {...props} />;
 }
+const img = import('../../../../../../statics/images/cabecera.jpg')
+const styles = {
+  background: 'url(../../../../../../statics/images/cabecera.jpg)',
+};
 
-export default class EntitiesModalForm extends Component {
+
+
+class EntitiesModalForm extends Component {
 
   constructor (props) {
     super(props);
@@ -38,32 +47,53 @@ export default class EntitiesModalForm extends Component {
       handleChangeAndState().then(()=> this.props.onCloseEntitiesList());
 
     };
+    const {classes}=this.props;
+
     return (
 
-      <div>
+      <>
         <Dialog
           fullScreen
           open={this.state.open}
           onClose={handleClose}
+          // BackdropProps={{
+          //   classes: {
+          //     root: classes.backdrop,
+          //   }
+          // }}
+          BackdropProps={{
+            classes: {
+              root: classes.root
+            }
+          }}
+          PaperProps={{
+            style: {
+              ...styles
+            }
+          }}
           TransitionComponent={Transition}
         >
-          <AppBar className="position-relative">
-            <Toolbar>
+          <AppBar style={{
+            color : '#76b39d',
+            background : 'white'
+          }} className="position-relative">
+            <Toolbar style={{
+              color : '#76b39d',
+              background : 'white'
+            }}>
               <IconButton color="inherit" onClick={handleClose} aria-label="Close">
                 <CloseIcon/>
               </IconButton>
               <Typography variant="h6" color="inherit" className="flex-1">
                 Listado de entidades
               </Typography>
-              <Button color="inherit" onClick={handleClose}>
-                save
-              </Button>
+
             </Toolbar>
           </AppBar>
           <Form>
-            <Row form>
+            <Row form >
               <Col md={12}>
-                <FormGroup>
+                <FormGroup className="formEntities">
                   {this.props.children}
 
                 </FormGroup>
@@ -74,8 +104,13 @@ export default class EntitiesModalForm extends Component {
           {this.props.selected !== undefined ? <Button className="btn-primary"
             onClick={handleAccept}> Aceptar</Button> : null}
         </Dialog>
-      </div>
+      </>
 
     );
   }
 }
+EntitiesModalForm.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(EntitiesModalForm);

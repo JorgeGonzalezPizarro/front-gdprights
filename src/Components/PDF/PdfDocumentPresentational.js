@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import { Document, Page } from 'react-pdf';
-import { Button } from 'reactstrap';
-import { Loading } from '../Util/LoadingComponent';
-import { alertUtil } from '../Util/alertUtil';
 
 export default class PdfDocumentPresentational extends Component {
 
@@ -12,8 +9,6 @@ export default class PdfDocumentPresentational extends Component {
       currentPage: 1,
       numPages: null
     };
-    alertUtil("sdfdsfs")
-    console.log(props)
     this.onDocumentLoadSuccess = this.onDocumentLoadSuccess.bind(this);
     this.changePage = this.changePage.bind(this);
   }
@@ -33,17 +28,17 @@ export default class PdfDocumentPresentational extends Component {
   });
 
   render () {
-    const { file, onClickPdf } = this.props;
+    const { file } = this.props;
     const { currentPage, numPages } = this.state;
     return (
+      <>
       <div className="pdfContent">
-        <Document file={file}
+        <Document className="contentPdf" file={file}
           onLoadSuccess={this.onDocumentLoadSuccess}
         >
-          <Page  pageNumber={currentPage}/>
-
+          <Page  pageNumber={currentPage} />
         </Document>
-        <div>
+        <div className="pdfButtons">
           <p>
             Page {currentPage || (numPages ? 1 : '--')} of {numPages || '--'}
           </p>
@@ -63,7 +58,7 @@ export default class PdfDocumentPresentational extends Component {
           </button>
         </div>
       </div>
-
+</>
     );
   }
 }

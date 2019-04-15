@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Tooltip from '@material-ui/core/Tooltip';
 import CameraInputField from './CameraInputField';
 
 import ModalCamera from './ModalCamera';
@@ -30,7 +31,15 @@ export default class ButtonCameraAccess extends Component {
     </>
       );
     };
+    const toolTip = ( string, isDisabled,  children) => {
+      if(isDisabled)
+      {
+        return <Tooltip title={ string}  >{children()}</Tooltip>;
+      }
 
+      return children();
+
+    };
     const handleOpen = () => {
       this.setState({
         open: !this.state.open
@@ -43,14 +52,22 @@ export default class ButtonCameraAccess extends Component {
       </ModalCamera>);
 
     }
+
+    const renderButton  = () => {
+      return(  this.props.value !== '' ? image() :
+        <div>
+          <Button disabled={this.props.disabled} onClick={handleOpen}>
+            {this.props.label}
+          </Button>
+        </div>
+      );
+
+    };
+    console.log(this.props.errorTextDisabled);
+
     return (
-      this.props.value !== '' ? image() :
-        <Button disabled={this.props.disabled} onClick={handleOpen}>
-          {this.props.label}
+      toolTip(this.props.errorTextDisabled, this.props.disabled, renderButton));
 
-        </Button>
-
-    );
 
 
 

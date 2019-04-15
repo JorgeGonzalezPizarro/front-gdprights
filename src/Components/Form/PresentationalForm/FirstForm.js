@@ -6,7 +6,7 @@ import { deepEqual } from '../../Util/deepEqual';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import { ButtonEmpresas } from './inputs/ButtonEmpresas';
 import FormButtons from './FormPresentational/FormButtons';
-
+import { TooltipDisabled } from './inputs/TooltipDisabled';
 
 export default class FirstForm extends Component {
   constructor (props) {
@@ -23,7 +23,7 @@ export default class FirstForm extends Component {
   }
 
   componentDidMount () {
-    let errors = null ;
+    let errors = null;
     switch (this.props.currentForm) {
     case 1:
       errors = this.state.requiredFields.filter(field => {
@@ -100,7 +100,7 @@ export default class FirstForm extends Component {
           }
           return false;
         }
-        return true;
+        return false;
 
       });
       return !enableAll.includes(false);
@@ -108,7 +108,6 @@ export default class FirstForm extends Component {
   };
 
   render () {
-
 
     const changeErrorsWhenRenderSecondForm = (isVisibleSecondForm) => {
       if (!isVisibleSecondForm) {
@@ -177,7 +176,6 @@ export default class FirstForm extends Component {
       const setState = async () => {
         return await this.setState({
           ...this.state,
-          // visibleSecondForm: !this.state.visibleSecondForm,
           firstForm: firstFormEnabled,
           secondForm: secondFormDisabled,
           requiredFields
@@ -266,7 +264,7 @@ export default class FirstForm extends Component {
 
           this.setState({
             ...this.state,
-            isValid: this.enableSend()
+            isValid: this.enableSend(),
           }));
       }
     };
@@ -280,7 +278,7 @@ export default class FirstForm extends Component {
         submitFirstForm(data);
       } else {
         this.setState({
-          visibleSecondForm : !this.state.visibleSecondForm
+          visibleSecondForm: !this.state.visibleSecondForm
         });
         submitSecondForm(data);
       }
@@ -308,10 +306,9 @@ export default class FirstForm extends Component {
 
     const toggleEntitiesModal = () => {
 
-      if(!valueSelectSelected())
-      {
+      if (!valueSelectSelected()) {
         this.setState({
-          visibleSecondForm : !this.state.visibleSecondForm
+          visibleSecondForm: !this.state.visibleSecondForm
         });
         submitSecondForm();
 
@@ -319,55 +316,56 @@ export default class FirstForm extends Component {
         return;
       }
       this.setState({
-        visibleSecondForm : !this.state.visibleSecondForm
+        visibleSecondForm: !this.state.visibleSecondForm
       });
       this.props.handleFirstForm(2);
-
 
     };
     console.log(this.props.currentForm);
     return (
       <>
-      <FormFieldSet>
+        <FormFieldSet>
 
-        {
-          this.state.firstForm.map((input, key) => {
-            return (<LeftForm onChange={handleChange} key={key} input={input} requiredFields={this.state.requiredFields}
-              error={this.state.errors.filter((error) => error === input.name)[0]}
-              touched={this.state.touched.filter((touched) => touched === input.name)[0]}
-              onClickVisibleRightForm={handleData}/>
-            );
-          })
-        }
-        {valueSelectSelected() !== false ? (
+          {
+            this.state.firstForm.map((input, key) => {
+              return (
+                <LeftForm onChange={handleChange} key={key} input={input} requiredFields={this.state.requiredFields}
+                  error={this.state.errors.filter((error) => error === input.name)[0]}
+                  touched={this.state.touched.filter((touched) => touched === input.name)[0]}
+                  onClickVisibleRightForm={handleData}/>
+              );
+            })
+          }
+          {valueSelectSelected() !== false ? (
+            <div>
+              <ButtonEmpresas onClick={toggleEntitiesModal} text={valueSelectSelected()}/>
+            </div>
+
+          ) : null
+          }
+          {
+            this.props.currentForm !== 1 ? <RightForm getEntities={this.props.getEntities}
+              data={this.state.secondForm}
+              visible={this.state.visibleSecondForm}
+              requiredFields={this.state.requiredFields}
+              errors={this.state.errors}
+              touched={this.state.touched}
+              onCloseEntitiesList={toggleEntitiesModal}
+              onChange={handleChange}
+            /> : null
+          }
           <div>
-            <ButtonEmpresas onClick={toggleEntitiesModal} text={valueSelectSelected()}/>
+            <ButtonEmpresas onClick={handleData}
+              text={this.props.currentForm === 1 || this.props.currentForm === undefined ? 'Seleccionar del listado' : 'Ingresar datos de forma manual'}/>
           </div>
-
-
-        ) : null
-        }
-        {
-          this.props.currentForm !== 1 ? <RightForm getEntities={this.props.getEntities}
-            data={this.state.secondForm}
-            visible={this.state.visibleSecondForm}
-            requiredFields={this.state.requiredFields}
-            errors={this.state.errors}
-            touched={this.state.touched}
-            onCloseEntitiesList={toggleEntitiesModal}
-            onChange={handleChange}
-          /> : null
-        }
-        <div>
-          <ButtonEmpresas onClick={handleData}
-            text={this.props.currentForm === 1 || this.props.currentForm === undefined ? 'Seleccionar del listado' :   'Ingresar datos de forma manual'}/>
-        </div>
-      </FormFieldSet>
+        </FormFieldSet>
 
         <FormButtons>
           <div>
-            <Button disabled={!this.state.isValid} variant="outlined" color="primary" onClick={submit}>Siguiente
-            </Button>
+            <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
+              children={<Button className={!this.state.isValid ? 'buttonAcceptDisabled' : 'buttonAccept'} disabled={!this.state.isValid} variant="outlined" color="primary"
+                onClick={submit}>Siguiente </Button>}/>
+
           </div>
         </FormButtons>
 

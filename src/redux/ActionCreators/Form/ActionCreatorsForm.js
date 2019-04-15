@@ -86,6 +86,33 @@ export const confirmPdf_ = ( confirmed, requestId) => (dispatch) => {
 
 };
 
+export const downloadPdf_ = (file_) => dispatch => {
+    console.log(file_)
+  const data = async () => await (axios.get(file_, {
+    responseType: 'arraybuffer',
+    headers: {
+      'Accept': 'application/pdf'
+    }
+  }
+  ).then((response) => {
+
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'acta.pdf');
+    document.body.appendChild(link);
+    link.click();
+  }
+
+  ));
+  data();
+
+  alertUtil(data);
+
+
+};
+
+
 export const loadingCountries = () => ({
 
   type: ActionTypes.LOADING_COUNTRIES,

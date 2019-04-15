@@ -29,11 +29,12 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
     lineHeight:' 1.50',
     color: '#4950576b',
     paddingLeft: '16px',
-
+    width: '100%',
     fontWeight: '100',
   };
   const stylesInput = {
     fontSize: '15px',
+    width: '100%',
     paddingLeft: '16px',
   };
   const errorTextField = (string) => {

@@ -340,8 +340,7 @@ div.form-group.field.col-md-12 label{padding-left:8px; padding-bottom:9px;}
 label {
     display: inline-block;
     margin-bottom: .0rem;
-    padding: 17px !important;
-
+    color : #495057bf !important;
 }
 
 input:focus, textarea:focus {
