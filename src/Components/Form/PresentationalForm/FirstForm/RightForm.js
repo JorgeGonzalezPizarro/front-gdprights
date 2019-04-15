@@ -9,21 +9,19 @@ export const RightForm = ({ visible, data, errors, touched, onChange, onCloseEnt
     return null;
   }
 
-  const getValue = (select) => {
-    const value =  select.options.filter((option) => option.id === select.value)[0];
-    return  value !== undefined ? value.name : select.label;
-  };
+
 
   const getOption = (select) => {
     const value = select.options.filter((option) => option.id === select.value)[0];
     return value !== undefined ? value : undefined;
   };
+
+
+
   return (
     <>
-          <EntitiesModalForm onClick={onChange} onCloseEntitiesList={onCloseEntitiesList} selectName ={selectEntities.name} isOpen isLoading={selectEntities.isLoading} selected={getOption(selectEntities)}>
-            <RenderSelectField onChange={onChange}   selectName={selectEntities.name} errors={errors.filter((error) => error === selectEntities.name)[0]} touched ={touched}  options={selectEntities.options}
-              isLoading={selectEntities.isLoading} name={selectEntities.name} defaultValue={selectEntities.defaultValue}
-              label={selectEntities.label} value={getValue(selectEntities)}  selected={selectEntities.defaultValue}/>
+          <EntitiesModalForm isLoading={selectEntities.isLoading} selectEntities={selectEntities} onClick={onChange} errors={errors} touched={touched}  onCloseEntitiesList={onCloseEntitiesList} selectName ={selectEntities.name} isOpen isLoading={selectEntities.isLoading} selected={getOption(selectEntities)}>
+
           </EntitiesModalForm>
     </>
   );

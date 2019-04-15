@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import Dialog from '@material-ui/core/Dialog';
 import { Button, Col, Form, FormGroup } from 'reactstrap';
@@ -13,11 +13,13 @@ import { Row } from 'mdbreact';
 import blue from '@material-ui/core/colors/blue';
 import withStyles from '@material-ui/core/es/styles/withStyles';
 import { FormEntities } from '../FormEntities';
+import { RenderSelectField } from '../../../inputs/RenderSelectField';
+import { alertUtil } from '../../../../../Util/alertUtil';
 
 function Transition (props) {
   return <Slide direction="up" timeout={500} mountOnEnter unmountOnExit {...props} />;
 }
-const img = import('../../../../../../statics/images/cabecera.jpg')
+const img = import('../../../../../../statics/images/cabecera.jpg');
 const styles = {
   background: 'url(../../../../../../statics/images/cabecera.jpg)',
 };
@@ -29,17 +31,33 @@ class EntitiesModalForm extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      selected : props.selected || null,
       open: this.props.isOpen
     };
   }
 
   render () {
+    console.log(this.props);
+    const onChange = (name,value) => {
+      console.log(value);
+
+      const entitie = this.props.selectEntities.options.filter((entitie) => entitie.id === value)[0];
+      console.log(entitie)
+      this.setState({
+        ...this.state,
+        selected :entitie
+      });
+    };
+    const submit = () => {
+      this.props.onChange(this.props.selectEntities.name, this.state.selected.id, true);
+    };
     const handleAccept = () => {
       this.setState({
         open: !this.state.open
       });
       this.props.onClick(this.props.selectName, this.props.selected.id);
     };
+
     const handleClose = () => {
       const handleChangeAndState = async () => await this.setState({
         open : !this.state.open
@@ -47,8 +65,23 @@ class EntitiesModalForm extends Component {
       handleChangeAndState().then(()=> this.props.onCloseEntitiesList());
 
     };
-    const {classes}=this.props;
+    const getValue = () => {
+      const selected = this.state.selected !== null ? this.state.selected.id : '';
+      alertUtil(this.state.selected , selected)
+      const value =  this.props.selectEntities.options.filter((option) => option.id === selected)[0];
+      return  value !== undefined ? value.name : selected.label;
+    };
 
+    const getOption = (select) => {
+      const value = select.options.filter((option) => option.id === select.value)[0];
+      return value !== undefined ? value : undefined;
+    };
+    const defaultValue = () => {
+      return this.state.selected !== null ? this.state.selected.name : null ;
+    }
+    const {classes}=this.props;
+    const {errors, touched}=this.props;
+    const {selectEntities} = this.props;
     return (
 
       <>
@@ -56,11 +89,7 @@ class EntitiesModalForm extends Component {
           fullScreen
           open={this.state.open}
           onClose={handleClose}
-          // BackdropProps={{
-          //   classes: {
-          //     root: classes.backdrop,
-          //   }
-          // }}
+
           BackdropProps={{
             classes: {
               root: classes.root
@@ -94,8 +123,13 @@ class EntitiesModalForm extends Component {
             <Row form >
               <Col md={12}>
                 <FormGroup className="formEntities">
-                  {this.props.children}
+                  <RenderSelectField onChange={onChange}   selectName={selectEntities.name} errors={errors.filter((error) => error === selectEntities.name)[0]} touched ={touched}  options={selectEntities.options}
+                    isLoading={this.props.isLoading} name={selectEntities.name} defaultValue={defaultValue()}
+                    label={selectEntities.label} value={getValue(selectEntities)}  selected={defaultValue()}/>
 
+                  <FormEntities selected={this.state.selected} submit={submit}>
+                    {this.props.children}
+                  </FormEntities>
                 </FormGroup>
               </Col>
             </Row>
