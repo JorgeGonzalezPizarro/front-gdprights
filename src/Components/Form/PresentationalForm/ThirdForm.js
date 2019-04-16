@@ -212,10 +212,10 @@ export default class ThirdForm extends Component {
                 <>
                   {input.title !== undefined ? <label> {input.title}</label> : null}
                   <LeftForm onChange={handleChange} key={input.name} input={input}
-                            requiredFields={this.state.requiredFields}
-                            error={this.state.errors.filter((error) => error === input.name)[0]}
-                            touched={this.state.touched.filter((touched) => touched === input.name)[0]}
-                            onClickVisibleRightForm={handleData}/>
+                    requiredFields={this.state.requiredFields}
+                    error={this.state.errors.filter((error) => error === input.name)[0]}
+                    touched={this.state.touched.filter((touched) => touched === input.name)[0]}
+                    onClickVisibleRightForm={handleData}/>
                 </>);
             })
           }
@@ -224,10 +224,10 @@ export default class ThirdForm extends Component {
           <div>
             <Button color='secondary' onClick={previous}>Volver</Button>
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-                             children={<button
-                               className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
-                               disabled={!this.state.isValid}
-                               onClick={submit}>Enviar </button>}/>
+              children={<button
+                className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
+                disabled={!this.state.isValid}
+                onClick={submit}>Enviar </button>}/>
           </div>
         </FormButtons>
       </>

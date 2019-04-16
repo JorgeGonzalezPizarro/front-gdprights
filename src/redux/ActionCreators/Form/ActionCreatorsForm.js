@@ -59,11 +59,10 @@ export const sendRequest_ = (data) => (dispatch) => {
   response();
 };
 
-export const confirmPdf_ = ( confirmed, requestId) => (dispatch) => {
-  alertUtil(confirmed);
-  alertUtil(requestId);
+export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
+
   if (confirmed === false) {
-    return  dispatch(reject_pdf());
+    return dispatch(rejectPdf_(requestId));
   }
   dispatch(confirm_pdf_loading());
 
@@ -103,15 +102,35 @@ export const downloadPdf_ = (file_) => dispatch => {
     document.body.appendChild(link);
     link.click();
   }
-
   ));
   data();
 
-  alertUtil(data);
-
-
 };
 
+export const rejectPdf_ = (requestId) => (dispatch) => {
+  dispatch(reject_pdf_loading());
+
+  const response = async () => {
+    const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
+      data: {
+        requestId
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+
+    const { status } = response;
+    if (status === 200) {
+      dispatch(reject_pdf());
+    }
+  }
+    ;
+  response();
+
+}
+;
 
 export const loadingCountries = () => ({
 
@@ -184,7 +203,7 @@ export const pdf_success = (requestId, pdf) => ({
     pdf: {
       isLoading: false,
       error: null,
-      file : pdf
+      file: pdf
     },
     requestId
   }
@@ -198,11 +217,24 @@ export const confirm_pdf_loading = () => ({
     error: null,
     confirmed: {
       confirmed: null,
-      isLoading: true
+      isLoading: true,
+      rejected: false
     }
   }
 });
+export const reject_pdf_loading = () => ({
 
+  type: ActionTypes.REJECT_PDF_LOADING,
+  payload: {
+    isLoading: false,
+    error: null,
+    confirmed: {
+      confirmed: false,
+      isLoading: true,
+      rejected: false
+    }
+  }
+});
 export const reject_pdf = () => ({
 
   type: ActionTypes.REJECT_PDF,
@@ -211,7 +243,8 @@ export const reject_pdf = () => ({
     error: null,
     confirmed: {
       confirmed: false,
-      isLoading: false
+      isLoading: false,
+      rejected: true
     }
   }
 });
@@ -225,9 +258,10 @@ export const notification_send_success = () => ({
     confirmed: {
       confirmed: true,
       isLoading: false,
-      notificationSent: true
+      notificationSent: true,
+      rejected: false
 
-    },
+    }
   }
 });
 

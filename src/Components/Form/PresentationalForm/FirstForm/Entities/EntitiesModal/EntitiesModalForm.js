@@ -50,7 +50,7 @@ class EntitiesModalForm extends Component {
       this.setState({
         open: !this.state.open
       });
-      alertUtil(this.props.selectEntities.name , this.state.selected.id)
+      alertUtil(this.props.selectEntities.name, this.state.selected.id);
       this.props.onChange(this.props.selectEntities.name, this.state.selected.id);
     };
 
@@ -124,12 +124,12 @@ class EntitiesModalForm extends Component {
               <Col md={12}>
                 <FormGroup className="formEntities">
                   <RenderSelectField onChange={onChange} selectName={selectEntities.name}
-                                     errors={errors.filter((error) => error === selectEntities.name)[0]}
-                                     touched={touched} options={selectEntities.options}
-                                     isLoading={this.props.isLoading} name={selectEntities.name}
-                                     defaultValue={defaultValue()}
-                                     label={selectEntities.label} value={defaultValue()}
-                                     selected={defaultValue()}/>
+                    errors={errors.filter((error) => error === selectEntities.name)[0]}
+                    touched={touched} options={selectEntities.options}
+                    isLoading={this.props.isLoading} name={selectEntities.name}
+                    defaultValue={defaultValue()}
+                    label={selectEntities.label} value={defaultValue()}
+                    selected={defaultValue()}/>
 
                   <FormEntities selected={this.state.selected} >
                     {this.props.children}
@@ -139,7 +139,7 @@ class EntitiesModalForm extends Component {
             </Row>
           </Form>
           {this.state.selected !== null ? <Button className="btn-primary"
-                                                       onClick={handleAccept}> Aceptar</Button> : null}
+            onClick={handleAccept}> Aceptar</Button> : null}
         </Dialog>
 
       </>

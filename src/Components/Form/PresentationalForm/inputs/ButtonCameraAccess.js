@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import Tooltip from '@material-ui/core/Tooltip';
 import CameraInputField from './CameraInputField';
 
 import ModalCamera from './ModalCamera';
@@ -23,21 +20,22 @@ export default class ButtonCameraAccess extends Component {
 
   render () {
     const image = () => {
+
       return (
         <>
-          <img src={this.props.value} height={100} width={100} alt={this.props.name}/>
-          <a href="#" onClick={() => this.props.onChange(this.props.name, '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
+          <div className="container_dni">
+            <img src={this.props.value} className="image_dni" width="168px" alt={this.props.name}/>
+
+            <div className="middle">
+              <div className="text_dni">
+                <a href="#" onClick={() => this.props.onChange(this.props.name, '', true)}> x </a>
+              </div>
+            </div>
+          </div>
         </>
       );
     };
-    const toolTip = (string, isDisabled, children) => {
-      if (isDisabled) {
-        return <Tooltip title={string}>{children()}</Tooltip>;
-      }
 
-      return children();
-
-    };
     const handleOpen = () => {
       this.setState({
         open: !this.state.open
@@ -50,16 +48,18 @@ export default class ButtonCameraAccess extends Component {
 
     }
 
-
-
-    console.log(this.props)
     return (
-      <div className={this.props.disabled  ? 'marginBotton_Top' : 'margin_bottom'}>
+      <div className={this.props.disabled ? 'marginBotton_Top' : 'margin_bottom'}>
         <TooltipDisabled isDisabled={this.props.disabled} stringToShow={this.props.errorTextDisabled}
-          children={<button
-            className={this.props.disabled ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
-            disabled={this.props.disabled}
-            onClick={handleOpen}> {this.props.label} </button>}/>
+                         children={<>
+                           <button
+                             className={this.props.disabled ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
+                             disabled={this.props.disabled}
+                             onClick={handleOpen}> {this.props.label} </button>
+                           {this.props.value !== '' ? image() : null}
+                         </>
+                         }/>
+
       </div>
     );
   }

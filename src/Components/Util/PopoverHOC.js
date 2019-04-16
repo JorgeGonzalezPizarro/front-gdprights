@@ -9,9 +9,9 @@ export default class PopoverHOC extends Component {
     this.state = {
       anchorEl: null,
 
-    }
-    this.handlePopoverClose=this.handlePopoverClose.bind(this)
-    this.handlePopoverOpen=this.handlePopoverOpen.bind(this)
+    };
+    this.handlePopoverClose=this.handlePopoverClose.bind(this);
+    this.handlePopoverOpen=this.handlePopoverOpen.bind(this);
   }
 
 
@@ -28,11 +28,11 @@ export default class PopoverHOC extends Component {
   render () {
     const { anchorEl } = this.state;
     const WrapperComponent = this.props.children;
-    console.log( this.props.children ,WrapperComponent)
+    console.log( this.props.children, WrapperComponent);
     const open = Boolean(anchorEl);
 
     return (
-        <div  onMouseEnter={this.handlePopoverOpen} onMouseLeave={this.handlePopoverClose}>
+      <div  onMouseEnter={this.handlePopoverOpen} onMouseLeave={this.handlePopoverClose}>
         <WrapperComponent />
         <Popover
           id="mouse-over-popover"
@@ -52,7 +52,7 @@ export default class PopoverHOC extends Component {
         >
           <Typography>I use Popover.</Typography>
         </Popover>
-        </div>
+      </div>
 
     );
   }

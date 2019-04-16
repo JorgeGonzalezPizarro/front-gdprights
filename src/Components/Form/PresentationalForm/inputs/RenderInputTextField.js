@@ -53,6 +53,7 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
         onBlur={onChange}
         disabled={disabled}
         onChange={onChange}
+
       />
       { errorTextField(errorText)}
 

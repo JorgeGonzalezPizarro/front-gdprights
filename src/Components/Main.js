@@ -5,9 +5,9 @@ import {
   fetchEntities_,
   fetchForm,
   sendRequest_,
-  confirmPdf_, downloadPdf_
+  confirmPdf_, downloadPdf_,
+  rejectPdf_
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
-import { Loading } from './Util/LoadingComponent';
 import { NavbarMenu } from './Header/NavbarMenu';
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
 import {FunctionalPDF} from './PDF/FunctionalPDF';
@@ -37,6 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   downloadPdf : (file) => {
     dispatch(downloadPdf_(file));
+  },
+  rejectPdf : (requestId) => {
+
+    dispatch(rejectPdf_(requestId));
   }
 }
 );
@@ -70,11 +74,32 @@ export class Main extends Component {
 
     const onClickPdf = (confirm) => {
       const {requestId} = this.props.form;
-      console.log(this.props);
 
+      if(confirm === true)
+      {
+
+        this.props.confirmPdf(confirm, requestId);
+        return;
+      }
       this.props.confirmPdf(confirm, requestId);
+
+
     };
 
+
+
+    const onClickDownload = () => {
+      const {file} = this.props.form.pdf;
+      this.props.downloadPdf(file);
+
+    };
+
+
+    const rejectPdf = () => {
+
+      const {requestId} = this.props.form;
+      this.props.rejectPdf(requestId);
+    };
     if (this.props.form.isLoading === true) {
 
       return (<>
@@ -84,17 +109,8 @@ export class Main extends Component {
           <ContentMain>
             <LoadingForm/>
           </ContentMain></GridContainer>
-        </>);
+      </>);
     }
-
-    const onClickDownload = () => {
-      const {file} = this.props.form.pdf;
-      this.props.downloadPdf(file);
-
-    };
-
-
-
     return (
 
       <GridContainer>
@@ -109,7 +125,7 @@ export class Main extends Component {
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
             onClick={this.props.sendRequest}/> :
-            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
+            <FunctionalPDF {...this.props.form.pdf}  onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
 

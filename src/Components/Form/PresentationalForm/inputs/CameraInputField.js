@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// Import React FilePond
 import Webcam from 'react-webcam';
 import Button from '@material-ui/core/Button';
 
@@ -9,8 +8,6 @@ export default class CameraInputField  extends Component{
 
   constructor(props) {
     super(props);
-
-    const { name, onChange, label } = props;
   }
 
   setRef = webcam => {
