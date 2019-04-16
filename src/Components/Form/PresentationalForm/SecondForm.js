@@ -223,8 +223,8 @@ export default class SecondForm extends Component {
 
           <Button color='secondary' onClick={this.props.previous}>Volver</Button>
           <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-            children={<Button className={!this.state.isValid ? 'buttonAcceptDisabled' : 'buttonAccept'} disabled={!this.state.isValid} variant="outlined" color="primary"
-              onClick={nextStep}>Siguiente </Button>}/>
+                           children={<button className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'} disabled={!this.state.isValid}
+                                             onClick={nextStep}>Siguiente </button>}/>
 
         </div>
       </FormButtons>

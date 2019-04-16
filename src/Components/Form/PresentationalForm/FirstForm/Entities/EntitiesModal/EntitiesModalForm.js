@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Row } from 'mdbreact';
-import blue from '@material-ui/core/colors/blue';
 import withStyles from '@material-ui/core/es/styles/withStyles';
 import { FormEntities } from '../FormEntities';
 import { RenderSelectField } from '../../../inputs/RenderSelectField';
@@ -19,57 +18,53 @@ import { alertUtil } from '../../../../../Util/alertUtil';
 function Transition (props) {
   return <Slide direction="up" timeout={500} mountOnEnter unmountOnExit {...props} />;
 }
-const img = import('../../../../../../statics/images/cabecera.jpg');
+
 const styles = {
-  background: 'url(../../../../../../statics/images/cabecera.jpg)',
+  background: 'url(../../../../../../statics/images/cabecera.jpg)'
 };
-
-
 
 class EntitiesModalForm extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      selected : props.selected || null,
+      selected: props.selected || null,
       open: this.props.isOpen
     };
   }
 
   render () {
     console.log(this.props);
-    const onChange = (name,value) => {
+    const onChange = (name, value) => {
       console.log(value);
 
       const entitie = this.props.selectEntities.options.filter((entitie) => entitie.id === value)[0];
-      console.log(entitie)
+      console.log(entitie);
       this.setState({
         ...this.state,
-        selected :entitie
+        selected: entitie
       });
     };
-    const submit = () => {
-      this.props.onChange(this.props.selectEntities.name, this.state.selected.id, true);
-    };
+
     const handleAccept = () => {
       this.setState({
         open: !this.state.open
       });
-      this.props.onClick(this.props.selectName, this.props.selected.id);
+      alertUtil(this.props.selectEntities.name , this.state.selected.id)
+      this.props.onChange(this.props.selectEntities.name, this.state.selected.id);
     };
 
     const handleClose = () => {
       const handleChangeAndState = async () => await this.setState({
-        open : !this.state.open
+        open: !this.state.open
       });
-      handleChangeAndState().then(()=> this.props.onCloseEntitiesList());
+      handleChangeAndState().then(() => this.props.onCloseEntitiesList());
 
     };
     const getValue = () => {
       const selected = this.state.selected !== null ? this.state.selected.id : '';
-      alertUtil(this.state.selected , selected)
-      const value =  this.props.selectEntities.options.filter((option) => option.id === selected)[0];
-      return  value !== undefined ? value.name : selected.label;
+      const value = this.props.selectEntities.options.filter((option) => option.id === selected)[0];
+      return value !== undefined ? value.name : selected.label;
     };
 
     const getOption = (select) => {
@@ -77,11 +72,16 @@ class EntitiesModalForm extends Component {
       return value !== undefined ? value : undefined;
     };
     const defaultValue = () => {
-      return this.state.selected !== null ? this.state.selected.name : null ;
-    }
-    const {classes}=this.props;
-    const {errors, touched}=this.props;
-    const {selectEntities} = this.props;
+
+      if (this.props.selectEntities.isLoading === true) {
+        console.log('isLoading');
+        return this.props.selectEntities.valueLoading;
+      }
+      return this.state.selected !== null ? this.state.selected.name : this.props.selectEntities.label;
+    };
+    const { classes } = this.props;
+    const { errors, touched } = this.props;
+    const { selectEntities } = this.props;
     return (
 
       <>
@@ -103,12 +103,12 @@ class EntitiesModalForm extends Component {
           TransitionComponent={Transition}
         >
           <AppBar style={{
-            color : '#76b39d',
-            background : 'white'
+            color: '#76b39d',
+            background: 'white'
           }} className="position-relative">
             <Toolbar style={{
-              color : '#76b39d',
-              background : 'white'
+              color: '#76b39d',
+              background: 'white'
             }}>
               <IconButton color="inherit" onClick={handleClose} aria-label="Close">
                 <CloseIcon/>
@@ -120,31 +120,36 @@ class EntitiesModalForm extends Component {
             </Toolbar>
           </AppBar>
           <Form>
-            <Row form >
+            <Row form>
               <Col md={12}>
                 <FormGroup className="formEntities">
-                  <RenderSelectField onChange={onChange}   selectName={selectEntities.name} errors={errors.filter((error) => error === selectEntities.name)[0]} touched ={touched}  options={selectEntities.options}
-                    isLoading={this.props.isLoading} name={selectEntities.name} defaultValue={defaultValue()}
-                    label={selectEntities.label} value={getValue(selectEntities)}  selected={defaultValue()}/>
+                  <RenderSelectField onChange={onChange} selectName={selectEntities.name}
+                                     errors={errors.filter((error) => error === selectEntities.name)[0]}
+                                     touched={touched} options={selectEntities.options}
+                                     isLoading={this.props.isLoading} name={selectEntities.name}
+                                     defaultValue={defaultValue()}
+                                     label={selectEntities.label} value={defaultValue()}
+                                     selected={defaultValue()}/>
 
-                  <FormEntities selected={this.state.selected} submit={submit}>
+                  <FormEntities selected={this.state.selected} >
                     {this.props.children}
                   </FormEntities>
                 </FormGroup>
               </Col>
             </Row>
           </Form>
-          {this.props.selected !== undefined ? <FormEntities {...this.props.selected} /> : null}
-          {this.props.selected !== undefined ? <Button className="btn-primary"
-            onClick={handleAccept}> Aceptar</Button> : null}
+          {this.state.selected !== null ? <Button className="btn-primary"
+                                                       onClick={handleAccept}> Aceptar</Button> : null}
         </Dialog>
+
       </>
 
     );
   }
 }
+
 EntitiesModalForm.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(EntitiesModalForm);

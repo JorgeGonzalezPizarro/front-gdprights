@@ -87,7 +87,7 @@ export const confirmPdf_ = ( confirmed, requestId) => (dispatch) => {
 };
 
 export const downloadPdf_ = (file_) => dispatch => {
-    console.log(file_)
+  console.log(file_);
   const data = async () => await (axios.get(file_, {
     responseType: 'arraybuffer',
     headers: {

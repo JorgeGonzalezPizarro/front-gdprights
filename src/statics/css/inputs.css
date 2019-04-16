@@ -1,0 +1,115 @@
+.button_primary_gdprights {
+    color: rgb(255, 255, 255);
+    background-color: rgb(118, 179, 157);
+    height: 31px;
+    min-width: 200px;
+    font-weight: 300;
+    /* min-width: 160px; */
+    width: 100%;
+    box-shadow: none !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out 0s;
+    padding: 0px 16px;
+    outline: none !important;
+}
+
+.button_primary_gdprights:hover {
+    background-color: rgb(42, 107, 83);
+}
+
+.button_primary_gdprights_disabled {
+    color: #211b1b;
+    background-color: #ddd;
+    height: 31px;
+    min-width: 200px;
+    border: 1px solid #999999;
+    background-color: #ddd9d0;
+    color: #6b6b6b;
+    font-weight: 300;
+    /* min-width: 160px; */
+    width: 100%;
+    box-shadow: none !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    -webkit-border-image: none;
+    border-image: none;
+    -webkit-border-image: initial;
+    border-image: initial;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.15s ease-in-out 0s;
+    transition: all 0.15s ease-in-out 0s;
+    padding: 0px 16px;
+    outline: none !important;}
+
+.button_primary_gdprights_small {
+    min-width: 100px;
+    font-weight: 300;
+    max-width: 200px;
+}
+/*.filepond--root{*/
+/*     height: 31px !important;*/
+
+/*}*/
+
+.filepond--drop-label {
+    /*height: 31px !important;*/
+    color: rgb(255, 255, 255);
+    background-color: rgb(118, 179, 157);
+    font-weight: 300;
+    box-shadow: none !important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out 0s;
+    padding: 0px 16px;
+    outline: none !important;
+}
+.filepond--drop-label > label {
+    padding: 0px !important;
+    color: white !important;;
+}
+
+
+.filepond--root .filepond--drop-label{
+    min-height:  31px;
+  }
+
+
+.margin_bottom{
+   margin-bottom: 2em;
+}
+.marginBotton_Top{
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+/*.filepond--item {*/
+/*    height: calc(10% - .5em);*/
+/*}*/

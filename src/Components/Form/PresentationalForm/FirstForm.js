@@ -264,6 +264,7 @@ export default class FirstForm extends Component {
 
           this.setState({
             ...this.state,
+            visibleSecondForm : !this.state.visibleSecondForm,
             isValid: this.enableSend(),
           }));
       }
@@ -362,9 +363,11 @@ export default class FirstForm extends Component {
 
         <FormButtons>
           <div>
+
+
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-              children={<Button className={!this.state.isValid ? 'buttonAcceptDisabled' : 'buttonAccept'} disabled={!this.state.isValid} variant="outlined" color="primary"
-                onClick={submit}>Siguiente </Button>}/>
+              children={<button className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'} disabled={!this.state.isValid}
+                onClick={submit}>Siguiente </button>}/>
 
           </div>
         </FormButtons>

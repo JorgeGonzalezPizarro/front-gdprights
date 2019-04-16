@@ -64,6 +64,7 @@ export const firstForm =  {
             type: 'select',
             name: 'entities',
             label: 'Listado de entidades',
+            valueLoading : 'Actualizando entidades...',
             required: false,
             onchange: 'callToApi',
             options: [],

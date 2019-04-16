@@ -37,34 +37,12 @@ export const ImageFile = ({ name, onChange, label, disabled, errorTextDisabled }
   };
 
   const handleRemove = () => onChange(name, '', true);
-  const FilePondRender = () => {
-    return (
-      <div>
-        <FilePond
-          allowMultiple={false}
-          disabled={disabled}
-          id={name}
-          acceptedFileTypes={['image/png', 'image/jpeg']}
-          fileValidateTypeLabelExpectedTypes={'Expects {allButLastType} or {lastType}'}
-          allowFileEncode
-          onupdatefiles={handleFile}
-          beforeRemoveFile={handleRemove}
-          labelIdle={`<span class="filepond--label-action">${label}</span>`}
-        />
-      </div>
-    );
-  };
 
-  const toolTip = (string, isDisabled, children) => {
-    if (isDisabled === true) {
-      return <Tooltip title={string}>{children()}</Tooltip>;
-    }
-    return children();
-  };
   return (
     <>
       <TooltipDisabled stringToShow={errorTextDisabled} isDisabled={disabled}children={
         <FilePond
+
           allowMultiple={false}
           disabled={disabled}
           id={name}

@@ -7,10 +7,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import CameraInputField from './CameraInputField';
 
 import ModalCamera from './ModalCamera';
-import { alertUtil } from '../../../Util/alertUtil';
+import { TooltipDisabled } from './TooltipDisabled';
 
 library.add(faTrash);
-
 
 export default class ButtonCameraAccess extends Component {
 
@@ -26,15 +25,14 @@ export default class ButtonCameraAccess extends Component {
     const image = () => {
       return (
         <>
-        <img src={this.props.value} height={100} width={100} alt={this.props.name}/>
-          <a  href="#"  onClick={()=>this.props.onChange( this.props.name, '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
-    </>
+          <img src={this.props.value} height={100} width={100} alt={this.props.name}/>
+          <a href="#" onClick={() => this.props.onChange(this.props.name, '', true)}> <FontAwesomeIcon icon={faTrash}/></a>
+        </>
       );
     };
-    const toolTip = ( string, isDisabled,  children) => {
-      if(isDisabled)
-      {
-        return <Tooltip title={ string}  >{children()}</Tooltip>;
+    const toolTip = (string, isDisabled, children) => {
+      if (isDisabled) {
+        return <Tooltip title={string}>{children()}</Tooltip>;
       }
 
       return children();
@@ -47,30 +45,23 @@ export default class ButtonCameraAccess extends Component {
     };
 
     if (this.state.open) {
-      alertUtil(this.props);
       return (<ModalCamera> <CameraInputField handleClose={handleOpen} onChange={this.props.onChange} {...this.props}/>
       </ModalCamera>);
 
     }
 
-    const renderButton  = () => {
-      return(  this.props.value !== '' ? image() :
-        <div>
-          <Button disabled={this.props.disabled} onClick={handleOpen}>
-            {this.props.label}
-          </Button>
-        </div>
-      );
 
-    };
-    console.log(this.props.errorTextDisabled);
 
+    console.log(this.props)
     return (
-      toolTip(this.props.errorTextDisabled, this.props.disabled, renderButton));
-
-
-
-
+      <div className={this.props.disabled  ? 'marginBotton_Top' : 'margin_bottom'}>
+        <TooltipDisabled isDisabled={this.props.disabled} stringToShow={this.props.errorTextDisabled}
+          children={<button
+            className={this.props.disabled ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
+            disabled={this.props.disabled}
+            onClick={handleOpen}> {this.props.label} </button>}/>
+      </div>
+    );
   }
 
 }

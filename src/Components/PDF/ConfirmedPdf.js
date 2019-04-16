@@ -7,7 +7,7 @@ import FormButtons from '../Form/PresentationalForm/FormPresentational/FormButto
 
 export const ConfirmedPdf = (props) => {
   console.log(props);
-  const { confirmed , isLoading }  = props;
+  const { confirmed, isLoading }  = props;
   if (isLoading) {
     return <Loading/>;
   }
@@ -17,6 +17,7 @@ export const ConfirmedPdf = (props) => {
       <FormPresentational>
 
         <FormFieldSet>
+          <div className="text-formContent">
           <p>
             Apreciado Usuario
 
@@ -26,30 +27,25 @@ export const ConfirmedPdf = (props) => {
             Una vez confirmada tu dirección de correo GDPRights realizará la notificación a la entidad solicitada. En
             el momento en que se haga efectiva la notificación de tu ejercicio de derechos te enviaremos un correo
             electrónico para que puedas descargar el acta de evidencias de la notificación realizada.
-
+          </p>
+            <p>
             GDPRights es un servicio de EIS Digitall. Actuamos en calidad de Tercero de Confianza, para generar las
             evidencias de las transacciones entre terceros por intermediación.
 
             Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio aquí
           </p>
-          <p>
-            GDPRights es un servicio de EIS Digitall. Actuamos en calidad de Tercero de Confianza, para generar las
-            evidencias de las transacciones entre terceros por intermediación.
 
-            Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio <a
-            href="#"> aquí</a>
 
-          </p>
-
+          </div>
         </FormFieldSet>
 
         <FormButtons>
           <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-                  onClick={() => props.onClickPdf(true)}>Validar</Button>
+            onClick={() => props.onClickPdf(true)}>Validar</Button>
           <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-                  onClick={() => props.onClickPdf(false)}>Rechazar</Button>
+            onClick={() => props.onClickPdf(false)}>Rechazar</Button>
           <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-                  onClick={() => props.onClickDownload()}>Descargar</Button>
+            onClick={() => props.onClickDownload()}>Descargar</Button>
         </FormButtons>
       </FormPresentational>
     );
@@ -59,6 +55,8 @@ export const ConfirmedPdf = (props) => {
     return (
       <FormPresentational>
         <FormFieldSet>
+          <div className="text-formContent">
+
           <p>
             Apreciado Usuario
 
@@ -73,9 +71,10 @@ export const ConfirmedPdf = (props) => {
             evidencias de las transacciones entre terceros por intermediación.
 
             Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio <a
-            href="#"> aquí</a>
+              href="#"> aquí</a>
 
           </p>
+          </div>
         </FormFieldSet>
         <FormButtons>
 

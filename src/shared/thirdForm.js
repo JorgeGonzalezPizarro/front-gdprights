@@ -3,9 +3,10 @@ export const thirdForm =  {
     {
       type: 'file',
       value: '',
+      title :'Imagen Anverso DNI',
       name: 'DNI front',
       required: true,
-      label: 'Imagen DNI frontal',
+      label: 'Selecciona imagen ',
       disabled : false,
       backName : 'dniFront',
       errorTextDisabled : 'Elimine la imagen previa'
@@ -13,10 +14,9 @@ export const thirdForm =  {
     },
     {
       type: 'camera',
-      label: 'Capturar imagen DNI trasero ',
+      label: 'Capturar imagen  ',
       value: '',
       errorTextDisabled : 'Elimine la imagen previa',
-
       name: 'DNI front camera',
       required: true,
       disabled : false,
@@ -25,7 +25,8 @@ export const thirdForm =  {
     },
     {
       type: 'file',
-      label: 'Imagen DNI trasero',
+      label: 'Selecciona Imagen ',
+      title :'Imagen Reverso DNI',
       value: '',
       name: 'DNI back ',
       required: true,
@@ -37,7 +38,7 @@ export const thirdForm =  {
 
     {
       type: 'camera',
-      label: 'Capturar imagen DNI trasero',
+      label: 'Capturar imagen ',
       value: '',
       name: 'DNI back camera',
       required: true,

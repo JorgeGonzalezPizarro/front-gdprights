@@ -186,28 +186,48 @@ export default class ThirdForm extends Component {
     };
 
     enableSend();
+    const previous = () => {
 
+      const stateCopy = this.state.firstForm.map((i) => i);
+      const newState = stateCopy.map((i2) => {
+
+        i2.value = '';
+        i2.disabled = false;
+        i2.required = true;
+        return i2;
+      });
+
+      this.setState({
+        ...this.state,
+        firstForm: newState
+      });
+      this.props.previous();
+    };
     return (
       <>
         <FormFieldSet>
           {
             this.state.firstForm.map((input, key) => {
               return (
-                <LeftForm onChange={handleChange} key={input.name} input={input}
-                  requiredFields={this.state.requiredFields}
-                  error={this.state.errors.filter((error) => error === input.name)[0]}
-                  touched={this.state.touched.filter((touched) => touched === input.name)[0]}
-                  onClickVisibleRightForm={handleData}/>
-              );
+                <>
+                  {input.title !== undefined ? <label> {input.title}</label> : null}
+                  <LeftForm onChange={handleChange} key={input.name} input={input}
+                            requiredFields={this.state.requiredFields}
+                            error={this.state.errors.filter((error) => error === input.name)[0]}
+                            touched={this.state.touched.filter((touched) => touched === input.name)[0]}
+                            onClickVisibleRightForm={handleData}/>
+                </>);
             })
           }
         </FormFieldSet>
         <FormButtons>
           <div>
-            <Button color='secondary' onClick={this.props.previous}>Volver</Button>
+            <Button color='secondary' onClick={previous}>Volver</Button>
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-              children={<Button className={!this.state.isValid ? 'buttonAcceptDisabled' : 'buttonAccept'} disabled={!this.state.isValid} variant="outlined" color="primary"
-                onClick={submit}>Enviar </Button>}/>
+                             children={<button
+                               className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
+                               disabled={!this.state.isValid}
+                               onClick={submit}>Enviar </button>}/>
           </div>
         </FormButtons>
       </>

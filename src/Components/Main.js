@@ -35,9 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   confirmPdf : (confirm, requestId) => {
     dispatch(confirmPdf_(confirm, requestId));
   },
-    downloadPdf : (file) => {
+  downloadPdf : (file) => {
     dispatch(downloadPdf_(file));
-    }
+  }
 }
 );
 
@@ -82,7 +82,7 @@ export class Main extends Component {
 
           <NavbarMenu/>
           <ContentMain>
-        <LoadingForm/>
+            <LoadingForm/>
           </ContentMain></GridContainer>
         </>);
     }
