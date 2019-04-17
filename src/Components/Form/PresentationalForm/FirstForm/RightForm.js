@@ -16,7 +16,7 @@ export const RightForm = ({ visible, data, errors, touched, onChange, onCloseEnt
     const value = select.options.filter((option) => option.id === select.value)[0];
     return value !== undefined ? value : undefined;
   };
-  console.log(selectEntities)
+  console.log(selectEntities.error)
   return (
     <>
       <EntitiesModalForm  selectEntities={selectEntities} onChange={onChange}

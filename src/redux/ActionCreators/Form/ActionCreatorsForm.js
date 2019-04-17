@@ -171,7 +171,9 @@ export const loadingEntities = () => ({
 
   type: ActionTypes.LOADING_ENTITIES,
   payload: {
-    isLoading: true
+    isLoading: true,
+    options:[],
+    error:null
   }
 });
 

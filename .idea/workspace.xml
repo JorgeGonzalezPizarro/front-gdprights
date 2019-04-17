@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f819439-dc35-4bde-83f2-f5774ac8ba51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,11 +44,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
-                  <caret line="193" column="16" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="16" />
+                <state relative-caret-position="196">
+                  <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -61,11 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="196">
-                  <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+                  <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -117,8 +112,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+                <state relative-caret-position="242">
+                  <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#51#0" expanded="true" />
                   </folding>
@@ -329,10 +324,10 @@
         <option value="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" />
+        <option value="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" />
       </list>
     </option>
   </component>
@@ -500,12 +495,12 @@
       <workItem from="1554962947203" duration="19093000" />
       <workItem from="1555258142816" duration="4916000" />
       <workItem from="1555348739771" duration="2447000" />
-      <workItem from="1555481044453" duration="28536000" />
+      <workItem from="1555481044453" duration="28687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333241000" />
+    <option name="totallyTimeSpent" value="333392000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -520,7 +515,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.17175975" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.17175975" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5016234" side_tool="true" weight="0.16965227" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -535,7 +530,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49894625" weight="0.32998884" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4889357" side_tool="true" weight="0.28874025" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.5110643" visible="true" weight="0.38015607" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.5110643" visible="true" weight="0.38015607" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -942,26 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="193" column="16" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-161">
@@ -991,7 +966,27 @@
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
