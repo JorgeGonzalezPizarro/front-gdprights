@@ -61,16 +61,7 @@ class EntitiesModalForm extends Component {
       handleChangeAndState().then(() => this.props.onCloseEntitiesList());
 
     };
-    const getValue = () => {
-      const selected = this.state.selected !== null ? this.state.selected.id : '';
-      const value = this.props.selectEntities.options.filter((option) => option.id === selected)[0];
-      return value !== undefined ? value.name : selected.label;
-    };
 
-    const getOption = (select) => {
-      const value = select.options.filter((option) => option.id === select.value)[0];
-      return value !== undefined ? value : undefined;
-    };
     const defaultValue = () => {
 
       if (this.props.selectEntities.isLoading === true) {
@@ -82,6 +73,7 @@ class EntitiesModalForm extends Component {
     const { classes } = this.props;
     const { errors, touched } = this.props;
     const { selectEntities } = this.props;
+
     return (
 
       <>
@@ -129,7 +121,8 @@ class EntitiesModalForm extends Component {
                     isLoading={this.props.isLoading} name={selectEntities.name}
                     defaultValue={defaultValue()}
                     label={selectEntities.label} value={defaultValue()}
-                    selected={defaultValue()}/>
+                    selected={defaultValue()}
+                                     errorApi = {selectEntities.errorApi}/>
 
                   <FormEntities selected={this.state.selected} >
                     {this.props.children}

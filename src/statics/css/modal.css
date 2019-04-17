@@ -1,0 +1,3 @@
+.overflow-auto-modal > div > div > div > div{
+    overflow-y: auto !important;
+}

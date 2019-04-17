@@ -20,17 +20,24 @@ export const fetchEntities_ = () => (dispatch) => {
   const data = () => {
     const { method, path } = Routes(UseCases.GET_ENTITIES);
     const uri = process.env.REACT_APP_API_URL;
-    console.log(method,path,uri)
+    console.log(method, path, uri);
 
     return axios({
       method,
       url: `${uri}${path}`
 
     }).then(result => {
+
       return result.data;
     }).then((data) => {
+      alertUtil("aa")
       dispatch(fetchEntities(data));
-    });
+    }).catch((error) =>  {
+      alertUtil("b");
+      if(error.status !==200){
+      return dispatch(errorFetchEntities());
+
+    }});
   };
   data();
 };
@@ -38,9 +45,9 @@ export const fetchCountries_ = (entitieId) => (dispatch) => {
 
   dispatch(loadingCountries());
   setTimeout(() => {
-      dispatch(fetchCountries(entitieId));
-    }
-    , 1000
+    dispatch(fetchCountries(entitieId));
+  }
+  , 1000
   );
 };
 
@@ -98,48 +105,48 @@ export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
 export const downloadPdf_ = (file_) => dispatch => {
   console.log(file_);
   const data = async () => await (axios.get(file_, {
-      responseType: 'arraybuffer',
-      headers: {
-        'Accept': 'application/pdf'
-      }
+    responseType: 'arraybuffer',
+    headers: {
+      'Accept': 'application/pdf'
     }
+  }
   ).then((response) => {
 
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'acta.pdf');
-      document.body.appendChild(link);
-      link.click();
-    }
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'acta.pdf');
+    document.body.appendChild(link);
+    link.click();
+  }
   ));
   data();
 
 };
 
 export const rejectPdf_ = (requestId) => (dispatch) => {
-    dispatch(reject_pdf_loading());
+  dispatch(reject_pdf_loading());
 
-    const response = async () => {
-        const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
-            data: {
-              requestId
-            },
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-        );
-
-        const { status } = response;
-        if (status === 200) {
-          dispatch(reject_pdf());
-        }
+  const response = async () => {
+    const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
+      data: {
+        requestId
+      },
+      headers: {
+        'Content-Type': 'application/json'
       }
-    ;
-    response();
+    }
+    );
 
+    const { status } = response;
+    if (status === 200) {
+      dispatch(reject_pdf());
+    }
   }
+    ;
+  response();
+
+}
 ;
 
 export const loadingCountries = () => ({
@@ -173,7 +180,18 @@ export const fetchEntities = (entities) => ({
   type: ActionTypes.FETCH_ENTITIES,
   payload: {
     options: entities,
-    isLoading: false
+    isLoading: false,
+    error : null
+  }
+});
+export const errorFetchEntities = () => ({
+
+  type: ActionTypes.ERROR_FETCH_ENTITIES,
+  payload: {
+    options: [],
+    isLoading: false,
+    error : true,
+    errorMessage : 'No hay entidades disponibles'
   }
 });
 

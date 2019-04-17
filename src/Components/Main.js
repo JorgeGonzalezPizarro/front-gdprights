@@ -15,39 +15,37 @@ import { FunctionalPDF } from './PDF/FunctionalPDF';
 import GridContainer from './Grid/GridContainer';
 import ContentMain from './Grid/ContentMain';
 import { LoadingForm } from './Util/LoadingForm';
-import {DialogModal} from './Util/DialogModal';
-import { Help } from './Pages/Help';
-import { Dialog } from 'material-ui';
-import { alertUtil } from './Util/alertUtil';
+import { ApiError } from './Errors/ApiError';
+import { Error500 } from './Errors/Error500';
 
 const mapStateToProps = (state) => {
   return { form: state.form, ...state.form.pdf };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchForm: () => {
-    dispatch(fetchForm());
-  },
-  sendRequest: (data) => {
-    dispatch(sendRequest_(data));
-  },
-  fetchEntities: () => {
-    dispatch(fetchEntities_());
-  },
-  fetchCountries: (id) => {
-    dispatch(fetchCountries_(id));
-  },
-  confirmPdf: (confirm, requestId) => {
-    dispatch(confirmPdf_(confirm, requestId));
-  },
-  downloadPdf: (file) => {
-    dispatch(downloadPdf_(file));
-  },
-  rejectPdf: (requestId) => {
+    fetchForm: () => {
+      dispatch(fetchForm());
+    },
+    sendRequest: (data) => {
+      dispatch(sendRequest_(data));
+    },
+    fetchEntities: () => {
+      dispatch(fetchEntities_());
+    },
+    fetchCountries: (id) => {
+      dispatch(fetchCountries_(id));
+    },
+    confirmPdf: (confirm, requestId) => {
+      dispatch(confirmPdf_(confirm, requestId));
+    },
+    downloadPdf: (file) => {
+      dispatch(downloadPdf_(file));
+    },
+    rejectPdf: (requestId) => {
 
-    dispatch(rejectPdf_(requestId));
+      dispatch(rejectPdf_(requestId));
+    }
   }
-}
 );
 
 export class Main extends Component {
@@ -58,7 +56,6 @@ export class Main extends Component {
       pdf: props.form.pdf
     };
 
-    this.openHelpModal = this.openHelpModal.bind(this)
   }
 
   componentDidMount () {
@@ -68,14 +65,6 @@ export class Main extends Component {
   shouldComponentUpdate (nextProps, nextState, nextContext) {
     return true;
   }
-
-  openHelpModal = () => {
-
-    return (<>
-      <DialogModal open>
-        <Help/>
-      </DialogModal></>);
-  };
 
   render () {
     const getEntities = () => {
@@ -108,27 +97,30 @@ export class Main extends Component {
 
       return (<>
         <GridContainer>
-
-          <NavbarMenu help={this.openHelpModal} />
+          <NavbarMenu help={this.openHelpModal}/>
           <ContentMain>
             <LoadingForm/>
           </ContentMain></GridContainer>
       </>);
     }
+    if (this.props.form.error === true) {
 
-
+      return (<>
+        <ApiError><Error500/></ApiError>
+      </>);
+    }
 
     return (
       <GridContainer>
-        <NavbarMenu help={this.openHelpModal}/>
+        <NavbarMenu/>
         <ContentMain>
           {this.props.form.pdf === undefined ? <FunctionalForm getEntities={getEntities}
-            fetchCountrieForEntitie={fetchCountrieForEntitie}
-            firstForm={this.props.form.firstForm}
-            secondForm={this.props.form.secondForm}
-            thirdForm={this.props.form.thirdForm}
-            currentStep={this.props.form.currentStep}
-            onClick={this.props.sendRequest}/> :
+                                                               fetchCountrieForEntitie={fetchCountrieForEntitie}
+                                                               firstForm={this.props.form.firstForm}
+                                                               secondForm={this.props.form.secondForm}
+                                                               thirdForm={this.props.form.thirdForm}
+                                                               currentStep={this.props.form.currentStep}
+                                                               onClick={this.props.sendRequest}/> :
             <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
