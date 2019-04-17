@@ -51,14 +51,14 @@ export default class ButtonCameraAccess extends Component {
     return (
       <div className={this.props.disabled ? 'marginBotton_Top' : 'margin_bottom'}>
         <TooltipDisabled isDisabled={this.props.disabled} stringToShow={this.props.errorTextDisabled}
-                         children={<>
+          children={<>
                            <button
                              className={this.props.disabled ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
                              disabled={this.props.disabled}
                              onClick={handleOpen}> {this.props.label} </button>
                            {this.props.value !== '' ? image() : null}
                          </>
-                         }/>
+          }/>
 
       </div>
     );

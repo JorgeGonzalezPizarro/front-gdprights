@@ -14,13 +14,14 @@ export const RenderInputCheck = ({ name, label, defaultValue, touched, error, on
   };
   return (
     <>
+      <div id="instanceCheckboxes" style={{ padding : '10px 0px ', flexDirection: 'row' }}>
+
       <FormControlLabel
         control={
           <Checkbox
             onChange={handleChange}
             value={value}
             name={name}
-
             color="primary"
           />
 
@@ -30,7 +31,9 @@ export const RenderInputCheck = ({ name, label, defaultValue, touched, error, on
 
       />
       {errorTextField(errorText)}
-    </>
+      </div>
+      </>
+
   );
 };
 

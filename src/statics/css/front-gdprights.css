@@ -17,7 +17,13 @@ html , #root , .App  {
     grid-template-rows: [margin-top] 0  [wrapperMainRow] 1fr [marginButton] 100px;
 }
 
-
+@media (max-width: 768px) {
+    .mainGrid {
+        display: grid;
+        grid-template-columns: [left-margin] 5px [wrapperMainColumn] 1fr [right-margin] 5px;
+        grid-template-rows: [margin-top] 0  [wrapperMainRow] 1fr [marginButton] 100px;
+    }
+}
 .wrapperMain{
     grid-column: wrapperMainColumn ;
     grid-row: wrapperMainRow ;
@@ -38,6 +44,7 @@ html , #root , .App  {
 
 
 .contentMain {
+    margin-top: 20%;
     grid-row: body;
     grid-column: wrapper;
     display: grid;
@@ -50,18 +57,20 @@ html , #root , .App  {
 
 @media (max-width: 768px) {
     .contentMain {
-
         display: flex;
         width: 100%;
         flex-direction: column;
         margin: 0 auto;
+    }
+    .contentMain > * {
+        margin-top: 20px;
     }
 }
 .formContent {
     grid-column: firstForm ;
     grid-row: mainContent;
     display : grid;
-    grid-template-rows: [titleForm] 80px [contentForm] 1fr [buttonsForm] 80px;
+    grid-template-rows: [titleForm] 60px [contentForm] 1fr [buttonsForm] 60px;
     background-color: #f2f2f2;
     border-radius: 23px;
     align-items: start;
@@ -105,7 +114,9 @@ html , #root , .App  {
     justify-self: center;
     display: inline-flex;
 }
-
+.formButtons > * > * {
+    margin: 0 5px;
+}
 .contentPdf {
     grid-row: contentPdf;
 }
@@ -125,6 +136,27 @@ html , #root , .App  {
     padding-top: 2em;
 }
 
+.text-formContent > .buttons {
+    max-width: 70%;
+
+}
+
+.gridButtons {
+    display: grid;
+    grid-template-columns: [first] 1fr [second] 4fr;
+    grid-column-gap: 5px;
+}
+
+.firstButton {
+    grid-column: first;
+}
+
+.secondButton {
+    grid-column: second;
+}
+.secondButton > *  {
+    width: 100%;
+}
 
 
 
@@ -155,19 +187,9 @@ input[type="checkbox"]{
 }
 
 
-.buttonAccept:hover {
-    color: #308969;
-    border: 1px solid #28a745;
-}
-.buttonAccept {
-    color: #308969 !important;
-    border: 1px solid #28a745 !important;
-}
 
-.buttonAcceptDisabled {
-    color: rgba(0, 0, 0, 0.26);
-    border: 1px solid rgba(0, 0, 0, 0.26);
-}
+
+
 .modalEntities {
     background: transparent !important;
 }

@@ -5,18 +5,28 @@ import { firstForm } from '../../../shared/firstForm';
 import { secondForm } from '../../../shared/secondForm';
 import { thirdForm } from '../../../shared/thirdForm';
 import { alertUtil } from '../../../Components/Util/alertUtil';
+import { Routes } from '../../../shared/Routes/Routes';
+import * as UseCases from '../../../shared/Routes/UseCases';
 
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());
   setTimeout(() => {
     return dispatch(fetch(firstForm, secondForm, thirdForm));
-  }, 500);
+  }, 300);
 };
 
 export const fetchEntities_ = () => (dispatch) => {
   dispatch(loadingEntities());
   const data = () => {
-    return axios.get('https://localhost/gdprights/public/index.php/entities/').then(result => {
+    const { method, path } = Routes(UseCases.GET_ENTITIES);
+    const uri = process.env.REACT_APP_API_URL;
+    console.log(method,path,uri)
+
+    return axios({
+      method,
+      url: `${uri}${path}`
+
+    }).then(result => {
       return result.data;
     }).then((data) => {
       dispatch(fetchEntities(data));
@@ -28,9 +38,9 @@ export const fetchCountries_ = (entitieId) => (dispatch) => {
 
   dispatch(loadingCountries());
   setTimeout(() => {
-    dispatch(fetchCountries(entitieId));
-  }
-  , 1000
+      dispatch(fetchCountries(entitieId));
+    }
+    , 1000
   );
 };
 
@@ -88,48 +98,48 @@ export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
 export const downloadPdf_ = (file_) => dispatch => {
   console.log(file_);
   const data = async () => await (axios.get(file_, {
-    responseType: 'arraybuffer',
-    headers: {
-      'Accept': 'application/pdf'
+      responseType: 'arraybuffer',
+      headers: {
+        'Accept': 'application/pdf'
+      }
     }
-  }
   ).then((response) => {
 
-    const url = window.URL.createObjectURL(new Blob([response.data]));
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'acta.pdf');
-    document.body.appendChild(link);
-    link.click();
-  }
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'acta.pdf');
+      document.body.appendChild(link);
+      link.click();
+    }
   ));
   data();
 
 };
 
 export const rejectPdf_ = (requestId) => (dispatch) => {
-  dispatch(reject_pdf_loading());
+    dispatch(reject_pdf_loading());
 
-  const response = async () => {
-    const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
-      data: {
-        requestId
-      },
-      headers: {
-        'Content-Type': 'application/json'
+    const response = async () => {
+        const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
+            data: {
+              requestId
+            },
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+
+        const { status } = response;
+        if (status === 200) {
+          dispatch(reject_pdf());
+        }
       }
-    }
-    );
-
-    const { status } = response;
-    if (status === 200) {
-      dispatch(reject_pdf());
-    }
-  }
     ;
-  response();
+    response();
 
-}
+  }
 ;
 
 export const loadingCountries = () => ({

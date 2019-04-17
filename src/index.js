@@ -10,6 +10,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './statics/css/style_gdprights.css';
 import './statics/css/front-gdprights.css';
 import './statics/css/inputs.css';
+import './statics/css/modal.css';
+require('dotenv').config();
+
 // import './statics/css/style.css'
 ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-social": "^5.1.1",
+    "dotenv": "^7.0.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -47,10 +48,12 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start .env",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js",
+    "buildProd": "webpack --env.ENVIRONMENT=production --config webpack.config.build.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -67,6 +70,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
-    "pretty-quick": "^1.10.0"
+    "pretty-quick": "^1.10.0",
+    "webpack-cli": "^3.3.0"
   }
 }

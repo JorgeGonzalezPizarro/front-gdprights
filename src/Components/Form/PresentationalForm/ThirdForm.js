@@ -4,6 +4,9 @@ import { LeftForm } from './FirstForm/LeftForm';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import FormButtons from './FormPresentational/FormButtons';
 import { TooltipDisabled } from './inputs/TooltipDisabled';
+import { ButtonAccept, ButtonAcceptDisabled } from '../../Util/Buttons/ButtonAccept';
+import { ButtonReject } from '../../Util/Buttons/ButtonReject';
+import { ButtonSend, ButtonSendDisabled } from '../../Util/Buttons/ButtonSend';
 
 export default class ThirdForm extends Component {
   constructor (props) {
@@ -222,12 +225,12 @@ export default class ThirdForm extends Component {
         </FormFieldSet>
         <FormButtons>
           <div>
-            <Button color='secondary' onClick={previous}>Volver</Button>
+            <ButtonReject text="Volver" onClick={previous}/>
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-              children={<button
-                className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'}
-                disabled={!this.state.isValid}
-                onClick={submit}>Enviar </button>}/>
+                             children={this.state.isValid === true ? <ButtonSend text="Enviar"
+                                                                                   onClick={submit}/> : <ButtonSendDisabled disabled={this.state.isValid} text="Enviar"
+                                                                                                                                                      onClick={submit}/>}
+            />
           </div>
         </FormButtons>
       </>

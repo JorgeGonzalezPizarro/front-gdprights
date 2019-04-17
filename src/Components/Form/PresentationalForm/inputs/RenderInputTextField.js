@@ -57,28 +57,6 @@ const InputTextField = ({ name, label, value,  custom, touched, error, onChange,
       />
       { errorTextField(errorText)}
 
-      {/* <AvForm> */}
-
-      {/* <AvField name={name} label={label} validate={{ */}
-      {/* required: {value: true, errorMessage: "Please enter a username"}, */}
-      {/* pattern: {value: '^[A-Za-z0-9]+$', errorMessage: 'Your username must be composed only with letter and numbers'}, */}
-      {/* minLength: {value: 6, errorMessage: 'Your username must be between 6 and 16 characters'}, */}
-      {/* maxLength: {value: 16, errorMessage: 'Your username must be between 6 and 16 characters'} */}
-      {/* }} /> */}
-      {/* </AvForm> */}
-      {/* <TextField   hintText={label} */}
-      {/* floatingLabelStyle={styles} */}
-      {/* floatingLabelFocusStyle={stylesInput} */}
-      {/* name={name} */}
-      {/* inputStyle={stylesInput} */}
-      {/* floatingLabelText={label} */}
-
-      {/* value={value} */}
-      {/* onBlur={onChange} */}
-      {/* disabled={disabled} */}
-      {/* errorText={touched !== undefined &&  error !== undefined ? 'Required' : null} */}
-      {/* onChange={onChange} */}
-      {/* /> */}
       </>
   );
 };

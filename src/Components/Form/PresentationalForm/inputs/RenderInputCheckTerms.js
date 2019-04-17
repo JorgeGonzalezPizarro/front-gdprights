@@ -9,7 +9,7 @@ const styleLink = {
   textAlign: 'center',
   flex: '0 0 auto',
   color: 'rgba(0, 0, 0, 0.54)',
-  padding: '12px',
+  padding: '12px 2px',
   overflow: 'visible',
   transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   borderRadius: '50%'
@@ -63,10 +63,7 @@ export default class RenderInputCheckTerms extends Component {
 
   render () {
 
-    const label = (label) => {
-      return <Button className="btn btn-primary1 btn-sm btn-block" color="link"
-        onClick={this.handleClickOpen}>{label}</Button>;
-    };
+
 
     return (
       <div id="instanceCheckboxes" style={{ padding : '10px 0px ', display: 'inline-flex', flexDirection: 'row' }}>

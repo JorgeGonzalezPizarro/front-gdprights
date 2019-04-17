@@ -2,7 +2,7 @@
     color: rgb(255, 255, 255);
     background-color: rgb(118, 179, 157);
     height: 31px;
-    min-width: 200px;
+    min-width: 150px;
     font-weight: 300;
     width: 100%;
     box-shadow: none !important;
@@ -30,7 +30,7 @@
     color: #211b1b;
     background-color: #ddd;
     height: 31px;
-    min-width: 200px;
+    min-width: 150px;
     border: 1px solid #999999;
     font-weight: 300;
     width: 100%;
@@ -102,7 +102,7 @@
 
 .container_dni {
     position: relative;
-    width: 80%;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -177,16 +177,76 @@
     box-shadow: 0 0 0 0.125em hsla(0,0%,100%,.9);
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    border: 1px solid green;
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
+
+
+.customButton {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 1.5rem;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.8px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+    outline: none;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 23px;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.225);
 }
+.customButton:hover {
+    text-decoration: none;
+    box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.225);
+}
+
+.customButton.buttonReject {
+    color: #fff;
+    background-color: #f44336;
+}
+.buttonReject:hover {
+    color: #fff;
+    background-color: #f41400;
+}
+
+.buttonAccept {
+    color: white !important;
+    border: 1px solid #28a745 !important;
+    background-color: #76b39d;
+}
+.buttonAccept:hover {
+    color: #308969;
+    border: 1px solid #28a745;
+    background-color: #1DB375;
+}
+
+.buttonAcceptDisabled{
+    cursor: default !important;
+    color: #9e9e9e !important;
+    box-shadow: none !important;
+}
+.buttonDownload{
+    background: #016674;
+    border: 1px solid #d2dcdb !important;
+}.buttonDownload:hover{
+    background: #2a7472;
+
+}
+
+.iconSend {
+    float: right !important;
+    margin-top: 5px;
+    padding-left: 4px;
+}
+

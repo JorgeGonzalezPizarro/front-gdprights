@@ -7,6 +7,7 @@ import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import { ButtonEmpresas } from './inputs/ButtonEmpresas';
 import FormButtons from './FormPresentational/FormButtons';
 import { TooltipDisabled } from './inputs/TooltipDisabled';
+import { ButtonAccept, ButtonAcceptDisabled } from '../../Util/Buttons/ButtonAccept';
 
 export default class FirstForm extends Component {
   constructor (props) {
@@ -366,8 +367,10 @@ export default class FirstForm extends Component {
 
 
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-              children={<button className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'} disabled={!this.state.isValid}
-                onClick={submit}>Siguiente </button>}/>
+              children={this.state.isValid === true ? <ButtonAccept text="Siguiente"
+                onClick={submit}>Siguiente </ButtonAccept> : <ButtonAcceptDisabled disabled={this.state.isValid} text="Siguiente"
+                onClick={submit}/>}
+            />
 
           </div>
         </FormButtons>

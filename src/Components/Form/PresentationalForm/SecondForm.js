@@ -5,6 +5,8 @@ import { TutorForm } from './FirstForm/TutorForm';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import FormButtons from './FormPresentational/FormButtons';
 import { TooltipDisabled } from './inputs/TooltipDisabled';
+import { ButtonAccept, ButtonAcceptDisabled } from '../../Util/Buttons/ButtonAccept';
+import { ButtonReject } from '../../Util/Buttons/ButtonReject';
 
 export default class SecondForm extends Component {
   constructor (props) {
@@ -221,10 +223,11 @@ export default class SecondForm extends Component {
       <FormButtons>
         <div>
 
-          <Button color='secondary' onClick={this.props.previous}>Volver</Button>
+          <ButtonReject text={'Volver'} onClick={this.props.previous}/>
           <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-            children={<button className={!this.state.isValid ? 'button_primary_gdprights_disabled' : 'button_primary_gdprights'} disabled={!this.state.isValid}
-              onClick={nextStep}>Siguiente </button>}/>
+            children={this.state.isValid ===true ? <ButtonAccept text={'Siguiente'} onClick={nextStep} disabled={this.state.isValid}
+            /> :  <ButtonAcceptDisabled disabled={!this.state.isValid} text="Siguiente"
+              onClick={nextStep}/>}/>
 
         </div>
       </FormButtons>

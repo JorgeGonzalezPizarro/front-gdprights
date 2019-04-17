@@ -13,7 +13,7 @@ h5 {
 p{font-family: 'Open Sans';
     font-size:15px;}
 input{font-family: 'Open Sans'; font-weight:100;}
-label{font-family: 'Open Sans';font-weight:100;     padding: 10px 20px 30px !important; line-height: 1.50;
+label{font-family: 'Open Sans';font-weight:100;     padding: 10px 10px 10px !important; line-height: 1.50;
     color: #495057 !important;
     }
 a{font-family: 'Barlow';}
@@ -359,7 +359,7 @@ input:placeholder-shown + label {
     cursor: text;
     max-width: 66.66%;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
     text-overflow: ellipsis;
     transform-origin: left bottom;
     transform: translate(0, 2.125rem) scale(1.5);
@@ -376,7 +376,7 @@ textarea:placeholder-shown + label {
     cursor: text;
     max-width: 66.66%;
     white-space: nowrap;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
     transform-origin: left bottom;
     transform: translate(0, 2.125rem) scale(1.5);
@@ -1353,7 +1353,7 @@ ul{list-style: none !important;}
     width:100vw;
     height:100vh;
     display: block;
-    overflow: hidden;
+    overflow: auto;
 
     /*min-height: 914px;*/
 }
@@ -1756,7 +1756,7 @@ input[type="file"] {
 
 
 .custom-file-label {
-    overflow: hidden;
+    overflow: auto;
 }
 
 

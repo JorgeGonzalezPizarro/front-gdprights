@@ -81,7 +81,7 @@ html,
 
 /*Para que no se mueva la web lateralmente*/
 
-.overflow-div { max-width: 100%; position: relative; overflow: hidden; }
+.overflow-div { max-width: 100%; position: relative; overflow: auto; }
 
 /* Login */
 
@@ -322,7 +322,7 @@ iframe {
 
 body.modal-open {
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 .modal-dialog {margin-top: 90px;}
 
@@ -1206,7 +1206,7 @@ textarea.form-control {
 }
 .contact-detail p,
 .contact-detail address {
-    overflow: hidden;
+    overflow: auto;
 }
 .contact-detail a {
     color: #496174;

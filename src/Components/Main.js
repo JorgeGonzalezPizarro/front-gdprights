@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  confirmPdf_,
+  downloadPdf_,
   fetchCountries_,
   fetchEntities_,
   fetchForm,
-  sendRequest_,
-  confirmPdf_, downloadPdf_,
-  rejectPdf_
+  rejectPdf_,
+  sendRequest_
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { NavbarMenu } from './Header/NavbarMenu';
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
-import {FunctionalPDF} from './PDF/FunctionalPDF';
-import  GridContainer  from './Grid/GridContainer';
+import { FunctionalPDF } from './PDF/FunctionalPDF';
+import GridContainer from './Grid/GridContainer';
 import ContentMain from './Grid/ContentMain';
 import { LoadingForm } from './Util/LoadingForm';
+import {DialogModal} from './Util/DialogModal';
+import { Help } from './Pages/Help';
+import { Dialog } from 'material-ui';
+import { alertUtil } from './Util/alertUtil';
 
 const mapStateToProps = (state) => {
   return { form: state.form, ...state.form.pdf };
@@ -32,13 +37,13 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCountries: (id) => {
     dispatch(fetchCountries_(id));
   },
-  confirmPdf : (confirm, requestId) => {
+  confirmPdf: (confirm, requestId) => {
     dispatch(confirmPdf_(confirm, requestId));
   },
-  downloadPdf : (file) => {
+  downloadPdf: (file) => {
     dispatch(downloadPdf_(file));
   },
-  rejectPdf : (requestId) => {
+  rejectPdf: (requestId) => {
 
     dispatch(rejectPdf_(requestId));
   }
@@ -52,6 +57,8 @@ export class Main extends Component {
       form: props.form,
       pdf: props.form.pdf
     };
+
+    this.openHelpModal = this.openHelpModal.bind(this)
   }
 
   componentDidMount () {
@@ -62,6 +69,14 @@ export class Main extends Component {
     return true;
   }
 
+  openHelpModal = () => {
+
+    return (<>
+      <DialogModal open>
+        <Help/>
+      </DialogModal></>);
+  };
+
   render () {
     const getEntities = () => {
       this.props.fetchEntities();
@@ -71,53 +86,42 @@ export class Main extends Component {
       this.props.fetchCountries(id);
     };
 
-
     const onClickPdf = (confirm) => {
-      const {requestId} = this.props.form;
+      const { requestId } = this.props.form;
 
-      if(confirm === true)
-      {
+      if (confirm === true) {
 
         this.props.confirmPdf(confirm, requestId);
         return;
       }
       this.props.confirmPdf(confirm, requestId);
 
-
     };
 
-
-
     const onClickDownload = () => {
-      const {file} = this.props.form.pdf;
+      const { file } = this.props.form.pdf;
       this.props.downloadPdf(file);
 
     };
 
-
-    const rejectPdf = () => {
-
-      const {requestId} = this.props.form;
-      this.props.rejectPdf(requestId);
-    };
     if (this.props.form.isLoading === true) {
 
       return (<>
         <GridContainer>
 
-          <NavbarMenu/>
+          <NavbarMenu help={this.openHelpModal} />
           <ContentMain>
             <LoadingForm/>
           </ContentMain></GridContainer>
       </>);
     }
+
+
+
     return (
-
       <GridContainer>
-
-        <NavbarMenu/>
+        <NavbarMenu help={this.openHelpModal}/>
         <ContentMain>
-
           {this.props.form.pdf === undefined ? <FunctionalForm getEntities={getEntities}
             fetchCountrieForEntitie={fetchCountrieForEntitie}
             firstForm={this.props.form.firstForm}
@@ -125,7 +129,7 @@ export class Main extends Component {
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
             onClick={this.props.sendRequest}/> :
-            <FunctionalPDF {...this.props.form.pdf}  onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
+            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
 
