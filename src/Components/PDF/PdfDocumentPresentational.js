@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Document, Page } from 'react-pdf';
+import { ButtonsNavigateNext, ButtonsNavigateBefore } from '../Util/Buttons/ButtonsNavigate';
+import { FormHelperText } from '@material-ui/core';
 
 export default class PdfDocumentPresentational extends Component {
 
@@ -39,23 +41,23 @@ export default class PdfDocumentPresentational extends Component {
           <Page  pageNumber={currentPage} />
         </Document>
         <div className="pdfButtons">
-          <p>
-            Page {currentPage || (numPages ? 1 : '--')} of {numPages || '--'}
-          </p>
-          <button
+          <FormHelperText>
+            Página {currentPage || (numPages ? 1 : '--')} de {numPages || '--'}
+          </FormHelperText>
+          <ButtonsNavigateBefore
             type="button"
             disabled={currentPage <= 1}
             onClick={ () => this.changePage(-1)}
           >
             Previous
-          </button>
-          <button
+          </ButtonsNavigateBefore>
+          <ButtonsNavigateNext
             type="button"
             disabled={currentPage >= numPages}
             onClick={() => this.changePage(+1)}
           >
             Next
-          </button>
+          </ButtonsNavigateNext>
         </div>
       </div>
 </>

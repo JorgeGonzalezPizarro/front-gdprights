@@ -8,6 +8,11 @@ import { alertUtil } from '../../../Components/Util/alertUtil';
 import { Routes } from '../../../shared/Routes/Routes';
 import * as UseCases from '../../../shared/Routes/UseCases';
 
+export const initialState = () => (dispatch) => {
+  setTimeout(() => {
+    return dispatch(returnToFirstStep());
+  }, 300);
+};
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());
   setTimeout(() => {
@@ -20,7 +25,6 @@ export const fetchEntities_ = () => (dispatch) => {
   const data = () => {
     const { method, path } = Routes(UseCases.GET_ENTITIES);
     const uri = process.env.REACT_APP_API_URL;
-    console.log(method, path, uri);
 
     return axios({
       method,
@@ -30,51 +34,60 @@ export const fetchEntities_ = () => (dispatch) => {
 
       return result.data;
     }).then((data) => {
-      alertUtil("aa")
       dispatch(fetchEntities(data));
     }).catch((error) =>  {
-      alertUtil("b");
       if(error.status !==200){
-      return dispatch(errorFetchEntities());
+        return dispatch(errorFetchEntities());
 
-    }});
+      }});
   };
   data();
 };
-export const fetchCountries_ = (entitieId) => (dispatch) => {
 
-  dispatch(loadingCountries());
-  setTimeout(() => {
-    dispatch(fetchCountries(entitieId));
-  }
-  , 1000
-  );
-};
 
-export const fetchCountries = (entitieId) => ({
-  type: ActionTypes.FETCH_COUNTRIES,
-  payload: {
-    entitieId,
-    isLoading: false
-  }
-});
 
-export const sendRequest_ = (data) => (dispatch) => {
-  alertUtil(data);
+export const pdfPost = (data) => (dispatch) => {
   dispatch(pdf_loading());
-
+  const { method, path } = Routes(UseCases.POST_PDF);
+  const uri = process.env.REACT_APP_API_URL;
+  console.log(method,path,uri)
   const response = async () => {
-
-    const response = await axios.post('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', Object.assign({}, data), {
-      headers: {
-        'Content-Type': 'application/json'
+    try {
+    const response = await  axios({
+        method,
+        url: `${uri}${path}`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data
+      })
+      // const response = await axios.post('https://localhost/gdpright/public/index.php?XDEBUG_SESSION_START=11556', Object.assign({}, data), {
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // })
+      const { file, requestId } = await response.data;
+      dispatch(pdf_success(requestId, file));
+    } catch (error) {
+      console.log(error)
+      if (error.status !== 200) {
+        alertUtil(error)
+        return dispatch(pdf_error());
       }
-    });
-    const { file, requestId } = response.data;
-    dispatch(pdf_success(requestId, file));
-  };
+    }
+
+  }
   response();
 };
+
+
+export const returnToFirstStep = () => ({
+
+  type: ActionTypes.RETURN_TO_FIRST_STEP,
+  payload: {
+    pdf: undefined
+  }
+});
 
 export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
 
@@ -239,6 +252,19 @@ export const pdf_success = (requestId, pdf) => ({
   }
 });
 
+export const pdf_error = () => ({
+
+  type: ActionTypes.PDF_ERROR_POST,
+  payload: {
+    pdf: {
+      isLoading: false,
+      file: null,
+      error: true,
+      errorMessage: 'Se ha producido un error al crear su solicitud'
+    }
+  }
+});
+
 export const confirm_pdf_loading = () => ({
 
   type: ActionTypes.CONFIRM_PDF_LOADING,
@@ -295,3 +321,21 @@ export const notification_send_success = () => ({
   }
 });
 
+
+// export const fetchCountries_ = (entitieId) => (dispatch) => {
+//
+//   dispatch(loadingCountries());
+//   setTimeout(() => {
+//     dispatch(fetchCountries(entitieId));
+//   }
+//   , 1000
+//   );
+// };
+//
+// export const fetchCountries = (entitieId) => ({
+//   type: ActionTypes.FETCH_COUNTRIES,
+//   payload: {
+//     entitieId,
+//     isLoading: false
+//   }
+// });

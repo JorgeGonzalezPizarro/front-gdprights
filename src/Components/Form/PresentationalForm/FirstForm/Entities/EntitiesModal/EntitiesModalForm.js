@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Row } from 'mdbreact';
 import withStyles from '@material-ui/core/es/styles/withStyles';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import { FormEntities } from '../FormEntities';
 import { RenderSelectField } from '../../../inputs/RenderSelectField';
 import { alertUtil } from '../../../../../Util/alertUtil';
@@ -50,7 +51,6 @@ class EntitiesModalForm extends Component {
       this.setState({
         open: !this.state.open
       });
-      alertUtil(this.props.selectEntities.name, this.state.selected.id);
       this.props.onChange(this.props.selectEntities.name, this.state.selected.id);
     };
 
@@ -122,7 +122,10 @@ class EntitiesModalForm extends Component {
                     defaultValue={defaultValue()}
                     label={selectEntities.label} value={defaultValue()}
                     selected={defaultValue()}
-                                     errorApi = {selectEntities.errorApi}/>
+                    errorApi={this.props.errorApi }
+                    errorMessage={this.props.errorMessage }
+                  />
+                  {this.props.errorApi !== null ? <FormHelperText error>{this.props.errorMessage}</FormHelperText> : null}
 
                   <FormEntities selected={this.state.selected} >
                     {this.props.children}

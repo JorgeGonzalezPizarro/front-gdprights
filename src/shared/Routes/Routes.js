@@ -3,7 +3,7 @@ import * as UseCases from './UseCases';
 export const Routes = (useCase) => {
 
   switch (useCase) {
-  case UseCases.CREATE_USER_DEMAND :
+  case UseCases.POST_PDF :
     return ({
       method: 'POST',
       path: '/'

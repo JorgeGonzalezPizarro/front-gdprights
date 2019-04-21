@@ -5,6 +5,7 @@ import { ImageFile } from '../inputs/ImageFile';
 import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
 import CameraInputField from '../inputs/CameraInputField';
 import ButtonCameraAccess from '../inputs/ButtonCameraAccess';
+import { Base64ToBlob } from '../../../Util/Base64ToBlob';
 
 export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onChange}) => {
   const handleChange = (e ) => {
@@ -69,9 +70,10 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
                 disabled={input.disabled}
                 error={error}/>
               );
-            case 'file' :
+              case 'file' :
+
               return (
-                <ImageFile disabled={input.disabled} label={input.label} errorTextDisabled={input.errorTextDisabled} onChange={onChange} name={input.name}/>
+                <ImageFile   disabled={input.disabled} label={input.label} errorTextDisabled={input.errorTextDisabled} onChange={onChange} name={input.name}/>
               );
             case 'camera' :
               return (

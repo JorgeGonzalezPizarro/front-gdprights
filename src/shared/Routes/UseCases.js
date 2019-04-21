@@ -1,4 +1,4 @@
-export const CREATE_USER_DEMAND = 'CREATE_USER_DEMAND';
+export const POST_PDF = 'POST_PDF';
 export const GET_ENTITIES = 'GET_ENTITIES';
 export const GET_PDF  = 'GET_PDF';
 export const CONFIRM_PDF  = 'CONFIRM_PDF';

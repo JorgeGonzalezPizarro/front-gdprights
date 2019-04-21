@@ -20,7 +20,7 @@ html , #root , .App  {
 @media (max-width: 768px) {
     .mainGrid {
         display: grid;
-        grid-template-columns: [left-margin] 5px [wrapperMainColumn] 1fr [right-margin] 5px;
+        grid-template-columns: [left-margin] 15px [wrapperMainColumn] 1fr [right-margin] 15px;
         grid-template-rows: [margin-top] 0  [wrapperMainRow] 1fr [marginButton] 100px;
     }
 }

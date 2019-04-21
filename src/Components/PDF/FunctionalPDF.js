@@ -16,6 +16,9 @@ export  const FunctionalPDF = (props) => {
   if (props.isLoading === true) {
     return <LoadingForm/>;
   }
+  if (props.error === true) {
+    return(  <ConfirmedPdf {...props} />);
+  }
   const {confirmed} = props;
   if(confirmed!== undefined)
   {

@@ -241,12 +241,41 @@
     border: 1px solid #d2dcdb !important;
 }.buttonDownload:hover{
     background: #2a7472;
-
 }
+
+ .buttonNavigateNext, .buttonNavigateBefore {
+     color: rgb(8, 113, 125) !important;
+     width: 46px !important;
+     height: 46px !important;
+     padding: 0;
+     font-size: 0.875rem !important;
+     min-width: 0;
+     box-sizing: border-box;
+     min-height: 36px;
+     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+     box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
+     font-weight: 500;
+     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+     border-radius: 50%;
+     text-transform: uppercase;
+     background-color: #76b39d00 !important;
+ }
+.buttonNavigateNext:disabled,
+.buttonNavigateBefore:disabled{
+    color: rgba(0, 0, 0, 0.26) !important;
+    box-shadow: none;
+    background-color: #adb5bd8f !important;
+ }
+
 
 .iconSend {
     float: right !important;
     margin-top: 5px;
     padding-left: 4px;
 }
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}

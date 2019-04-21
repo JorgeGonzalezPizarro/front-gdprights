@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import {
   confirmPdf_,
   downloadPdf_,
-  fetchCountries_,
+  // fetchCountries_,
   fetchEntities_,
   fetchForm,
   rejectPdf_,
-  sendRequest_
+  pdfPost,
+  initialState
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { NavbarMenu } from './Header/NavbarMenu';
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
@@ -23,29 +24,31 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchForm: () => {
-      dispatch(fetchForm());
-    },
-    sendRequest: (data) => {
-      dispatch(sendRequest_(data));
-    },
-    fetchEntities: () => {
-      dispatch(fetchEntities_());
-    },
-    fetchCountries: (id) => {
-      dispatch(fetchCountries_(id));
-    },
-    confirmPdf: (confirm, requestId) => {
-      dispatch(confirmPdf_(confirm, requestId));
-    },
-    downloadPdf: (file) => {
-      dispatch(downloadPdf_(file));
-    },
-    rejectPdf: (requestId) => {
-
-      dispatch(rejectPdf_(requestId));
-    }
-  }
+  fetchForm: () => {
+    dispatch(fetchForm());
+  },
+  pdfPost: (data) => {
+    dispatch(pdfPost(data));
+  },
+  fetchEntities: () => {
+    dispatch(fetchEntities_());
+  },
+  // fetchCountries: (id) => {
+  //   dispatch(fetchCountries_(id));
+  // },
+  confirmPdf: (confirm, requestId) => {
+    dispatch(confirmPdf_(confirm, requestId));
+  },
+  downloadPdf: (file) => {
+    dispatch(downloadPdf_(file));
+  },  initialState: () => {
+    dispatch(initialState());
+  },
+  // rejectPdf: (requestId) => {
+  //
+  //   dispatch(rejectPdf_(requestId));
+  // }
+}
 );
 
 export class Main extends Component {
@@ -70,10 +73,11 @@ export class Main extends Component {
     const getEntities = () => {
       this.props.fetchEntities();
     };
-
-    const fetchCountrieForEntitie = (id) => {
-      this.props.fetchCountries(id);
+    const onClickErrorPdf = () => {
+      this.props.initialState();
     };
+
+
 
     const onClickPdf = (confirm) => {
       const { requestId } = this.props.form;
@@ -115,13 +119,13 @@ export class Main extends Component {
         <NavbarMenu/>
         <ContentMain>
           {this.props.form.pdf === undefined ? <FunctionalForm getEntities={getEntities}
-                                                               fetchCountrieForEntitie={fetchCountrieForEntitie}
-                                                               firstForm={this.props.form.firstForm}
-                                                               secondForm={this.props.form.secondForm}
-                                                               thirdForm={this.props.form.thirdForm}
-                                                               currentStep={this.props.form.currentStep}
-                                                               onClick={this.props.sendRequest}/> :
-            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickPdf={onClickPdf}/>
+            // fetchCountrieForEntitie={fetchCountrieForEntitie}
+            firstForm={this.props.form.firstForm}
+            secondForm={this.props.form.secondForm}
+            thirdForm={this.props.form.thirdForm}
+            currentStep={this.props.form.currentStep}
+            onClick={this.props.pdfPost}/> :
+            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickErrorPdf={onClickErrorPdf} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
 

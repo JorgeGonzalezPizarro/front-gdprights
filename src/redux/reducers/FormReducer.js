@@ -86,11 +86,18 @@ export const FormReducer = (state = initial_state, action) => {
     //   return Object.assign({}, state, newState);
     // }
 
-  case Action.PDF_LOADING :
+  case Action.RETURN_TO_FIRST_STEP :
+
+    return { ...state, ...action.payload };
+    case Action.PDF_LOADING :
 
     return { ...state, ...action.payload };
 
   case Action.PDF_SUCCESS :
+    return {
+      ...state, ...action.payload
+    };
+  case Action.PDF_ERROR_POST :
     return {
       ...state, ...action.payload
     };

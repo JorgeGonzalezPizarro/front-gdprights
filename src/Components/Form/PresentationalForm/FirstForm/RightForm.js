@@ -16,12 +16,12 @@ export const RightForm = ({ visible, data, errors, touched, onChange, onCloseEnt
     const value = select.options.filter((option) => option.id === select.value)[0];
     return value !== undefined ? value : undefined;
   };
-  console.log(selectEntities.error)
   return (
-    <>
+
+  <>
       <EntitiesModalForm  selectEntities={selectEntities} onChange={onChange}
         errors={errors} touched={touched} onCloseEntitiesList={onCloseEntitiesList}
-        selectName={selectEntities.name} isOpen isLoading={selectEntities.isLoading}  errorApi ={selectEntities.error}
+        selectName={selectEntities.name} isOpen isLoading={selectEntities.isLoading}  errorApi ={selectEntities.error } errorMessage={selectEntities.errorMessage}
         selected={getOption(selectEntities)}>
 
       </EntitiesModalForm>

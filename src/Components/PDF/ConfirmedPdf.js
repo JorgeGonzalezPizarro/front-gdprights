@@ -1,19 +1,32 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import { FormPresentational } from '../Form/PresentationalForm/FormPresentational/FormPresentational';
 import { FormFieldSet } from '../Form/PresentationalForm/FormPresentational/FormFieldSet';
 import FormButtons from '../Form/PresentationalForm/FormPresentational/FormButtons';
 import { LoadingForm } from '../Util/LoadingForm';
 import { ConfirmPdfText } from '../Pages/ConfirmPdfText';
 import { ButtonDownload } from '../Util/Buttons/ButtonDownload';
+import { ErrorPdfText } from '../Pages/ErrorPdfText';
 
 export const ConfirmedPdf = (props) => {
-  console.log(props);
-  const { confirmed, isLoading } = props;
+  const { confirmed, isLoading, error } = props;
   if (isLoading) {
     return <LoadingForm/>;
   }
+  if(error === true)
+  {
 
+    return (
+      <FormPresentational>
+
+        <FormFieldSet>
+          <ErrorPdfText errorText={props.errorText} onClick={props.onClickErrorPdf}/>
+        </FormFieldSet>
+
+
+      </FormPresentational>
+    );
+
+  }
   if (!confirmed) {
     return (
       <FormPresentational>
