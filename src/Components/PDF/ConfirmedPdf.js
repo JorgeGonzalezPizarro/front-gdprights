@@ -6,9 +6,11 @@ import { LoadingForm } from '../Util/LoadingForm';
 import { ConfirmPdfText } from '../Pages/ConfirmPdfText';
 import { ButtonDownload } from '../Util/Buttons/ButtonDownload';
 import { ErrorPdfText } from '../Pages/ErrorPdfText';
+import { ButtonReject } from '../Util/Buttons/ButtonReject';
 
 export const ConfirmedPdf = (props) => {
-  const { confirmed, isLoading, error } = props;
+  const {file, confirmed, isLoading, error } = props;
+
   if (isLoading) {
     return <LoadingForm/>;
   }
@@ -19,10 +21,11 @@ export const ConfirmedPdf = (props) => {
       <FormPresentational>
 
         <FormFieldSet>
-          <ErrorPdfText errorText={props.errorText} onClick={props.onClickErrorPdf}/>
+          <ErrorPdfText errorText={props.errorMessage}/>
         </FormFieldSet>
-
-
+        <FormButtons>
+          <ButtonReject text="Volver" onClick={props.onClickErrorPdf}/>
+        </FormButtons>
       </FormPresentational>
     );
 
@@ -32,7 +35,7 @@ export const ConfirmedPdf = (props) => {
       <FormPresentational>
 
         <FormFieldSet>
-          <ConfirmPdfText onClick={props.onClickPdf}/>
+          <ConfirmPdfText entityName={props.entityName} onClick={props.onClickPdf}/>
         </FormFieldSet>
 
         <FormButtons>
@@ -75,11 +78,10 @@ export const ConfirmedPdf = (props) => {
             <p>
               Apreciado Usuario
 
-              El intento de notificación de tu ejercicio de derechos de oposición frente a la entidad (nombre entidad
-              destino)
-              ha sido realizado con resultado (positivo/negativo)
+              El intento de notificación de tu ejercicio de derechos de oposición frente a la entidad <b>{props.entityName} </b>
+               con email <b>{props.entityEmail} </b>
+              ha sido realizado con resultado positivo
 
-              Para descargar el acta del intento de notificación realizado puedes hacer clic en el siguiente enlace
 
 
               GDPRights es un servicio de EIS Digitall. Actuamos en calidad de Tercero de Confianza, para generar las
@@ -91,8 +93,11 @@ export const ConfirmedPdf = (props) => {
             </p>
           </div>
         </FormFieldSet>
-        <FormButtons>
 
+
+        <FormButtons>
+          Para descargar el acta del intento de notificación realizado puedes hacer clic en el siguiente enlace
+          <ButtonDownload onClick={()=>props.onClickDownload()} text="Descargar"/>
         </FormButtons>
       </FormPresentational>
     );

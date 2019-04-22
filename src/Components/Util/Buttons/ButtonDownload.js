@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import CloudDownload from '@material-ui/icons/CloudDownload';
 
 export const ButtonDownload = (props) => {
@@ -9,5 +9,5 @@ export const ButtonDownload = (props) => {
     </button>
     </>
   );
-}
+};
 

@@ -71,13 +71,13 @@ export class NavbarMenu extends Component {
         </nav>
       </Header>
 <div>
-        <DialogModal  open={helpModalOpen} onClick={this.handleClose}>
-          <Help/>
-        </DialogModal>
-        <DialogModal open={aboutModalOpen} onClick={this.handleClose}>
-          <Help/>
-        </DialogModal>
-    </div>
+  <DialogModal  open={helpModalOpen} onClick={this.handleClose}>
+    <Help/>
+  </DialogModal>
+  <DialogModal open={aboutModalOpen} onClick={this.handleClose}>
+    <Help/>
+  </DialogModal>
+</div>
     </>
     );
 

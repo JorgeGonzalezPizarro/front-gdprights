@@ -16,21 +16,21 @@ export const RenderInputCheck = ({ name, label, defaultValue, touched, error, on
     <>
       <div id="instanceCheckboxes" style={{ padding : '10px 0px ', flexDirection: 'row' }}>
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={handleChange}
-            value={value}
-            name={name}
-            color="primary"
-          />
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={handleChange}
+              value={value}
+              name={name}
+              color="primary"
+            />
 
-        }
-        style={{ width: '100%' }}
-        label={label}
+          }
+          style={{ width: '100%' }}
+          label={label}
 
-      />
-      {errorTextField(errorText)}
+        />
+        {errorTextField(errorText)}
       </div>
       </>
 

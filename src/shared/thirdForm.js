@@ -8,6 +8,7 @@ export const thirdForm =  {
       required: true,
       label: 'Selecciona imagen ',
       disabled : false,
+      file : null,
       backName : 'dniFront',
       errorTextDisabled : 'Elimine la imagen previa'
 
@@ -20,7 +21,8 @@ export const thirdForm =  {
       name: 'DNI front camera',
       required: true,
       disabled : false,
-      backName : 'dniFront'
+      backName : 'dniFront',
+      file : null,
 
     },
     {
@@ -30,6 +32,7 @@ export const thirdForm =  {
       value: '',
       name: 'DNI back ',
       required: true,
+      file : null,
       disabled : false,
       backName : 'dniBack',
       errorTextDisabled : 'Elimine la imagen previa'
@@ -44,6 +47,7 @@ export const thirdForm =  {
       required: true,
       disabled : false,
       backName : 'dniBack',
+      file : null,
       errorTextDisabled : 'Elimine la imagen previa'
     },
   ]

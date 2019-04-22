@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import GridContainer from '../Grid/GridContainer';
 import { NavbarMenu } from '../Header/NavbarMenu';
 import ContentMain from '../Grid/ContentMain';
@@ -19,4 +19,4 @@ export const ApiError = (props) => {
     </GridContainer>
   );
 
-}
+};

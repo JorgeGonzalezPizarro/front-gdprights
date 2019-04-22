@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // Import React FilePond
 import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
@@ -11,12 +11,12 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import { TooltipDisabled } from './TooltipDisabled';
 import { Base64ToBlob } from '../../../Util/Base64ToBlob';
-import { alertUtil } from '../../../Util/alertUtil';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileEncode, FilePondPluginFileValidateType);
 
-export const ImageFile = ({ value = '', name, onChange, label, disabled, errorTextDisabled }) => {
+export const ImageFile =({ fileBlob, name, onChange, label, disabled, errorTextDisabled } ) => {
+
 
   const handleFiles1 = async (file) => {
     if (file !== null) {
@@ -30,40 +30,34 @@ export const ImageFile = ({ value = '', name, onChange, label, disabled, errorTe
       }
     }
   };
-  const handleFile = async (file) => {
-    const d = await handleFiles1(file);
-    if (d !== null && d !== undefined) {
+
+  const handleFile = async  file => {
+    const d =  await handleFiles1(file);
+    if (  d !== null &&   d !== undefined) {
       onChange(name, d, true);
     }
+
   };
 
-  const handleRemove = () => onChange(name, '', true);
+  const handleRemove = () => {
+    onChange(name, '', true);
+  };
   return (
-    <>
-      <TooltipDisabled stringToShow={errorTextDisabled} isDisabled={disabled} children={
-        <FilePond
-          allowMultiple={false}
-          disabled={disabled}
-          id={name}
-          acceptedFileTypes={['image/png', 'image/jpeg']}
-          fileValidateTypeLabelExpectedTypes={'Expects {allButLastType} or {lastType}'}
-          allowFileEncode
-          onupdatefiles={handleFile}
-          beforeRemoveFile={handleRemove}
-          labelIdle={`<span class="filepond--label-action">${label}</span>`}
-        />
-      }/>
-    </>
+      <>
+        <TooltipDisabled stringToShow={errorTextDisabled} isDisabled={disabled} children={
+          <FilePond
+            allowMultiple={false}
+            disabled={disabled}
+            id={name}
+            acceptedFileTypes={['image/png', 'image/jpeg']}
+            fileValidateTypeLabelExpectedTypes={'Expects {allButLastType} or {lastType}'}
+            allowFileEncode
+            onupdatefiles={handleFile}
+            beforeRemoveFile={handleRemove}
+            labelIdle={`<span class="filepond--label-action">${label}</span>`}
+          />
+        }/>
+      </>
 
   );
-};
-
-const files = (value) => {
-  return  Array.from({
-    source: Base64ToBlob(value, value.length),
-    options: {
-      type: 'local'
-    }
-
-  });
 };

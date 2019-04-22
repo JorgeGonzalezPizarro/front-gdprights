@@ -12,13 +12,7 @@ export const ErrorPdfText = (props) => {
       <div className="text-formContent">
         <p>
           {props.errorText}
-          </p>
-        <div className="gridButtons">
-          <div className="firstButton">
-            <ButtonReject text={'Volver'}  onClick={() => props.onClick(false)}/>
-          </div>
-
-        </div>
+        </p>
 
       </div>
     </>

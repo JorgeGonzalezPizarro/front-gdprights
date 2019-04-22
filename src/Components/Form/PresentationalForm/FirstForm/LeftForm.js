@@ -1,7 +1,7 @@
 import React from 'react';
 import { RenderInputTextField } from '../inputs/RenderInputTextField';
 import { RenderInputCheck } from '../inputs/RenderInputCheck';
-import { ImageFile } from '../inputs/ImageFile';
+import  {ImageFile}  from '../inputs/ImageFile';
 import  RenderInputCheckTerms  from '../inputs/RenderInputCheckTerms';
 import CameraInputField from '../inputs/CameraInputField';
 import ButtonCameraAccess from '../inputs/ButtonCameraAccess';
@@ -70,10 +70,10 @@ export const LeftForm = ({input, error,  touched,  onClickVisibleRightForm, onCh
                 disabled={input.disabled}
                 error={error}/>
               );
-              case 'file' :
+            case 'file' :
 
               return (
-                <ImageFile   disabled={input.disabled} label={input.label} errorTextDisabled={input.errorTextDisabled} onChange={onChange} name={input.name}/>
+                <ImageFile  fileBlob={input.file} disabled={input.disabled} label={input.label} errorTextDisabled={input.errorTextDisabled} onChange={onChange} name={input.name}/>
               );
             case 'camera' :
               return (

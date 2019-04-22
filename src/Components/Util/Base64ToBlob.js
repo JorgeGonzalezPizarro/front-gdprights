@@ -20,8 +20,9 @@ export const Base64ToBlob = (b64data,  sliceSize = 512) => {
 
     byteArrays.push(byteArray);
   }
-  console.log(new Blob(byteArrays, { type: 'png' }));
-  return new Blob(byteArrays, { type: 'png' });
+  const blob = new Blob(byteArrays, { type: 'image/png' });
+  const file = new File([blob], `File name.${blob.type}`, {type: 'image/png'} );
+  return file;
   
 };
 

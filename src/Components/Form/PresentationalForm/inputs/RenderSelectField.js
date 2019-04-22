@@ -1,12 +1,12 @@
 import React  from 'react';
 import { FormControl } from '@material-ui/core';
 import Select from 'react-select';
-import { FormFieldSet } from '../FormPresentational/FormFieldSet';
 import FormHelperText from '@material-ui/core/es/FormHelperText/FormHelperText';
 import { FormGroup } from 'reactstrap';
+import { FormFieldSet } from '../FormPresentational/FormFieldSet';
 
-export const RenderSelectField = ({selectName, errors, touched, isLoading, options,  name, onChange, value , errorApi , errorMessage}) => {
-  console.log(errorApi)
+export const RenderSelectField = ({selectName, errors, touched, isLoading, options,  name, onChange, value, errorApi, errorMessage}) => {
+  console.log(errorApi);
   const handleChange = ({name, value}) =>{
     onChange( name, value);
   };

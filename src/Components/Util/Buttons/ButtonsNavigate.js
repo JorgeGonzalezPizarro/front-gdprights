@@ -1,7 +1,7 @@
 import React from 'react';
 
-import NavigateNext from '@material-ui/icons/NavigateNext'
-import NavigateBefore from '@material-ui/icons/NavigateBefore'
+import NavigateNext from '@material-ui/icons/NavigateNext';
+import NavigateBefore from '@material-ui/icons/NavigateBefore';
 import Fab from '@material-ui/core/es/Fab/Fab';
 
 export const ButtonsNavigateNext = (props) => {
@@ -12,7 +12,7 @@ export const ButtonsNavigateNext = (props) => {
     </Fab>
     </>
   );
-}
+};
 export const ButtonsNavigateBefore = (props) => {
 
   return(
@@ -21,4 +21,4 @@ export const ButtonsNavigateBefore = (props) => {
     </Fab>
     </>
   );
-}
+};

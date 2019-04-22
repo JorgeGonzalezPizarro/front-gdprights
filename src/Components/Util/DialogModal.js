@@ -20,7 +20,7 @@ export const DialogModal = (props ) => {
         open={props.open}
         scroll='paper'
         aria-labelledby="scroll-dialog-title"
-              onRequestClose={()=>props.onClick()}
+        onRequestClose={()=>props.onClick()}
         className="overflow-auto-modal"
       >
         <DialogContent className="">
@@ -30,7 +30,7 @@ export const DialogModal = (props ) => {
         </DialogContent>
         <DialogActions>
 
-          <Button  color="primary"  onClick={()=>props.onClick()}>
+          <Button  color="primary"  onClick={()=>props.onClick(true)}>
             Aceptar
           </Button>
         </DialogActions>

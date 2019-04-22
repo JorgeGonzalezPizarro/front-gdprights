@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Document, Page } from 'react-pdf';
-import { ButtonsNavigateNext, ButtonsNavigateBefore } from '../Util/Buttons/ButtonsNavigate';
 import { FormHelperText } from '@material-ui/core';
+import { ButtonsNavigateNext, ButtonsNavigateBefore } from '../Util/Buttons/ButtonsNavigate';
 
 export default class PdfDocumentPresentational extends Component {
 

@@ -1,6 +1,6 @@
-import React from 'react'
-import { alertUtil } from '../alertUtil';
+import React from 'react';
 import SendIcon from '@material-ui/icons/Send';
+import { alertUtil } from '../alertUtil';
 
 export const ButtonSend = (props) => {
   return(
@@ -10,11 +10,10 @@ export const ButtonSend = (props) => {
     </button>
     </>
   );
-}
+};
 
 
 export const ButtonSendDisabled = (props) => {
-  console.log(props)
   return(
     <button onClick={props.onClick} disabled={props.disabled} className="customButton buttonAcceptDisabled">
       {props.text}
@@ -23,4 +22,4 @@ export const ButtonSendDisabled = (props) => {
     </button>
   );
 
-}
+};

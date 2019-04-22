@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/es/Button/Button';
 import { LeftForm } from './FirstForm/LeftForm';
 import { FormFieldSet } from './FormPresentational/FormFieldSet';
 import FormButtons from './FormPresentational/FormButtons';
 import { TooltipDisabled } from './inputs/TooltipDisabled';
-import { ButtonAccept, ButtonAcceptDisabled } from '../../Util/Buttons/ButtonAccept';
 import { ButtonReject } from '../../Util/Buttons/ButtonReject';
 import { ButtonSend, ButtonSendDisabled } from '../../Util/Buttons/ButtonSend';
+import { Base64ToBlob } from '../../Util/Base64ToBlob';
 
 export default class ThirdForm extends Component {
   constructor (props) {
@@ -22,6 +21,19 @@ export default class ThirdForm extends Component {
       visibleSecondForm: false,
       isValid: false
     };
+  }
+
+  componentDidMount () {
+    const newStateCopy = this.state.firstForm.filter((input) => {
+      if (input.file === undefined) {
+        input.file = Base64ToBlob(input.value);
+      }
+      return input;
+    });
+    this.setState({
+      ...this.state,
+      firsForm: newStateCopy
+    });
   }
 
   render () {
@@ -50,7 +62,6 @@ export default class ThirdForm extends Component {
     };
 
     const handleChange = (name, value, firstForm = false) => {
-
       if (firstForm === true) {
         const stateCopy = this.state.firstForm.map((data) => data);
         const { touched } = this.state;
@@ -182,9 +193,30 @@ export default class ThirdForm extends Component {
       return !enableAll.includes(false);
 
     };
-    const submit = () => {
+    const submit = async () => {
       if (this.state.isValid) {
-        this.props.submit(this.state.firstForm, this.state.secondForm, this.state.currentForm);
+
+        const firstForm = async()=>  this.state.firstForm.map((i) => i);
+
+        const firstFormData = await firstForm();
+
+        firstForm().then(() => {
+
+          const newState = this.state.firstForm.map((i2) => {
+            i2.value = '';
+            i2.disabled = false;
+            i2.required = true;
+            return i2;
+          });
+
+          this.setState({
+            ...this.state,
+            firstForm: newState
+          });
+        })
+
+
+        this.props.submit(firstFormData, this.state.secondForm, this.state.currentForm);
       }
     };
 
@@ -215,10 +247,10 @@ export default class ThirdForm extends Component {
                 <>
                   {input.title !== undefined ? <label> {input.title}</label> : null}
                   <LeftForm onChange={handleChange} key={input.name} input={input}
-                    requiredFields={this.state.requiredFields}
-                    error={this.state.errors.filter((error) => error === input.name)[0]}
-                    touched={this.state.touched.filter((touched) => touched === input.name)[0]}
-                    onClickVisibleRightForm={handleData}/>
+                            requiredFields={this.state.requiredFields}
+                            error={this.state.errors.filter((error) => error === input.name)[0]}
+                            touched={this.state.touched.filter((touched) => touched === input.name)[0]}
+                            onClickVisibleRightForm={handleData}/>
                 </>);
             })
           }
@@ -228,8 +260,9 @@ export default class ThirdForm extends Component {
             <ButtonReject text="Volver" onClick={previous}/>
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
                              children={this.state.isValid === true ? <ButtonSend text="Enviar"
-                                                                                   onClick={submit}/> : <ButtonSendDisabled disabled={this.state.isValid} text="Enviar"
-                                                                                                                                                      onClick={submit}/>}
+                                                                                 onClick={submit}/> :
+                               <ButtonSendDisabled disabled={this.state.isValid} text="Enviar"
+                                                   onClick={submit}/>}
             />
           </div>
         </FormButtons>

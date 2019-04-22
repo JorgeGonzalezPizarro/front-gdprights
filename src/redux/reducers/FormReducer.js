@@ -89,7 +89,7 @@ export const FormReducer = (state = initial_state, action) => {
   case Action.RETURN_TO_FIRST_STEP :
 
     return { ...state, ...action.payload };
-    case Action.PDF_LOADING :
+  case Action.PDF_LOADING :
 
     return { ...state, ...action.payload };
 

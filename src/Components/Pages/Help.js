@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const Help = () => {
 
@@ -267,6 +267,6 @@ export const Help = () => {
     </div>
 
     </>
-  )
+  );
 
-}
+};

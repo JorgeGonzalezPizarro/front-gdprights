@@ -8,6 +8,8 @@ import { alertUtil } from '../../../Components/Util/alertUtil';
 import { Routes } from '../../../shared/Routes/Routes';
 import * as UseCases from '../../../shared/Routes/UseCases';
 
+const timeout =     60 *  1000;
+
 export const initialState = () => (dispatch) => {
   setTimeout(() => {
     return dispatch(returnToFirstStep());
@@ -28,58 +30,53 @@ export const fetchEntities_ = () => (dispatch) => {
 
     return axios({
       method,
-      url: `${uri}${path}`
-
+      url: `${uri}${path}`,
+      timeout
     }).then(result => {
 
       return result.data;
     }).then((data) => {
       dispatch(fetchEntities(data));
-    }).catch((error) =>  {
-      if(error.status !==200){
+    }).catch((error) => {
+      if (error.status !== 200) {
         return dispatch(errorFetchEntities());
 
-      }});
+      }
+    });
   };
   data();
 };
-
-
 
 export const pdfPost = (data) => (dispatch) => {
   dispatch(pdf_loading());
   const { method, path } = Routes(UseCases.POST_PDF);
   const uri = process.env.REACT_APP_API_URL;
-  console.log(method,path,uri)
   const response = async () => {
     try {
-    const response = await  axios({
+      const response = await axios({
         method,
         url: `${uri}${path}`,
         headers: {
           'Content-Type': 'application/json'
         },
-        data
-      })
-      // const response = await axios.post('https://localhost/gdpright/public/index.php?XDEBUG_SESSION_START=11556', Object.assign({}, data), {
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   }
-      // })
-      const { file, requestId } = await response.data;
-      dispatch(pdf_success(requestId, file));
+        data,
+        timeout
+      });
+
+      const { file, requestId, entityName, entityEmail } = await response.data;
+      console.log(entityEmail, entityEmail);
+      dispatch(pdf_success(requestId, file, entityName, entityEmail));
     } catch (error) {
-      console.log(error)
       if (error.status !== 200) {
-        alertUtil(error)
-        return dispatch(pdf_error());
+        const errorMessage = error.response.data;
+
+        return dispatch(pdf_error(errorMessage));
       }
     }
 
-  }
+  };
   response();
 };
-
 
 export const returnToFirstStep = () => ({
 
@@ -107,7 +104,9 @@ export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
       }
     });
     if (requestToConfirm.status === 200) {
-      dispatch(notification_send_success());
+      const {data : {entityName, entityEmail} } = requestToConfirm;
+      console.log(entityEmail, entityEmail);
+      dispatch(notification_send_success(entityName, entityEmail));
     }
   };
 
@@ -139,25 +138,31 @@ export const downloadPdf_ = (file_) => dispatch => {
 
 export const rejectPdf_ = (requestId) => (dispatch) => {
   dispatch(reject_pdf_loading());
-
-  const response = async () => {
-    const response = await axios.delete('https://localhost/gdprights/public/index.php?XDEBUG_SESSION_START=11556', {
-      data: {
-        requestId
-      },
+  const { method, path } = Routes(UseCases.REJECT_PDF);
+  const uri = process.env.REACT_APP_API_URL;
+  const request = async () => {
+    const response = await axios({
+      method,
+      url: `${uri}${path}`,
       headers: {
         'Content-Type': 'application/json'
-      }
-    }
-    );
+      },
+      data : {
+        requestId
+      },
+      timeout
+    });
 
     const { status } = response;
     if (status === 200) {
       dispatch(reject_pdf());
+    } else {
+      const errorMessage = response.data;
+      dispatch(reject_pdf_error(errorMessage));
     }
   }
     ;
-  response();
+  request();
 
 }
 ;
@@ -185,8 +190,8 @@ export const loadingEntities = () => ({
   type: ActionTypes.LOADING_ENTITIES,
   payload: {
     isLoading: true,
-    options:[],
-    error:null
+    options: [],
+    error: null
   }
 });
 
@@ -196,7 +201,7 @@ export const fetchEntities = (entities) => ({
   payload: {
     options: entities,
     isLoading: false,
-    error : null
+    error: null
   }
 });
 export const errorFetchEntities = () => ({
@@ -205,8 +210,8 @@ export const errorFetchEntities = () => ({
   payload: {
     options: [],
     isLoading: false,
-    error : true,
-    errorMessage : 'No hay entidades disponibles'
+    error: true,
+    errorMessage: 'No hay entidades disponibles'
   }
 });
 
@@ -239,20 +244,22 @@ export const pdf_loading = () => ({
     requestId: null
   }
 });
-export const pdf_success = (requestId, pdf) => ({
+export const pdf_success = (requestId, pdf , entityName, entityEmail) => ({
 
   type: ActionTypes.PDF_SUCCESS,
   payload: {
     pdf: {
       isLoading: false,
       error: null,
-      file: pdf
+      file: pdf,
+      entityName,
+      entityEmail
     },
     requestId
   }
 });
 
-export const pdf_error = () => ({
+export const pdf_error = (errorMessage) => ({
 
   type: ActionTypes.PDF_ERROR_POST,
   payload: {
@@ -260,7 +267,7 @@ export const pdf_error = () => ({
       isLoading: false,
       file: null,
       error: true,
-      errorMessage: 'Se ha producido un error al crear su solicitud'
+      errorMessage
     }
   }
 });
@@ -304,8 +311,22 @@ export const reject_pdf = () => ({
     }
   }
 });
+export const reject_pdf_error = (errorMessage) => ({
 
-export const notification_send_success = () => ({
+  type: ActionTypes.REJECT_PDF_ERROR,
+  payload: {
+    isLoading: false,
+    error: null,
+    errorMessage,
+    confirmed: {
+      confirmed: false,
+      isLoading: false,
+      rejected: false
+    }
+  }
+});
+
+export const notification_send_success = (entityName, entityEmail) => ({
 
   type: ActionTypes.NOTIFICATION_SENDED_SUCCESS,
   payload: {
@@ -315,12 +336,13 @@ export const notification_send_success = () => ({
       confirmed: true,
       isLoading: false,
       notificationSent: true,
-      rejected: false
+      rejected: false,
+      entityName,
+      entityEmail
 
     }
   }
 });
-
 
 // export const fetchCountries_ = (entitieId) => (dispatch) => {
 //
