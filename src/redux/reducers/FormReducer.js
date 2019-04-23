@@ -2,14 +2,14 @@ import { firstForm } from '../../shared/firstForm';
 import { secondForm } from '../../shared/secondForm';
 import * as Action from '../ActionTypes/Form/FormActionTypes';
 
-export const initial_state = {
+export const initialState = {
   isLoading: true,
   currentStep: 1,
   firstForm,
   secondForm
 };
 
-export const FormReducer = (state = initial_state, action) => {
+export const FormReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
@@ -124,7 +124,11 @@ export const FormReducer = (state = initial_state, action) => {
     return {
       ...state, pdf: { ...state.pdf, ...action.payload }
     };
-  default  :
+  case Action.INITIAL_STATE :
+    return {
+      ...initialState, ...action.payload
+    };
+    default  :
     return state;
 
   }

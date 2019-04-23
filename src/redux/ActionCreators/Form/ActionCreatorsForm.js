@@ -15,6 +15,14 @@ export const initialState = () => (dispatch) => {
     return dispatch(returnToFirstStep());
   }, 300);
 };
+export const removeState = () => (dispatch) => {
+  const removeState = async () => await  removeState_();
+
+  removeState().then(()=>
+    setTimeout(() => {
+      dispatch(fetchForm());
+    }, 300));
+};
 export const fetchForm = () => (dispatch) => {
   dispatch(loading());
   setTimeout(() => {
@@ -81,6 +89,12 @@ export const pdfPost = (data) => (dispatch) => {
 export const returnToFirstStep = () => ({
 
   type: ActionTypes.RETURN_TO_FIRST_STEP,
+  payload: {
+    pdf: undefined
+  }
+});export const removeState_ = () => ({
+
+  type: ActionTypes.INITIAL_STATE,
   payload: {
     pdf: undefined
   }
@@ -244,7 +258,7 @@ export const pdf_loading = () => ({
     requestId: null
   }
 });
-export const pdf_success = (requestId, pdf , entityName, entityEmail) => ({
+export const pdf_success = (requestId, pdf, entityName, entityEmail) => ({
 
   type: ActionTypes.PDF_SUCCESS,
   payload: {

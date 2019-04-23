@@ -17,7 +17,7 @@ export const ConfirmPdfText = (props) => {
           el momento en que se haga efectiva la notificación de tu ejercicio de derechos te enviaremos un correo
           electrónico para que puedas descargar el acta de evidencias de la notificación realizada.
         </p>
-        <div className="gridButtons">
+        <div className="gridButtons twoButtons">
           <div className="firstButton">
             <ButtonReject text="Rechazar"  onClick={() => props.onClick(false)}/>
           </div>

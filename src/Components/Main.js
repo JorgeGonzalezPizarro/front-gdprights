@@ -8,7 +8,7 @@ import {
   fetchForm,
   rejectPdf_,
   pdfPost,
-  initialState
+  initialState, removeState
 } from '../redux/ActionCreators/Form/ActionCreatorsForm';
 import { NavbarMenu } from './Header/NavbarMenu';
 import { FunctionalForm } from './Form/FunctionalForm/FunctionalForm';
@@ -44,6 +44,9 @@ const mapDispatchToProps = (dispatch) => ({
   },  initialState: () => {
     dispatch(initialState());
   },
+    removeState : () => {
+    dispatch(initialState());
+    }
   // rejectPdf: (requestId) => {
   //
   //   dispatch(rejectPdf_(requestId));
@@ -75,6 +78,9 @@ export class Main extends Component {
     };
     const onClickErrorPdf = () => {
       this.props.initialState();
+    };
+    const onClickInitialState = () => {
+      this.props.removeState();
     };
 
 
@@ -125,7 +131,7 @@ export class Main extends Component {
             thirdForm={this.props.form.thirdForm}
             currentStep={this.props.form.currentStep}
             onClick={this.props.pdfPost}/> :
-            <FunctionalPDF {...this.props.form.pdf} onClickDownload={onClickDownload} onClickErrorPdf={onClickErrorPdf} onClickPdf={onClickPdf}/>
+            <FunctionalPDF {...this.props.form.pdf} initialState={onClickInitialState} onClickDownload={onClickDownload} onClickErrorPdf={onClickErrorPdf} onClickPdf={onClickPdf}/>
           }
         </ContentMain>
 

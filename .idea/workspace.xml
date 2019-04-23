@@ -6,41 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2f819439-dc35-4bde-83f2-f5774ac8ba51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Errors/ApiError.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Errors/ApiError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/SecondForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/SecondForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/ThirdForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/ThirdForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ButtonCameraAccess.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ButtonCameraAccess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ImageFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ImageFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputCheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputCheck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputCheckTerms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputCheckTerms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Header/NavbarMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/NavbarMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PDF/PdfDocumentPresentational.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PDF/PdfDocumentPresentational.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ErrorPdfText.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ErrorPdfText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Help.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Help.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonAccept.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonAccept.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonDownload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonDownload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonSend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonSend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonsNavigate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonsNavigate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Util/DialogModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Util/DialogModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Routes/UseCases.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Routes/UseCases.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/thirdForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/thirdForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/statics/css/front-gdprights.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/statics/css/front-gdprights.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,70 +25,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.71512383">
+    <splitter split-orientation="horizontal" split-proportion="0.54435486">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
-                  <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
-                  <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ImageFile.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#67#125#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2557">
-                  <caret line="254" column="17" lean-forward="true" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
+                <state relative-caret-position="69">
+                  <caret line="12" column="25" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/ThirdForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="58">
-                  <caret line="195" column="32" lean-forward="true" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -133,17 +52,40 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+                <state relative-caret-position="265">
+                  <caret line="17" column="26" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/ConfigureStore.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <folding>
+                    <element signature="e#0#70#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="200">
+                  <caret line="128" column="40" lean-forward="true" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#51#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+                <state relative-caret-position="380">
+                  <caret line="99" column="71" selection-start-line="99" selection-start-column="71" selection-end-line="99" selection-end-column="71" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -152,10 +94,40 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/shared/Routes/Routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="299">
+                  <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/shared/Routes/UseCases.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="23">
+                  <caret line="1" column="25" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/statics/css/front-gdprights.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="448">
+                  <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-391">
-                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                <state relative-caret-position="161">
+                  <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -167,8 +139,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="205">
-                  <caret line="127" column="28" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
+                <state relative-caret-position="108">
+                  <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -179,8 +151,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+                <state relative-caret-position="322">
+                  <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -205,9 +177,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="161">
                   <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -252,9 +221,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>marginBotton</find>
-      <find>axios.pos</find>
-      <find>axios.post</find>
       <find>axios.get</find>
       <find>axios.</find>
       <find>descargar</find>
@@ -282,6 +248,9 @@
       <find>console.log</find>
       <find>Base64ToBlob</find>
       <find>Down</find>
+      <find>gridButtons</find>
+      <find>removeSt</find>
+      <find>INITIA</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -310,7 +279,6 @@
         <option value="$PROJECT_DIR$/.env.development.js" />
         <option value="$PROJECT_DIR$/Dotenv.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/shared/Routes/Routes.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputCheckTerms.js" />
@@ -322,9 +290,7 @@
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/RightForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/Entities/EntitiesModal/EntitiesModalForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderSelectField.js" />
-        <option value="$PROJECT_DIR$/src/statics/css/front-gdprights.css" />
         <option value="$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js" />
-        <option value="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" />
         <option value="$PROJECT_DIR$/src/shared/Routes/UseCases.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonNavigateNext.js" />
@@ -335,25 +301,28 @@
         <option value="$PROJECT_DIR$/src/Components/Pages/ErrorPdfText.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js" />
         <option value="$PROJECT_DIR$/src/Components/Util/DialogModal.js" />
-        <option value="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" />
         <option value="$PROJECT_DIR$/src/shared/thirdForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Util/Buttons/ButtonSend.js" />
         <option value="$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/FirstForm/LeftForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ImageFile.js" />
         <option value="$PROJECT_DIR$/src/Components/Form/PresentationalForm/ThirdForm.js" />
-        <option value="$PROJECT_DIR$/src/Components/Main.js" />
-        <option value="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" />
         <option value="$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js" />
+        <option value="$PROJECT_DIR$/src/statics/css/front-gdprights.css" />
+        <option value="$PROJECT_DIR$/src/shared/Routes/Routes.js" />
+        <option value="$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js" />
         <option value="$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js" />
+        <option value="$PROJECT_DIR$/src/redux/reducers/FormReducer.js" />
+        <option value="$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Main.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-49" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1377" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -433,6 +402,13 @@
               <item name="ActionCreators" type="462c0819:PsiDirectoryNode" />
               <item name="Form" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="front-gdprights" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front-gdprights" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -509,11 +485,12 @@
       <workItem from="1555481044453" duration="28687000" />
       <workItem from="1555775316664" duration="4879000" />
       <workItem from="1555858549196" duration="7026000" />
+      <workItem from="1555999535288" duration="4861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364331000" />
+    <option name="totallyTimeSpent" value="369955000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -525,10 +502,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.19178082" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.21601686" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5016234" side_tool="true" weight="0.16965227" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -543,7 +520,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49894625" weight="0.32998884" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4889357" side_tool="true" weight="0.28874025" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.5110643" visible="true" weight="0.38015607" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.5110643" visible="true" weight="0.38015607" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -592,54 +569,8 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/RenderInputTextField.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="24" column="111" selection-start-line="24" selection-start-column="111" selection-end-line="24" selection-end-column="111" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Grid/Header.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Errors/ApiError.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Grid/ContentMain.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FormPresentational/FormFieldSet.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Grid/GridContainer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Errors/Error500.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/FormPresentational/FormPresentational.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -677,13 +608,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/statics/css/front-gdprights.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" column="90" selection-start-line="22" selection-start-column="90" selection-end-line="22" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -738,30 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Routes/Routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/Routes/UseCases.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -883,27 +783,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/thirdForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -916,7 +802,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/ImageFile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="529">
           <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
           <folding>
             <element signature="e#67#125#0" expanded="true" />
@@ -924,66 +810,159 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Util/Base64ToBlob.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/ThirdForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="195" column="32" lean-forward="true" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
+        <state relative-caret-position="4324">
+          <caret line="195" column="32" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Form/PresentationalForm/inputs/AcceptTerms/AcceptTermsModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="127" column="28" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
+        <state relative-caret-position="322">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="24" column="111" selection-start-line="24" selection-start-column="111" selection-end-line="24" selection-end-column="111" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Errors/ApiError.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Errors/Error500.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Grid/ContentMain.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Grid/GridContainer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Grid/Header.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statics/css/front-gdprights.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/Routes/UseCases.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/Routes/Routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="99" column="71" selection-start-line="99" selection-start-column="71" selection-end-line="99" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/FormReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="128" column="40" lean-forward="true" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/ConfigureStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/ActionTypes/Form/FormActionTypes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        <state relative-caret-position="265">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/thirdForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/ActionCreators/Form/ActionCreatorsForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2557">
-          <caret line="254" column="17" lean-forward="true" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
+        <state relative-caret-position="69">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Pages/ConfirmPdfText.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/PDF/FunctionalPDF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="108">
+          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/PDF/ConfirmedPdf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

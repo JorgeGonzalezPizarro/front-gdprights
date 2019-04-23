@@ -8,6 +8,11 @@ export const Routes = (useCase) => {
       method: 'POST',
       path: '/'
     });
+    case UseCases.GET_ENTITIES :
+    return ({
+      method: 'GET',
+      path: '/entities'
+    });
   case UseCases.GET_PDF :
     return ({
       method: 'get'

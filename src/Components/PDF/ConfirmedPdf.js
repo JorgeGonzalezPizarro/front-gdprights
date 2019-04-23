@@ -7,6 +7,7 @@ import { ConfirmPdfText } from '../Pages/ConfirmPdfText';
 import { ButtonDownload } from '../Util/Buttons/ButtonDownload';
 import { ErrorPdfText } from '../Pages/ErrorPdfText';
 import { ButtonReject } from '../Util/Buttons/ButtonReject';
+import { ButtonAccept } from '../Util/Buttons/ButtonAccept';
 
 export const ConfirmedPdf = (props) => {
   const {file, confirmed, isLoading, error } = props;
@@ -89,6 +90,16 @@ export const ConfirmedPdf = (props) => {
 
               Puedes obtener más información sobre el tratamiento de datos personales necesario para este servicio <a
                 href="#"> aquí</a>
+              <p>Para descargar el acta del intento de notificación realizado puedes hacer clic en el siguiente enlace
+              </p>
+                <div className="gridButtons oneButton">
+                <div className="firstButton">
+                  <ButtonDownload onClick={()=>props.onClickDownload()} text="Descargar"/>
+                </div>
+                <div className="secondButton">
+                  <ButtonAccept text="Volver"   onClick={() => props.initialState()} />
+                </div>
+              </div>
 
             </p>
           </div>
@@ -96,8 +107,6 @@ export const ConfirmedPdf = (props) => {
 
 
         <FormButtons>
-          Para descargar el acta del intento de notificación realizado puedes hacer clic en el siguiente enlace
-          <ButtonDownload onClick={()=>props.onClickDownload()} text="Descargar"/>
         </FormButtons>
       </FormPresentational>
     );
