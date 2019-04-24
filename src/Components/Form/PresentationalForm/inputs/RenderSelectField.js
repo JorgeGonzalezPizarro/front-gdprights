@@ -6,7 +6,6 @@ import { FormGroup } from 'reactstrap';
 import { FormFieldSet } from '../FormPresentational/FormFieldSet';
 
 export const RenderSelectField = ({selectName, errors, touched, isLoading, options,  name, onChange, value, errorApi, errorMessage}) => {
-  console.log(errorApi);
   const handleChange = ({name, value}) =>{
     onChange( name, value);
   };

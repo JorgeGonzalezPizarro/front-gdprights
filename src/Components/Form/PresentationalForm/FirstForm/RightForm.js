@@ -6,7 +6,6 @@ import { alertUtil } from '../../../Util/alertUtil';
 
 export const RightForm = ({ visible, data, errors, touched, onChange, onCloseEntitiesList }) => {
   const [selectEntities] = data;
-  console.log(selectEntities);
 
   if (visible !== true) {
     return null;

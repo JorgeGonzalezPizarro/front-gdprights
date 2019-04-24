@@ -56,8 +56,7 @@ export default class RenderInputCheckTerms extends Component {
   simulateClick = () => {
     const evObj = document.createEvent('Events');
     const clieck = evObj.initEvent('click', true, false);
-    console.log(clieck);
-    console.log(document.getElementById(this.props.name).click());
+    document.getElementById(this.props.name).click();
 
   };
 

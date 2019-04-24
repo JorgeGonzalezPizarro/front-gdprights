@@ -92,7 +92,7 @@ export const ConfirmedPdf = (props) => {
                 href="#"> aquí</a>
               <p>Para descargar el acta del intento de notificación realizado puedes hacer clic en el siguiente enlace
               </p>
-                <div className="gridButtons oneButton">
+              <div className="gridButtons oneButton">
                 <div className="firstButton">
                   <ButtonDownload onClick={()=>props.onClickDownload()} text="Descargar"/>
                 </div>

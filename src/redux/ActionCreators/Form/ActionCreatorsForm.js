@@ -72,9 +72,13 @@ export const pdfPost = (data) => (dispatch) => {
       });
 
       const { file, requestId, entityName, entityEmail } = await response.data;
-      console.log(entityEmail, entityEmail);
       dispatch(pdf_success(requestId, file, entityName, entityEmail));
     } catch (error) {
+      if(error.code==='ECONNABORTED')
+      {
+        return dispatch(pdf_error());
+
+      }
       if (error.status !== 200) {
         const errorMessage = error.response.data;
 
@@ -119,7 +123,6 @@ export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
     });
     if (requestToConfirm.status === 200) {
       const {data : {entityName, entityEmail} } = requestToConfirm;
-      console.log(entityEmail, entityEmail);
       dispatch(notification_send_success(entityName, entityEmail));
     }
   };
@@ -129,7 +132,6 @@ export const confirmPdf_ = (confirmed, requestId) => (dispatch) => {
 };
 
 export const downloadPdf_ = (file_) => dispatch => {
-  console.log(file_);
   const data = async () => await (axios.get(file_, {
     responseType: 'arraybuffer',
     headers: {
@@ -273,7 +275,7 @@ export const pdf_success = (requestId, pdf, entityName, entityEmail) => ({
   }
 });
 
-export const pdf_error = (errorMessage) => ({
+export const pdf_error = (errorMessage = 'Servicio temporalmente no disponible') => ({
 
   type: ActionTypes.PDF_ERROR_POST,
   payload: {

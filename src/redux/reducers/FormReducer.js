@@ -128,7 +128,7 @@ export const FormReducer = (state = initialState, action) => {
     return {
       ...initialState, ...action.payload
     };
-    default  :
+  default  :
     return state;
 
   }

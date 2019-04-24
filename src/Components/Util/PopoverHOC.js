@@ -28,7 +28,6 @@ export default class PopoverHOC extends Component {
   render () {
     const { anchorEl } = this.state;
     const WrapperComponent = this.props.children;
-    console.log( this.props.children, WrapperComponent);
     const open = Boolean(anchorEl);
 
     return (

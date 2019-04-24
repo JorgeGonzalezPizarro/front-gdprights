@@ -86,7 +86,6 @@ export default class ThirdForm extends Component {
           let sameWithNotValueFiltered = {};
           if (sameWithNotValue.length <= 1) {
             sameWithNotValueFiltered = sameWithNotValue[0];
-            console.log(sameWithNotValueFiltered);
             const stateCopy = this.state.firstForm.map((stateInput) => stateInput);
             const newState = stateCopy.filter((i2) => {
               if (i2.name === sameWithNotValueFiltered.name) {
@@ -213,7 +212,7 @@ export default class ThirdForm extends Component {
             ...this.state,
             firstForm: newState
           });
-        })
+        });
 
 
         this.props.submit(firstFormData, this.state.secondForm, this.state.currentForm);
@@ -247,10 +246,10 @@ export default class ThirdForm extends Component {
                 <>
                   {input.title !== undefined ? <label> {input.title}</label> : null}
                   <LeftForm onChange={handleChange} key={input.name} input={input}
-                            requiredFields={this.state.requiredFields}
-                            error={this.state.errors.filter((error) => error === input.name)[0]}
-                            touched={this.state.touched.filter((touched) => touched === input.name)[0]}
-                            onClickVisibleRightForm={handleData}/>
+                    requiredFields={this.state.requiredFields}
+                    error={this.state.errors.filter((error) => error === input.name)[0]}
+                    touched={this.state.touched.filter((touched) => touched === input.name)[0]}
+                    onClickVisibleRightForm={handleData}/>
                 </>);
             })
           }
@@ -259,10 +258,10 @@ export default class ThirdForm extends Component {
           <div>
             <ButtonReject text="Volver" onClick={previous}/>
             <TooltipDisabled isDisabled={!this.state.isValid} stringToShow="Complete todos los campos requeridos"
-                             children={this.state.isValid === true ? <ButtonSend text="Enviar"
-                                                                                 onClick={submit}/> :
-                               <ButtonSendDisabled disabled={this.state.isValid} text="Enviar"
-                                                   onClick={submit}/>}
+              children={this.state.isValid === true ? <ButtonSend text="Enviar"
+                onClick={submit}/> :
+                <ButtonSendDisabled disabled={this.state.isValid} text="Enviar"
+                  onClick={submit}/>}
             />
           </div>
         </FormButtons>

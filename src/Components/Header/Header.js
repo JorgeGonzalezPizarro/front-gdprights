@@ -13,7 +13,6 @@ export default class Header extends Component {
 
   toggleNavBar = () => {
     const isNavOpen = !this.state.isNavOpen;
-    console.log(this.state);
     this.setState({
       isNavOpen
     });

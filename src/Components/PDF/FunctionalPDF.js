@@ -10,7 +10,6 @@ import { LoadingForm } from '../Util/LoadingForm';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${ pdfjs.version }/pdf.worker.js`;
 
 export  const FunctionalPDF = (props) => {
-  console.log(props);
 
 
   if (props.isLoading === true) {

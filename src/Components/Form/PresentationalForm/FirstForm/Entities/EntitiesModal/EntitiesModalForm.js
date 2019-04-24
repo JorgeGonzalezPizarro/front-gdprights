@@ -35,12 +35,9 @@ class EntitiesModalForm extends Component {
   }
 
   render () {
-    console.log(this.props);
     const onChange = (name, value) => {
-      console.log(value);
 
       const entitie = this.props.selectEntities.options.filter((entitie) => entitie.id === value)[0];
-      console.log(entitie);
       this.setState({
         ...this.state,
         selected: entitie
@@ -65,7 +62,6 @@ class EntitiesModalForm extends Component {
     const defaultValue = () => {
 
       if (this.props.selectEntities.isLoading === true) {
-        console.log('isLoading');
         return this.props.selectEntities.valueLoading;
       }
       return this.state.selected !== null ? this.state.selected.name : this.props.selectEntities.label;

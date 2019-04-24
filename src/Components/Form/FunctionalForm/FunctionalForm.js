@@ -140,22 +140,15 @@ export class FunctionalForm extends Component {
       });
     };
     const submit = (thirdForm) => {
-      console.log(thirdForm);
       const previousResponse = this.state.response.map((response) => response);
       const responseCopy =  previousResponse.concat(thirdForm.map((responseInput) => {
-        console.log(responseInput.backName);
-        console.log(responseInput.value);
         if (responseInput.value !== '') {
-          console.log(responseInput);
           const newObject = Object.assign({}, {});
           newObject[responseInput.backName] = responseInput.value;
-          console.log(newObject);
           return newObject;
         }
         return '';
       }));
-      console.log(responseCopy);
-
       const setState = async () =>  await this.setState({
         ...this.state,
         thirdForm,
@@ -164,11 +157,9 @@ export class FunctionalForm extends Component {
 
       setState().then(()=>{
 
-        console.log(this.state);
         const obj = this.state.response.reduce(function(obj1, item){
           obj1[Object.keys(item)[0]] = Object.values(item)[0]; return obj1;
         }, {});
-        console.log(obj);
         this.props.onClick(obj);
       });
     };
@@ -199,7 +190,6 @@ export class FunctionalForm extends Component {
       });
 
     };
-    console.log(this.state.firstForm);
     return (
 <>
       {/* <TransitionGroup> */}

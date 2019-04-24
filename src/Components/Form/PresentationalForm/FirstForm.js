@@ -323,7 +323,6 @@ export default class FirstForm extends Component {
       this.props.handleFirstForm(2);
 
     };
-    console.log(this.props.currentForm);
     return (
       <>
         <FormFieldSet>

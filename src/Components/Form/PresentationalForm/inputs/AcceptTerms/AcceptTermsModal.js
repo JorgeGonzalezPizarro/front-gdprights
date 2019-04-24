@@ -28,7 +28,7 @@ export default class AcceptTermsModal extends React.Component {
     return (
       <div>
         <DialogModal open={this.state.open} onClick={handleClose} >
-        <Help/>
+          <Help/>
         </DialogModal>
       </div>
     );

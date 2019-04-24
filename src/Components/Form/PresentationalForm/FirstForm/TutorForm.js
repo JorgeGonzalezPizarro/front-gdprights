@@ -4,8 +4,6 @@ import { RenderInputCheck } from '../inputs/RenderInputCheck';
 import { alertUtil } from '../../../Util/alertUtil';
 
 export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onChange}) => {
-  console.log(error);
-
   const handleChange = (e ) => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -27,7 +25,6 @@ export const TutorForm = ({input, error,  touched,  onClickVisibleRightForm, onC
     <>
 
       {(function()  {
-        console.log(input.name, error, touched);
         switch (input.type) {
         case 'text' :
           return (<RenderInputTextField
