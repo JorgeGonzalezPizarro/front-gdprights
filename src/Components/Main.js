@@ -44,9 +44,9 @@ const mapDispatchToProps = (dispatch) => ({
   },  initialState: () => {
     dispatch(initialState());
   },
-    removeState : () => {
+  removeState : () => {
     dispatch(initialState());
-    }
+  }
   // rejectPdf: (requestId) => {
   //
   //   dispatch(rejectPdf_(requestId));
